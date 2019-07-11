@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TourApp</string>
+    <string name="strDescriptionFirst">Are you interested in coupons and more details about your trip? Sign Up!</string>
+    <string name="titoloDiario">Personal Journal</string>
+    <string name="titoloHome">Home</string>
+</resources>

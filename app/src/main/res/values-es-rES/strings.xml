@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TourApp</string>
+    <string name="strDescriptionFirst">"¿Quieres cupones y detalles sobre tu viaje? ¡Inicia la sesión! "</string>
+    <string name="titoloDiario">Mi Diario Personal</string>
+    <string name="titoloHome">Página Principal</string>
+</resources>
