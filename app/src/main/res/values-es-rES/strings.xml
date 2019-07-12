@@ -4,7 +4,11 @@
     <string name="strDescriptionFirst">"¿Quieres cupones y detalles sobre tu viaje? ¡Inicia la sesión! "</string>
     <string name="titoloDiario">Mi Diario Personal</string>
     <string name="titoloHome">Página Principal</string>
-    <string name="homeCoupon">Mis coupones</string>
+    <string name="btnCoupon">Guarda Cupón</string>
+    <string name="coupon">Nuevo Cupón</string>
+    <string name="loading">Cargando...</string>
+    <string name="NFCInstructions">¡Pon tu móvil cerca del tag NFC para recibir el cupón! ¡Acegúrate de que el NFC esté activado!</string>
+    <string name="homeCoupon">Mis cupones</string>
     <string name="homeDiario">Mi diario</string>
     <string name="homeEsplora">Explora</string>
 </resources>
