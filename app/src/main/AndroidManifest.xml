@@ -3,6 +3,7 @@
     package="uniba.di.sms.ibtourapp.tourapp">
 
     <uses-permission android:name="android.permission.NFC" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,6 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ExploreActivity"></activity>
+        <activity android:name=".JournalActivity" />
+        <activity android:name=".CouponsActivity" />
         <activity android:name=".NewCouponActivity">
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
