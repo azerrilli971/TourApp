@@ -12,4 +12,8 @@
     <string name="homeEsplora">Esplora</string>
     <string name="homeDiario">Il mio diario</string>
     <string name="homeCoupon">I miei coupon</string>
+
+    <string name="esploraInteressi">Interessi</string>
+    <string name="esploraMangiare">Dove mangiare</string>
+    <string name="esploraDormire">Dove dormire</string>
 </resources>

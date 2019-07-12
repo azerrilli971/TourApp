@@ -4,5 +4,12 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="Orange">#D91</color>
+    <color name="Cornflower">#96B3E4</color>
+    <color name="FireBush">#E9CA2B</color>
+    <color name="Eggplant">#AC1B9B</color>
+    <color name="EasternBlue">#1F8D9E</color>
+    <color name="LightViolet">#DEABDA</color>
+    <color name="AuChico">#97605D</color>
+    <color name="CoolPink">#E48681</color>
 
 </resources>

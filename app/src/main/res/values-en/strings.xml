@@ -11,4 +11,7 @@
     <string name="homeCoupon">My coupons</string>
     <string name="homeDiario">My diary</string>
     <string name="homeEsplora">Explore</string>
+    <string name="esploraDormire">Where to sleep</string>
+    <string name="esploraInteressi">Attractions</string>
+    <string name="esploraMangiare">Where to eat</string>
 </resources>
