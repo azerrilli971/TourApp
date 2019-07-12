@@ -4,4 +4,7 @@
     <string name="strDescriptionFirst">"¿Quieres cupones y detalles sobre tu viaje? ¡Inicia la sesión! "</string>
     <string name="titoloDiario">Mi Diario Personal</string>
     <string name="titoloHome">Página Principal</string>
+    <string name="homeCoupon">Mis coupones</string>
+    <string name="homeDiario">Mi diario</string>
+    <string name="homeEsplora">Explora</string>
 </resources>
