@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">TourApp</string>
+    <string name="strTitleFirst" translatable="false">TourApp</string>
+    <string name="strDescriptionFirst">Vuoi buoni sconto e guide dettagliate? Registrati su TourApp!</string>
+    <string name="titoloHome">Pagina Principale</string>
+    <string name="titoloDiario">Diario Personale</string>
+    <string name="coupon">Nuovo Coupon</string>
+    <string name="NFCInstructions">Avvicina il tuo telefono al tag NFC per ricevere un coupon! Assicurati che il sensore NFC sia abilitato!</string>
+    <string name="btnCoupon">Salva Coupon</string>
+    <string name="loading">Caricamento in corso...</string>
 </resources>

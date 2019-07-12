@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TourApp</string>
+    <string name="strDescriptionFirst">"¿Quieres cupones y detalles sobre tu viaje? ¡Inicia la sesión! "</string>
+    <string name="titoloDiario">Mi Diario Personal</string>
+    <string name="titoloHome">Página Principal</string>
+    <string name="btnCoupon">Guarda Cupón</string>
+    <string name="coupon">Nuevo Cupón</string>
+    <string name="loading">Cargando...</string>
+    <string name="NFCInstructions">¡Pon tu móvil cerca del tag NFC para recibir el cupón! ¡Acegúrate de que el NFC esté activado!</string>
+</resources>
