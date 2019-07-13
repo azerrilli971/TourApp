@@ -23,7 +23,13 @@
         <activity android:name=".MonumentActivity" />
         <activity android:name=".MuseumActivity" />
         <activity android:name=".SignupActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".HotelActivity" />
         <activity android:name=".RestaurantActivity" />
         <activity android:name=".InterestActivity" />
@@ -47,11 +53,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
