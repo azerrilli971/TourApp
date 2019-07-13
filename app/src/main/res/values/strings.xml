@@ -16,4 +16,9 @@
     <string name="esploraInteressi">Interessi</string>
     <string name="esploraMangiare">Dove mangiare</string>
     <string name="esploraDormire">Dove dormire</string>
+
+
+    <string name="mangiareGelaterie" translatable="false">Gelaterie</string>
+    <string name="mangiareRistoranti">Ristoranti</string>
+    <string name="mangiarePizzerie" translatable="false">Pizzerie</string>
 </resources>
