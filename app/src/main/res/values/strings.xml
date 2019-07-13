@@ -21,4 +21,14 @@
     <string name="mangiareGelaterie" translatable="false">Gelaterie</string>
     <string name="mangiareRistoranti">Ristoranti</string>
     <string name="mangiarePizzerie" translatable="false">Pizzerie</string>
+
+    <string name="dormireHotel" translatable="false">Hotel</string>
+    <string name="dormireBB" translatable="false">B and B</string>
+
+    <string name="interessiFamiglie">Svago per famiglie</string>
+    <string name="interessiGiovani">Locali e discoteche</string>
+    <string name="interessiLidi">Lidi</string>
+    <string name="interessiMusei">Musei</string>
+    <string name="interessiMonumenti">Monumenti</string>
+    <string name="interessiChiese">Chiese</string>
 </resources>

@@ -15,5 +15,11 @@
     <string name="esploraInteressi">Atracciones</string>
     <string name="esploraMangiare">Donde comer</string>
     <string name="mangiareRistoranti">Ristorantes</string>
+    <string name="interessiChiese">Iglesias</string>
+    <string name="interessiFamiglie">Divertimiento</string>
+    <string name="interessiGiovani">Locales y discos</string>
+    <string name="interessiMonumenti">Monumentos</string>
+    <string name="interessiMusei">Museos</string>
+    <string name="interessiLidi">Playas</string>
 
 </resources>
