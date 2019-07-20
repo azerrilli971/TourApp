@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".DetailHotels"></activity>
         <activity android:name=".BBActivity" />
-        <activity android:name=".HotelsActivity" />
+        <activity android:name=".HotelsActivity"></activity>
         <activity android:name=".RestaurantsActivity" />
         <activity android:name=".PizzerieActivity" />
         <activity android:name=".GelaterieActivity" />
@@ -23,13 +24,7 @@
         <activity android:name=".MonumentActivity" />
         <activity android:name=".MuseumActivity" />
         <activity android:name=".SignupActivity" />
-        <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".LoginActivity"></activity>
         <activity android:name=".HotelActivity" />
         <activity android:name=".RestaurantActivity" />
         <activity android:name=".InterestActivity" />
@@ -52,7 +47,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
