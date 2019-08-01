@@ -31,4 +31,8 @@
     <string name="interessiMusei">Musei</string>
     <string name="interessiMonumenti">Monumenti</string>
     <string name="interessiChiese">Chiese</string>
+
+    <string name="hotelNicolaus" translatable="false">Nicolaus Hotel</string>
+    <string name="hotelNicolausVia">Via Ciasca, 27, 70124, Bari, Italia</string>
+    <string name="hotelNicolausCosto" translatable="false">$$$$</string>
 </resources>
