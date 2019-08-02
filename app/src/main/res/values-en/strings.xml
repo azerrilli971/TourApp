@@ -22,5 +22,7 @@
     <string name="interessiMusei">Museums</string>
     <string name="interessiLidi">Beaches</string>
     <string name="hotelNicolausVia">Via Ciasca, 27, 70124, Bari, Italy</string>
+    <string name="title_monument_detail">Details</string>
+    <string name="title_monument_list">Monuments</string>
 
 </resources>
