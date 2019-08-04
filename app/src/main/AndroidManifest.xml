@@ -39,7 +39,8 @@
         <activity android:name=".HotelActivity" />
         <activity android:name=".RestaurantActivity" />
         <activity android:name=".InterestActivity" />
-        <activity android:name=".ExploreActivity" />
+        <activity android:name=".ExploreActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".JournalActivity" />
         <activity android:name=".CouponsActivity" />
         <activity android:name=".NewCouponActivity">

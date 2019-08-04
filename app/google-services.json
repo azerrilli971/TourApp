@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "592727736270",
+    "firebase_url": "https://tourapp-9d024.firebaseio.com",
+    "project_id": "tourapp-9d024",
+    "storage_bucket": "tourapp-9d024.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592727736270:android:89093f98d0f7a705",
+        "android_client_info": {
+          "package_name": "uniba.di.sms.ibtourapp.tourapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "592727736270-187eu7185m00f0sr5jp9u6et6ummta70.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uniba.di.sms.ibtourapp.tourapp",
+            "certificate_hash": "b28dce9d6ab0f2863d91350dd143736a715835ab"
+          }
+        },
+        {
+          "client_id": "592727736270-u9tga0jjev6mslbech7st3oau2ak6f5r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXsdlpwgTnDeDDk_3YMaTMTwS-BUZ5gS8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "592727736270-u9tga0jjev6mslbech7st3oau2ak6f5r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

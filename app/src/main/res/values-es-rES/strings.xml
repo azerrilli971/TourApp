@@ -24,5 +24,7 @@
     <string name="hotelNicolausVia">Via Ciasca, 27, 70124, Bari, Italia</string>
     <string name="title_monument_detail">Detalles</string>
     <string name="title_monument_list">Monumentos</string>
+    <string name="navigation_drawer_closed">Abrir menu lateral</string>
+    <string name="navigation_drawer_open">Cerrar menu lateral</string>
 
 </resources>

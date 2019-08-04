@@ -37,4 +37,7 @@
     <string name="hotelNicolausCosto" translatable="false">$$$$</string>
     <string name="title_monument_list">Monumenti</string>
     <string name="title_monument_detail">Dettagli a riguardo</string>
+    <string name="navigation_drawer_open">Apri Menu Laterale </string>
+    <string name="navigation_drawer_closed">Chiudi Menu Laterale </string>
+
 </resources>
