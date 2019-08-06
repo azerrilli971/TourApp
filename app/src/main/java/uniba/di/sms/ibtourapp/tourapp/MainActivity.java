@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(v.getId()){
 
             case R.id.homeEsplora:{
+                MyAsyncTask myAsyncTask = new MyAsyncTask();
+                myAsyncTask.execute();
                 intent = new Intent(this, ExploreActivity.class);
                 startActivity(intent);
                 break;

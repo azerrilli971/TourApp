@@ -25,12 +25,7 @@ public class DummyContent {
 
     private static final int COUNT = 25;
 
-    static {
-        // Add some sample items.
-        addItem(new DummyItem("1", "San Nicola", "Via giocanni eio","e' una statua molto carina"));
-    }
-
-    private static void addItem(DummyItem item) {
+    public static void addItem(DummyItem item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.id, item);
     }
@@ -56,12 +51,16 @@ public class DummyContent {
         public String viaMonumento;
         public String descrizioneMonumento;
 
+
+
         public DummyItem(String id, String nomeMonumento, String viaMonumento, String descrizioneMonumento) {
             this.id = id;
             this.nomeMonumento = nomeMonumento;
             this.viaMonumento = viaMonumento;
             this.descrizioneMonumento = descrizioneMonumento;
         }
+
+        public DummyItem() {}
 
         @Override
         public String toString() {
