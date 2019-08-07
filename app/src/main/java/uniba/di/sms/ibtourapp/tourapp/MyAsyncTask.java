@@ -8,7 +8,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import uniba.di.sms.ibtourapp.tourapp.dummy.DummyContent;
+import uniba.di.sms.ibtourapp.tourapp.dummy.Monumenti;
 
 public class MyAsyncTask extends AsyncTask {
     @Override
@@ -20,8 +20,8 @@ public class MyAsyncTask extends AsyncTask {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    DummyContent.DummyItem item = data.getValue(DummyContent.DummyItem.class);
-                    DummyContent.addItem(new DummyContent.DummyItem(item.id, item.nomeMonumento, item.viaMonumento, item.descrizioneMonumento));
+                    Monumenti.DummyItem item = data.getValue(Monumenti.DummyItem.class);
+                    Monumenti.addItem(new Monumenti.DummyItem(item.id, item.nomeMonumento, item.viaMonumento, item.descrizioneMonumento));
                 }
             }
 
