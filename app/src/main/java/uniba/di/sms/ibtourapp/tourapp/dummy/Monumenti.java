@@ -36,7 +36,6 @@ public class Monumenti {
 
     private static String makeDetails(String descrizione) {
         StringBuilder builder = new StringBuilder();
-        builder.append("Per saperne di più...\n ");
         builder.append(descrizione);
 
         return builder.toString();

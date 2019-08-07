@@ -43,7 +43,7 @@ public class Gelaterie {
     private static String makeDetails(String descrizione) {
         StringBuilder builder = new StringBuilder();
 
-        builder.append("\nPiù informazioni sulla gelateria...");
+        builder.append("Più informazioni sulla gelateria...\n\n");
         builder.append(descrizione);
 
         return builder.toString();
@@ -63,7 +63,7 @@ public class Gelaterie {
             this.id = id;
             this.nomeGelateria = nomeGelateria;
             this.viaGelateria = viaGelateria;
-            this.descrizioneGelateria= descrizioneGelateria;
+            this.descrizioneGelateria= makeDetails(descrizioneGelateria);
             this.orariGelateria = orariGelateria;
         }
 
