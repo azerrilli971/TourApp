@@ -37,17 +37,10 @@ public class Gelaterie {
     }
 
     private static DummyItem createDummyItem(int position, String nomeGelateria, String viaGelateria, String orariGelateria, String descrizioneGelateria) {
-        return new DummyItem(String.valueOf(position), nomeGelateria, viaGelateria, orariGelateria, makeDetails(descrizioneGelateria));
+        return new DummyItem(String.valueOf(position), nomeGelateria, viaGelateria, orariGelateria, descrizioneGelateria);
     }
 
-    private static String makeDetails(String descrizione) {
-        StringBuilder builder = new StringBuilder();
 
-        builder.append("Più informazioni sulla gelateria...\n\n");
-        builder.append(descrizione);
-
-        return builder.toString();
-    }
 
     /**
      * A dummy item representing a piece of content.
@@ -63,7 +56,7 @@ public class Gelaterie {
             this.id = id;
             this.nomeGelateria = nomeGelateria;
             this.viaGelateria = viaGelateria;
-            this.descrizioneGelateria= makeDetails(descrizioneGelateria);
+            this.descrizioneGelateria=descrizioneGelateria;
             this.orariGelateria = orariGelateria;
         }
 

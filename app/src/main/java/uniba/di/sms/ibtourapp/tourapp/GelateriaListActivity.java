@@ -12,6 +12,7 @@ import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import uniba.di.sms.ibtourapp.tourapp.dummy.Gelaterie;
@@ -43,14 +44,8 @@ public class GelateriaListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+       getSupportActionBar().setDisplayShowHomeEnabled(true);
+       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (findViewById(R.id.gelateria_detail_container) != null) {
             // The detail container view will be present only in the
@@ -131,6 +126,7 @@ public class GelateriaListActivity extends AppCompatActivity {
             final TextView mGelateriaNome;
             final TextView mGelateriaVia;
             final TextView mGelateriaOrari;
+            final ImageView mGelateriaImmagine;
 
 
             ViewHolder(View view) {
@@ -138,6 +134,7 @@ public class GelateriaListActivity extends AppCompatActivity {
                 mGelateriaNome = (TextView) view.findViewById(R.id.gelateriaNome);
                 mGelateriaVia = (TextView) view.findViewById(R.id.gelateriaVia);
                 mGelateriaOrari = (TextView) view.findViewById(R.id.gelateriaOrari);
+                mGelateriaImmagine = (ImageView) view.findViewById(R.id.gelateriaImmagine);
             }
         }
     }
