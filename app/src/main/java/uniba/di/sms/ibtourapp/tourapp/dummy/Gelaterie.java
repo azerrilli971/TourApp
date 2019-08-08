@@ -27,7 +27,7 @@ public class Gelaterie {
 
     static {
         // Add some sample items.
-            addItem(new DummyItem("1", "Bar Telebari", "Via Fanelli", "09-21", "Una delle piu' antiche gelaterie di Bari"));
+        addItem(new DummyItem("1", "Bar Telebari", "Via Fanelli", "09-21", "Una delle piu' antiche gelaterie di Bari"));
 
     }
 
@@ -41,22 +41,21 @@ public class Gelaterie {
     }
 
 
-
     /**
      * A dummy item representing a piece of content.
      */
     public static class DummyItem {
-        public final String id;
-        public final String nomeGelateria;
-        public final String viaGelateria;
-        public final String orariGelateria;
-        public final String descrizioneGelateria;
+        public String id;
+        public String nomeGelateria;
+        public String viaGelateria;
+        public String orariGelateria;
+        public String descrizioneGelateria;
 
         public DummyItem(String id, String nomeGelateria, String viaGelateria, String orariGelateria, String descrizioneGelateria) {
             this.id = id;
             this.nomeGelateria = nomeGelateria;
             this.viaGelateria = viaGelateria;
-            this.descrizioneGelateria=descrizioneGelateria;
+            this.descrizioneGelateria = descrizioneGelateria;
             this.orariGelateria = orariGelateria;
         }
 

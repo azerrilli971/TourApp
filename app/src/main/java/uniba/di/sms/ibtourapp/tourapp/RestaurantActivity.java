@@ -57,7 +57,7 @@ public class RestaurantActivity extends AppCompatActivity implements View.OnClic
             }
 
             case R.id.mangiareRistoranti:{
-                intent = new Intent(this, RestaurantsActivity.class);
+                intent = new Intent(this, RestaurantListActivity.class);
                 startActivity(intent);
                 break;
             }

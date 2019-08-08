@@ -16,19 +16,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import uniba.di.sms.ibtourapp.tourapp.dummy.Gelaterie;
+import uniba.di.sms.ibtourapp.tourapp.dummy.Ristoranti;
 
 import java.util.List;
 
 /**
- * An activity representing a list of Gelaterie. This activity
+ * An activity representing a list of Restaurants. This activity
  * has different presentations for handset and tablet-size devices. On
  * handsets, the activity presents a list of items, which when touched,
- * lead to a {@link GelateriaDetailActivity} representing
+ * lead to a {@link RestaurantDetailActivity} representing
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-public class GelateriaListActivity extends AppCompatActivity {
+public class RestaurantListActivity extends AppCompatActivity {
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -39,7 +39,7 @@ public class GelateriaListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gelateria_list);
+        setContentView(R.layout.activity_restaurant_list);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarsemplice);
         setSupportActionBar(toolbar);
@@ -47,8 +47,16 @@ public class GelateriaListActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });*/
 
-        if (findViewById(R.id.gelateria_detail_container) != null) {
+        if (findViewById(R.id.restaurant_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-w900dp).
             // If this view is present, then the
@@ -56,45 +64,45 @@ public class GelateriaListActivity extends AppCompatActivity {
             mTwoPane = true;
         }
 
-        View recyclerView = findViewById(R.id.gelateria_list);
+        View recyclerView = findViewById(R.id.restaurant_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, Gelaterie.ITEMS, mTwoPane));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, Ristoranti.ITEMS, mTwoPane));
     }
 
     public static class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final GelateriaListActivity mParentActivity;
-        private final List<Gelaterie.DummyItem> mValues;
+        private final RestaurantListActivity mParentActivity;
+        private final List<Ristoranti.DummyItem> mValues;
         private final boolean mTwoPane;
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Gelaterie.DummyItem item = (Gelaterie.DummyItem) view.getTag();
+                Ristoranti.DummyItem item = (Ristoranti.DummyItem) view.getTag();
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
-                    arguments.putString(GelateriaDetailFragment.ARG_ITEM_ID, item.id);
-                    GelateriaDetailFragment fragment = new GelateriaDetailFragment();
+                    arguments.putString(RestaurantDetailFragment.ARG_ITEM_ID, item.id);
+                    RestaurantDetailFragment fragment = new RestaurantDetailFragment();
                     fragment.setArguments(arguments);
                     mParentActivity.getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.gelateria_detail_container, fragment)
+                            .replace(R.id.restaurant_detail_container, fragment)
                             .commit();
                 } else {
                     Context context = view.getContext();
-                    Intent intent = new Intent(context, GelateriaDetailActivity.class);
-                    intent.putExtra(GelateriaDetailFragment.ARG_ITEM_ID, item.id);
+                    Intent intent = new Intent(context, RestaurantDetailActivity.class);
+                    intent.putExtra(RestaurantDetailFragment.ARG_ITEM_ID, item.id);
 
                     context.startActivity(intent);
                 }
             }
         };
 
-        SimpleItemRecyclerViewAdapter(GelateriaListActivity parent,
-                                      List<Gelaterie.DummyItem> items,
+        SimpleItemRecyclerViewAdapter(RestaurantListActivity parent,
+                                      List<Ristoranti.DummyItem> items,
                                       boolean twoPane) {
             mValues = items;
             mParentActivity = parent;
@@ -104,15 +112,16 @@ public class GelateriaListActivity extends AppCompatActivity {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.gelateria_list_content, parent, false);
+                    .inflate(R.layout.restaurant_list_content, parent, false);
             return new ViewHolder(view);
         }
 
+
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mGelateriaNome.setText(mValues.get(position).nomeGelateria);
-            holder.mGelateriaVia.setText(mValues.get(position).viaGelateria);
-            holder.mGelateriaOrari.setText(mValues.get(position).orariGelateria);
+            holder.mNomeRistorante.setText(mValues.get(position).nomeRistorante);
+            holder.mViaRistorante.setText(mValues.get(position).viaRistorante);
+            holder.mOrariRistorante.setText(mValues.get(position).orariRistorante);
 
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
@@ -124,26 +133,25 @@ public class GelateriaListActivity extends AppCompatActivity {
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
-            final TextView mGelateriaNome;
-            final TextView mGelateriaVia;
-            final TextView mGelateriaOrari;
-            final ImageView mGelateriaImmagine;
-
+            final TextView mNomeRistorante;
+            final TextView mViaRistorante;
+            final TextView mOrariRistorante;
+            final ImageView mImmagineRistorante;
 
             ViewHolder(View view) {
                 super(view);
-                mGelateriaNome = (TextView) view.findViewById(R.id.gelateriaNome);
-                mGelateriaVia = (TextView) view.findViewById(R.id.gelateriaVia);
-                mGelateriaOrari = (TextView) view.findViewById(R.id.gelateriaOrari);
-                mGelateriaImmagine = (ImageView) view.findViewById(R.id.gelateriaImmagine);
+                mNomeRistorante = (TextView) view.findViewById(R.id.ristoranteNome);
+                mViaRistorante= (TextView) view.findViewById(R.id.ristoranteVia);
+                mOrariRistorante = (TextView) view.findViewById(R.id.ristoranteOrari);
+                mImmagineRistorante = (ImageView) view.findViewById(R.id.ristoranteImmagine);
+
             }
         }
     }
-
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected( MenuItem item){
 
-        if (item.getItemId() == android.R.id.home) {
+        if(item.getItemId() == android.R.id.home){
             finish();
         }
 

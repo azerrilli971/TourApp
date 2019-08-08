@@ -12,9 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".RestaurantListActivity"
+            android:label="@string/title_restaurant_list"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".RestaurantDetailActivity"
+            android:label="@string/title_restaurant_detail"
+            android:parentActivityName=".RestaurantListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="uniba.di.sms.ibtourapp.tourapp.RestaurantListActivity" />
+        </activity>
+        <activity
             android:name=".GelateriaListActivity"
             android:label="@string/title_gelateria_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".GelateriaDetailActivity"
             android:label="@string/title_gelateria_detail"
@@ -39,7 +52,6 @@
         </activity>
         <activity android:name=".BBActivity" />
         <activity android:name=".HotelsActivity" />
-        <activity android:name=".RestaurantsActivity" />
         <activity android:name=".PizzerieActivity" />
         <activity android:name=".BeachActivity" />
         <activity android:name=".FamilyActivity" />

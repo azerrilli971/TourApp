@@ -27,5 +27,7 @@
     <string name="navigation_drawer_closed">Abrir menu lateral</string>
     <string name="navigation_drawer_open">Cerrar menu lateral</string>
     <string name="title_gelateria_detail">Detalle Gelateria</string>
+    <string name="title_restaurant_detail">Detalles restaurant</string>
+    <string name="title_restaurant_list">Restaurantes</string>
 
 </resources>

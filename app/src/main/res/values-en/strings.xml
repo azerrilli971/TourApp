@@ -27,5 +27,7 @@
     <string name="navigation_drawer_closed">Close Navigation Drawer</string>
     <string name="navigation_drawer_open">Open Navigation Drawer</string>
     <string name="title_gelateria_detail">Gelateria Detail</string>
+    <string name="title_restaurant_detail">Restaurant details</string>
+    <string name="title_restaurant_list">Restaurants</string>
 
 </resources>

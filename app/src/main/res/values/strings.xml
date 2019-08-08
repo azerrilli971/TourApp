@@ -41,5 +41,7 @@
     <string name="navigation_drawer_closed">Chiudi Menu Laterale </string>
     <string name="title_gelateria_list" translatable="false">Gelaterie</string>
     <string name="title_gelateria_detail">Dettaglio Gelateria</string>
+    <string name="title_restaurant_list">Ristoranti</string>
+    <string name="title_restaurant_detail">Dettagli Ristorante</string>
 
 </resources>
