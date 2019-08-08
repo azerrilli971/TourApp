@@ -40,8 +40,10 @@
     <string name="navigation_drawer_open">Apri Menu Laterale </string>
     <string name="navigation_drawer_closed">Chiudi Menu Laterale </string>
     <string name="title_gelateria_list" translatable="false">Gelaterie</string>
-    <string name="title_gelateria_detail">Dettaglio Gelateria</string>
+    <string name="title_gelateria_detail">Dettagli Gelateria</string>
     <string name="title_restaurant_list">Ristoranti</string>
     <string name="title_restaurant_detail">Dettagli Ristorante</string>
+    <string name="title_pizzeria_list">Pizzerie</string>
+    <string name="title_pizzeria_detail">Dettagli Pizzeria</string>
 
 </resources>

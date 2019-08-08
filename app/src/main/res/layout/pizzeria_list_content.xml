@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/pizzeriaImmagine"
+        android:layout_width="match_parent"
+        android:layout_height="121dp"
+        android:src="@drawable/hotelnazioni" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="142dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/pizzeriaNome"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginStart="5dp"
+            android:paddingLeft="5dp"
+            android:text="Nome Pizzeria"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pizzeriaVia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:paddingTop="10dp"
+            android:text="Indirizzo"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/pizzeriaOrari"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:layout_marginStart="5dp"
+            android:text="Orari"
+
+
+            />
+
+
+    </LinearLayout>
+</LinearLayout>
