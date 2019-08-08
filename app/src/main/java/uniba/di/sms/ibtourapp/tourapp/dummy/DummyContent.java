@@ -26,8 +26,10 @@ public class DummyContent {
     private static final int COUNT = 25;
 
     public static void addItem(DummyItem item) {
-        ITEMS.add(item);
-        ITEM_MAP.put(item.id, item);
+        if(!ITEMS.contains(item)) {
+            ITEMS.add(item);
+            ITEM_MAP.put(item.id, item);
+        }
     }
 
     private static DummyItem createDummyItem(int id, String nomeMonumento, String viaMonumento, String descrizioneMonumento) {
