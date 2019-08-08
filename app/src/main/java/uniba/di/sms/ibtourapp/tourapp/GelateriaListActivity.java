@@ -14,6 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import uniba.di.sms.ibtourapp.tourapp.dummy.Gelaterie;
 
@@ -54,7 +57,6 @@ public class GelateriaListActivity extends AppCompatActivity {
             // activity should be in two-pane mode.
             mTwoPane = true;
         }
-
         View recyclerView = findViewById(R.id.gelateria_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
@@ -112,7 +114,8 @@ public class GelateriaListActivity extends AppCompatActivity {
             holder.mGelateriaNome.setText(mValues.get(position).nomeGelateria);
             holder.mGelateriaVia.setText(mValues.get(position).viaGelateria);
             holder.mGelateriaOrari.setText(mValues.get(position).orariGelateria);
-
+            Picasso.get().setLoggingEnabled(true);
+            Picasso.get().load(mValues.get(position).immagine).into(holder.mGelateriaImmagine);
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
         }
