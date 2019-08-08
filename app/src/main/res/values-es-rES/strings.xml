@@ -31,5 +31,7 @@
     <string name="title_restaurant_list">Restaurantes</string>
     <string name="title_pizzeria_detail">Detalles Pizzeria</string>
     <string name="title_pizzeria_list">Pizzerias</string>
+    <string name="title_museo_detail">Detalles Museo</string>
+    <string name="title_museo_list">Museos</string>
 
 </resources>

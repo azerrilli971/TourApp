@@ -3,7 +3,7 @@
     package="uniba.di.sms.ibtourapp.tourapp">
 
     <uses-permission android:name="android.permission.NFC" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,9 +13,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".MuseoListActivity"
+            android:label="@string/title_museo_list"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".MuseoDetailActivity"
+            android:label="@string/title_museo_detail"
+            android:parentActivityName=".MuseoListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="uniba.di.sms.ibtourapp.tourapp.MuseoListActivity" />
+        </activity>
+        <activity
             android:name=".PizzeriaListActivity"
             android:label="@string/title_pizzeria_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".PizzeriaDetailActivity"
             android:label="@string/title_pizzeria_detail"

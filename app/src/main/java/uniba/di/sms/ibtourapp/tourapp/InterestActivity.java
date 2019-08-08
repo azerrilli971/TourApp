@@ -78,7 +78,7 @@ public class InterestActivity extends AppCompatActivity implements View.OnClickL
             }
 
             case R.id.interessiMusei:{
-                intent = new Intent(this, MuseumActivity.class);
+                intent = new Intent(this, MuseoListActivity.class);
                 startActivity(intent);
                 break;
             }
