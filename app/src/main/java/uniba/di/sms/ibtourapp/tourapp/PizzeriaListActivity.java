@@ -15,23 +15,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
-
-import uniba.di.sms.ibtourapp.tourapp.dummy.Gelaterie;
+import uniba.di.sms.ibtourapp.tourapp.dummy.Pizzerie;
 
 import java.util.List;
 
 /**
- * An activity representing a list of Gelaterie. This activity
+ * An activity representing a list of Pizzerie. This activity
  * has different presentations for handset and tablet-size devices. On
  * handsets, the activity presents a list of items, which when touched,
- * lead to a {@link GelateriaDetailActivity} representing
+ * lead to a {@link PizzeriaDetailActivity} representing
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-public class GelateriaListActivity extends AppCompatActivity {
+public class PizzeriaListActivity extends AppCompatActivity {
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -42,7 +39,7 @@ public class GelateriaListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gelateria_list);
+        setContentView(R.layout.activity_pizzeria_list);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarsemplice);
         setSupportActionBar(toolbar);
@@ -51,52 +48,62 @@ public class GelateriaListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        if (findViewById(R.id.gelateria_detail_container) != null) {
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
+        if (findViewById(R.id.pizzeria_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-w900dp).
             // If this view is present, then the
             // activity should be in two-pane mode.
             mTwoPane = true;
         }
-        View recyclerView = findViewById(R.id.gelateria_list);
+
+        View recyclerView = findViewById(R.id.pizzeria_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, Gelaterie.ITEMS, mTwoPane));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, Pizzerie.ITEMS, mTwoPane));
     }
 
     public static class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final GelateriaListActivity mParentActivity;
-        private final List<Gelaterie.DummyItem> mValues;
+        private final PizzeriaListActivity mParentActivity;
+        private final List<Pizzerie.DummyItem> mValues;
         private final boolean mTwoPane;
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Gelaterie.DummyItem item = (Gelaterie.DummyItem) view.getTag();
+                Pizzerie.DummyItem item = (Pizzerie.DummyItem) view.getTag();
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
-                    arguments.putString(GelateriaDetailFragment.ARG_ITEM_ID, item.id);
-                    GelateriaDetailFragment fragment = new GelateriaDetailFragment();
+                    arguments.putString(PizzeriaDetailFragment.ARG_ITEM_ID, item.id);
+                    PizzeriaDetailFragment fragment = new PizzeriaDetailFragment();
                     fragment.setArguments(arguments);
                     mParentActivity.getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.gelateria_detail_container, fragment)
+                            .replace(R.id.pizzeria_detail_container, fragment)
                             .commit();
                 } else {
                     Context context = view.getContext();
-                    Intent intent = new Intent(context, GelateriaDetailActivity.class);
-                    intent.putExtra(GelateriaDetailFragment.ARG_ITEM_ID, item.id);
+                    Intent intent = new Intent(context, PizzeriaDetailActivity.class);
+                    intent.putExtra(PizzeriaDetailFragment.ARG_ITEM_ID, item.id);
 
                     context.startActivity(intent);
                 }
             }
         };
 
-        SimpleItemRecyclerViewAdapter(GelateriaListActivity parent,
-                                      List<Gelaterie.DummyItem> items,
+        SimpleItemRecyclerViewAdapter(PizzeriaListActivity parent,
+                                      List<Pizzerie.DummyItem> items,
                                       boolean twoPane) {
             mValues = items;
             mParentActivity = parent;
@@ -106,16 +113,16 @@ public class GelateriaListActivity extends AppCompatActivity {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.gelateria_list_content, parent, false);
+                    .inflate(R.layout.pizzeria_list_content, parent, false);
             return new ViewHolder(view);
         }
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mGelateriaNome.setText(mValues.get(position).nomeGelateria);
-            holder.mGelateriaVia.setText(mValues.get(position).viaGelateria);
-            holder.mGelateriaOrari.setText(mValues.get(position).orariGelateria);
-            Picasso.get().load(mValues.get(position).immagine).into(holder.mGelateriaImmagine);
+            holder.mNomePizzeria.setText(mValues.get(position).nomePizzeria);
+            holder.mViaPizzeria.setText(mValues.get(position).viaPizzeria);
+            holder.mOrariPizzeria.setText(mValues.get(position).orariPizzeria);
+
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
         }
@@ -126,18 +133,17 @@ public class GelateriaListActivity extends AppCompatActivity {
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
-            final TextView mGelateriaNome;
-            final TextView mGelateriaVia;
-            final TextView mGelateriaOrari;
-            final ImageView mGelateriaImmagine;
-
+            final TextView mNomePizzeria;
+            final TextView mViaPizzeria;
+            final TextView mOrariPizzeria;
+            final ImageView mImmaginePizzeria;
 
             ViewHolder(View view) {
                 super(view);
-                mGelateriaNome = (TextView) view.findViewById(R.id.gelateriaNome);
-                mGelateriaVia = (TextView) view.findViewById(R.id.gelateriaVia);
-                mGelateriaOrari = (TextView) view.findViewById(R.id.gelateriaOrari);
-                mGelateriaImmagine = (ImageView) view.findViewById(R.id.gelateriaImmagine);
+                mNomePizzeria = (TextView) view.findViewById(R.id.pizzeriaNome);
+                mViaPizzeria = (TextView) view.findViewById(R.id.pizzeriaVia);
+                mOrariPizzeria = (TextView) view.findViewById(R.id.pizzeriaOrari);
+                mImmaginePizzeria = (ImageView) view.findViewById(R.id.pizzeriaImmagine);
             }
         }
     }

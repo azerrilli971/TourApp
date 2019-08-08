@@ -26,6 +26,10 @@
     <string name="title_monument_list">Monuments</string>
     <string name="navigation_drawer_closed">Close Navigation Drawer</string>
     <string name="navigation_drawer_open">Open Navigation Drawer</string>
-    <string name="title_gelateria_detail">Gelateria Detail</string>
+    <string name="title_gelateria_detail">Gelateria Details</string>
+    <string name="title_restaurant_detail">Restaurant Details</string>
+    <string name="title_restaurant_list">Restaurants</string>
+    <string name="title_pizzeria_detail">Pizzeria Details</string>
+    <string name="title_pizzeria_list">Pizzerias</string>
 
 </resources>
