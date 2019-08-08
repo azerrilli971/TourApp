@@ -13,9 +13,48 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".SvagoGiovaniListActivity"
+            android:label="@string/title_svagogiovani_list"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".SvagoGiovaniDetailActivity"
+            android:label="@string/title_svagogiovani_detail"
+            android:parentActivityName=".SvagoGiovaniListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="uniba.di.sms.ibtourapp.tourapp.SvagoGiovaniListActivity" />
+        </activity>
+        <activity
+            android:name=".SvagoFamigliaListActivity"
+            android:label="@string/title_svagofamiglia_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SvagoFamigliaDetailActivity"
+            android:label="@string/title_svagofamiglia_detail"
+            android:parentActivityName=".SvagoFamigliaListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="uniba.di.sms.ibtourapp.tourapp.SvagoFamigliaListActivity" />
+        </activity>
+        <activity
+            android:name=".SpiaggiaListActivity"
+            android:label="@string/title_spiaggia_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SpiaggiaDetailActivity"
+            android:label="@string/title_spiaggia_detail"
+            android:parentActivityName=".SpiaggiaListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="uniba.di.sms.ibtourapp.tourapp.SpiaggiaListActivity" />
+        </activity>
+        <activity
             android:name=".ChiesaListActivity"
             android:label="@string/title_chiesa_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ChiesaDetailActivity"
             android:label="@string/title_chiesa_detail"
@@ -95,7 +134,6 @@
         <activity android:name=".BeachActivity" />
         <activity android:name=".FamilyActivity" />
         <activity android:name=".YoungActivity" />
-        <activity android:name=".ChurchActivity" />
         <activity android:name=".MuseumActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".LoginActivity" />

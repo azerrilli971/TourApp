@@ -55,18 +55,18 @@ public class InterestActivity extends AppCompatActivity implements View.OnClickL
             }
 
             case R.id.interessiFamiglie:{
-                intent = new Intent(this, FamilyActivity.class);
+                intent = new Intent(this, SvagoFamigliaListActivity.class);
                 startActivity(intent);
                 break;
             }
 
             case R.id.interessiGiovani:{
-                intent = new Intent(this, YoungActivity.class);
+                intent = new Intent(this, SvagoGiovaniListActivity.class);
                 startActivity(intent);
                 break;
             }
             case R.id.interessiLidi:{
-                intent = new Intent(this, BeachActivity.class);
+                intent = new Intent(this, SpiaggiaListActivity.class);
                 startActivity(intent);
                 break;
             }

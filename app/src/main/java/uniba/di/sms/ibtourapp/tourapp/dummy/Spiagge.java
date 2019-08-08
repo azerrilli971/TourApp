@@ -11,7 +11,7 @@ import java.util.Map;
  * <p>
  * TODO: Replace all uses of this class before publishing your app.
  */
-public class Chiese {
+public class Spiagge {
 
     /**
      * An array of sample (dummy) items.
@@ -27,7 +27,7 @@ public class Chiese {
 
     static {
         // Add some sample items.
-        addItem(new DummyItem("1","ao", "ce", "emoif", "wfk"));
+        addItem(new DummyItem("1", "we","aewrwer", "wdkedl", "efklms"));
     }
 
     private static void addItem(DummyItem item) {
@@ -35,8 +35,8 @@ public class Chiese {
         ITEM_MAP.put(item.id, item);
     }
 
-    private static DummyItem createDummyItem(int position, String nomeChiesa, String viaChiesa, String descrizioneChiesa, String immagineChiesa) {
-        return new DummyItem(String.valueOf(position), nomeChiesa, viaChiesa, descrizioneChiesa, immagineChiesa );
+    private static DummyItem createDummyItem(int position , String nomeSpiaggia, String viaSpiaggia, String descrizioneSpiaggia, String immagineSpiaggia) {
+        return new DummyItem(String.valueOf(position), nomeSpiaggia, viaSpiaggia, descrizioneSpiaggia, immagineSpiaggia);
     }
 
     private static String makeDetails(int position) {
@@ -53,24 +53,22 @@ public class Chiese {
      */
     public static class DummyItem {
         public String id;
-        public String nomeChiesa;
-        public String viaChiesa;
-        public String descrizioneChiesa;
-        public String immagineChiesa;
+        public String nomeSpiaggia;
+        public String viaSpiaggia;
+        public String descrizioneSpiaggia;
+        public String immagineSpiaggia;
 
-        public DummyItem(String id, String nomeChiesa, String viaChiesa, String descrizioneChiesa, String immagineChiesa) {
+        public DummyItem(String id, String nomeSpiaggia, String viaSpiaggia, String descrizioneSpiaggia, String immagineSpiaggia) {
             this.id = id;
-            this.nomeChiesa = nomeChiesa;
-            this.viaChiesa = viaChiesa;
-            this.descrizioneChiesa = descrizioneChiesa;
-            this.immagineChiesa= immagineChiesa;
+            this.nomeSpiaggia = nomeSpiaggia;
+            this.viaSpiaggia = viaSpiaggia;
+            this.descrizioneSpiaggia = descrizioneSpiaggia;
+            this.immagineSpiaggia = immagineSpiaggia;
         }
-
-        public DummyItem(){}
 
         @Override
         public String toString() {
-            return nomeChiesa;
+            return nomeSpiaggia;
         }
     }
 }

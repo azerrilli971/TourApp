@@ -48,6 +48,8 @@ public class Musei {
         return builder.toString();
     }
 
+
+
     /**
      * A dummy item representing a piece of content.
      */
@@ -67,6 +69,7 @@ public class Musei {
             this.descrizioneMuseo = descrizioneMuseo;
             this.immagineMuseo = immagineMuseo;
         }
+        public DummyItem(){}
 
         @Override
         public String toString() {

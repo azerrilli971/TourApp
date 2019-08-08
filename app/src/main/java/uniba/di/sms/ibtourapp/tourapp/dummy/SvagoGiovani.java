@@ -11,7 +11,7 @@ import java.util.Map;
  * <p>
  * TODO: Replace all uses of this class before publishing your app.
  */
-public class Chiese {
+public class SvagoGiovani {
 
     /**
      * An array of sample (dummy) items.
@@ -27,7 +27,7 @@ public class Chiese {
 
     static {
         // Add some sample items.
-        addItem(new DummyItem("1","ao", "ce", "emoif", "wfk"));
+        addItem(new DummyItem("1", "werds", "dklas", "oidskl", "fejdsklm", "dskjlm", "gfrdkjlc"));
     }
 
     private static void addItem(DummyItem item) {
@@ -35,8 +35,8 @@ public class Chiese {
         ITEM_MAP.put(item.id, item);
     }
 
-    private static DummyItem createDummyItem(int position, String nomeChiesa, String viaChiesa, String descrizioneChiesa, String immagineChiesa) {
-        return new DummyItem(String.valueOf(position), nomeChiesa, viaChiesa, descrizioneChiesa, immagineChiesa );
+    private static DummyItem createDummyItem(int position,String nomeSvagoG, String viaSvagoG, String orariSvagoG, String costoSvagoG, String descrizioneSvagoG, String immagineSvagoG) {
+        return new DummyItem(String.valueOf(position), nomeSvagoG, viaSvagoG, orariSvagoG, costoSvagoG, descrizioneSvagoG, immagineSvagoG);
     }
 
     private static String makeDetails(int position) {
@@ -53,24 +53,29 @@ public class Chiese {
      */
     public static class DummyItem {
         public String id;
-        public String nomeChiesa;
-        public String viaChiesa;
-        public String descrizioneChiesa;
-        public String immagineChiesa;
+        public String nomeSvagoG;
+        public String viaSvagoG;
+        public String orariSvagoG;
+        public String costoSvagoG;
+        public String descrizioneSvagoG;
+        public String immagineSvagoG;
 
-        public DummyItem(String id, String nomeChiesa, String viaChiesa, String descrizioneChiesa, String immagineChiesa) {
+        public DummyItem(String id, String nomeSvagoG, String viaSvagoG, String orariSvagoG, String costoSvagoG, String descrizioneSvagoG, String immagineSvagoG) {
             this.id = id;
-            this.nomeChiesa = nomeChiesa;
-            this.viaChiesa = viaChiesa;
-            this.descrizioneChiesa = descrizioneChiesa;
-            this.immagineChiesa= immagineChiesa;
+            this.nomeSvagoG = nomeSvagoG;
+            this.viaSvagoG = viaSvagoG;
+            this.orariSvagoG = orariSvagoG;
+            this.costoSvagoG = costoSvagoG;
+            this.descrizioneSvagoG = descrizioneSvagoG;
+            this.immagineSvagoG = immagineSvagoG;
         }
 
         public DummyItem(){}
 
+
         @Override
         public String toString() {
-            return nomeChiesa;
+            return nomeSvagoG ;
         }
     }
 }

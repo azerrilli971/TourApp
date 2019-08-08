@@ -49,5 +49,11 @@
     <string name="title_museo_detail">Dettagli Museo</string>
     <string name="title_chiesa_list">Chiese</string>
     <string name="title_chiesa_detail">Dettagli Chiesa</string>
+    <string name="title_spiaggia_list">Spiagge</string>
+    <string name="title_spiaggia_detail">Dettaglio Spiaggia</string>
+    <string name="title_svagofamiglia_list">Svaghi per la Famiglia</string>
+    <string name="title_svagofamiglia_detail">Dettagli dello svago</string>
+    <string name="title_svagogiovani_list">Svaghi per i Giovani</string>
+    <string name="title_svagogiovani_detail">Dettagli sullo svago</string>
 
 </resources>

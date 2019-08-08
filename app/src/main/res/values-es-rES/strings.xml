@@ -35,5 +35,11 @@
     <string name="title_museo_list">Museos</string>
     <string name="title_chiesa_list">Iglesias</string>
     <string name="title_chiesa_detail">Detalles Iglesia</string>
+    <string name="title_spiaggia_list">Playas</string>
+    <string name="title_spiaggia_detail">Detalles playa</string>
+    <string name="title_svagofamiglia_detail">Detalles sobre la actividad</string>
+    <string name="title_svagofamiglia_list">Actividades para la familia</string>
+    <string name="title_svagogiovani_detail">Detalles sobre la actividad</string>
+    <string name="title_svagogiovani_list">Actividades para la juventud</string>
 
 </resources>
