@@ -7,7 +7,7 @@
         android:id="@+id/gelateriaImmagine"
         android:layout_width="match_parent"
         android:layout_height="121dp"
-        android:src="@drawable/nicolaus" />
+        />
 
     <LinearLayout
         android:layout_width="match_parent"

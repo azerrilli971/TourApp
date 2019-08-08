@@ -25,19 +25,13 @@ public class Gelaterie {
 
     private static final int COUNT = 25;
 
-    static {
-        // Add some sample items.
-            addItem(new DummyItem("1", "Bar Telebari", "Via Fanelli", "09-21", "Una delle piu' antiche gelaterie di Bari"));
-
-    }
-
-    private static void addItem(DummyItem item) {
+    public static void addItem(DummyItem item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.id, item);
     }
 
-    private static DummyItem createDummyItem(int position, String nomeGelateria, String viaGelateria, String orariGelateria, String descrizioneGelateria) {
-        return new DummyItem(String.valueOf(position), nomeGelateria, viaGelateria, orariGelateria, descrizioneGelateria);
+    private static DummyItem createDummyItem(int position, String nomeGelateria, String viaGelateria, String orariGelateria, String descrizioneGelateria, String immagine) {
+        return new DummyItem(String.valueOf(position), nomeGelateria, viaGelateria, orariGelateria, descrizioneGelateria, immagine);
     }
 
 
@@ -46,19 +40,23 @@ public class Gelaterie {
      * A dummy item representing a piece of content.
      */
     public static class DummyItem {
-        public final String id;
-        public final String nomeGelateria;
-        public final String viaGelateria;
-        public final String orariGelateria;
-        public final String descrizioneGelateria;
+        public  String id;
+        public  String nomeGelateria;
+        public  String viaGelateria;
+        public  String orariGelateria;
+        public  String descrizioneGelateria;
+        public  String immagine;
 
-        public DummyItem(String id, String nomeGelateria, String viaGelateria, String orariGelateria, String descrizioneGelateria) {
+        public DummyItem(String id, String nomeGelateria, String viaGelateria, String orariGelateria, String descrizioneGelateria, String immagine) {
             this.id = id;
             this.nomeGelateria = nomeGelateria;
             this.viaGelateria = viaGelateria;
             this.descrizioneGelateria=descrizioneGelateria;
             this.orariGelateria = orariGelateria;
+            this.immagine = immagine;
         }
+
+        public DummyItem() {}
 
         @Override
         public String toString() {

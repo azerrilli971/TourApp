@@ -3,6 +3,7 @@
     package="uniba.di.sms.ibtourapp.tourapp">
 
     <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"

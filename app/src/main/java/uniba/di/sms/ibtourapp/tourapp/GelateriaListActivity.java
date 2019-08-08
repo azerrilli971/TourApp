@@ -114,8 +114,7 @@ public class GelateriaListActivity extends AppCompatActivity {
             holder.mGelateriaNome.setText(mValues.get(position).nomeGelateria);
             holder.mGelateriaVia.setText(mValues.get(position).viaGelateria);
             holder.mGelateriaOrari.setText(mValues.get(position).orariGelateria);
-            Picasso.get().setLoggingEnabled(true);
-            Picasso.get().load(mValues.get(position).immagine).into(holder.mGelateriaImmagine);
+            Picasso.load(mValues.get(position).immagine).into(holder.mGelateriaImmagine);
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
         }
