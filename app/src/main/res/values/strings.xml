@@ -47,5 +47,7 @@
     <string name="title_pizzeria_detail">Dettagli Pizzeria</string>
     <string name="title_museo_list">Musei</string>
     <string name="title_museo_detail">Dettagli Museo</string>
+    <string name="title_chiesa_list">Chiese</string>
+    <string name="title_chiesa_detail">Dettagli Chiesa</string>
 
 </resources>

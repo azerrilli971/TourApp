@@ -13,9 +13,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ChiesaListActivity"
+            android:label="@string/title_chiesa_list"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ChiesaDetailActivity"
+            android:label="@string/title_chiesa_detail"
+            android:parentActivityName=".ChiesaListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="uniba.di.sms.ibtourapp.tourapp.ChiesaListActivity" />
+        </activity>
+        <activity
             android:name=".MuseoListActivity"
             android:label="@string/title_museo_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MuseoDetailActivity"
             android:label="@string/title_museo_detail"

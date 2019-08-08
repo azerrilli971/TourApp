@@ -16,19 +16,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import uniba.di.sms.ibtourapp.tourapp.dummy.Monumenti;
+import uniba.di.sms.ibtourapp.tourapp.dummy.Chiese;
 
 import java.util.List;
 
 /**
- * An activity representing a list of MonumentList. This activity
+ * An activity representing a list of Chiese. This activity
  * has different presentations for handset and tablet-size devices. On
  * handsets, the activity presents a list of items, which when touched,
- * lead to a {@link MonumentDetailActivity} representing
+ * lead to a {@link ChiesaDetailActivity} representing
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-public class MonumentListActivity extends AppCompatActivity {
+public class ChiesaListActivity extends AppCompatActivity {
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -39,12 +39,11 @@ public class MonumentListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_monument_list);
+        setContentView(R.layout.activity_chiesa_list);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarsemplice);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
-
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -58,7 +57,7 @@ public class MonumentListActivity extends AppCompatActivity {
             }
         });
 
-        if (findViewById(R.id.monument_detail_container) != null) {
+        if (findViewById(R.id.chiesa_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-w900dp).
             // If this view is present, then the
@@ -66,56 +65,45 @@ public class MonumentListActivity extends AppCompatActivity {
             mTwoPane = true;
         }
 
-        View recyclerView = findViewById(R.id.monument_list);
+        View recyclerView = findViewById(R.id.chiesa_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
-
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-    }
-    @Override
-    public boolean onOptionsItemSelected( MenuItem item){
-
-        if(item.getItemId() == android.R.id.home){
-            finish();
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, Monumenti.ITEMS, mTwoPane));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, Chiese.ITEMS, mTwoPane));
     }
 
     public static class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final MonumentListActivity mParentActivity;
-        private final List<Monumenti.DummyItem> mValues;
+        private final ChiesaListActivity mParentActivity;
+        private final List<Chiese.DummyItem> mValues;
         private final boolean mTwoPane;
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Monumenti.DummyItem item = (Monumenti.DummyItem) view.getTag();
+                Chiese.DummyItem item = (Chiese.DummyItem) view.getTag();
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
-                    arguments.putString(MonumentDetailFragment.ARG_ITEM_ID, item.id);
-                    MonumentDetailFragment fragment = new MonumentDetailFragment();
+                    arguments.putString(ChiesaDetailFragment.ARG_ITEM_ID, item.id);
+                    ChiesaDetailFragment fragment = new ChiesaDetailFragment();
                     fragment.setArguments(arguments);
                     mParentActivity.getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.monument_detail_container, fragment)
+                            .replace(R.id.chiesa_detail_container, fragment)
                             .commit();
                 } else {
                     Context context = view.getContext();
-                    Intent intent = new Intent(context, MonumentDetailActivity.class);
-                    intent.putExtra(MonumentDetailFragment.ARG_ITEM_ID, item.id);
+                    Intent intent = new Intent(context, ChiesaDetailActivity.class);
+                    intent.putExtra(ChiesaDetailFragment.ARG_ITEM_ID, item.id);
 
                     context.startActivity(intent);
                 }
             }
         };
 
-        SimpleItemRecyclerViewAdapter(MonumentListActivity parent,
-                                      List<Monumenti.DummyItem> items,
+        SimpleItemRecyclerViewAdapter(ChiesaListActivity parent,
+                                      List<Chiese.DummyItem> items,
                                       boolean twoPane) {
             mValues = items;
             mParentActivity = parent;
@@ -125,14 +113,14 @@ public class MonumentListActivity extends AppCompatActivity {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.monument_list_content, parent, false);
+                    .inflate(R.layout.chiesa_list_content, parent, false);
             return new ViewHolder(view);
         }
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mViaView.setText(mValues.get(position).viaMonumento);
-            holder.mNomeView.setText(mValues.get(position).nomeMonumento);
+            holder.mNomeChiesa.setText(mValues.get(position).nomeChiesa);
+            holder.mViaChiesa.setText(mValues.get(position).viaChiesa);
 
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
@@ -144,18 +132,27 @@ public class MonumentListActivity extends AppCompatActivity {
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
-             TextView mViaView;
-             TextView mNomeView;
-             ImageView mImmagineView;
+            final TextView mNomeChiesa;
+            final TextView mViaChiesa;
+            final ImageView mImmagineChiesa;
+
 
             ViewHolder(View view) {
                 super(view);
-                mViaView = (TextView) view.findViewById(R.id.monumentoVia);
-                mNomeView = (TextView) view.findViewById(R.id.monumentoNome);
-                mImmagineView = (ImageView)view.findViewById(R.id.monumentoImmagine);
-
+                mNomeChiesa = (TextView) view.findViewById(R.id.chiesaNome);
+                mViaChiesa = (TextView) view.findViewById(R.id.chiesaVia);
+                mImmagineChiesa = (ImageView) view.findViewById(R.id.chiesaImmagine);
             }
         }
+    }
+    @Override
+    public boolean onOptionsItemSelected( MenuItem item){
+
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

@@ -49,7 +49,7 @@ public class InterestActivity extends AppCompatActivity implements View.OnClickL
         switch(v.getId()){
 
             case R.id.interessiChiese:{
-                intent = new Intent(this, ChurchActivity.class);
+                intent = new Intent(this, ChiesaListActivity.class);
                 startActivity(intent);
                 break;
             }

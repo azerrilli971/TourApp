@@ -33,5 +33,7 @@
     <string name="title_pizzeria_list">Pizzerias</string>
     <string name="title_museo_detail">Museum Details</string>
     <string name="title_museo_list">Museums</string>
+    <string name="title_chiesa_list">Churches</string>
+    <string name="title_chiesa_detail">Church Details</string>
 
 </resources>
