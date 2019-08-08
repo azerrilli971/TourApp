@@ -12,9 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".GelateriaListActivity"
+            android:label="@string/title_gelateria_list"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".GelateriaDetailActivity"
+            android:label="@string/title_gelateria_detail"
+            android:parentActivityName=".GelateriaListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="uniba.di.sms.ibtourapp.tourapp.GelateriaListActivity" />
+        </activity>
+        <activity
             android:name=".MonumentListActivity"
             android:label="@string/title_monument_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MonumentDetailActivity"
             android:label="@string/title_monument_detail"
@@ -28,19 +41,19 @@
         <activity android:name=".HotelsActivity" />
         <activity android:name=".RestaurantsActivity" />
         <activity android:name=".PizzerieActivity" />
-        <activity android:name=".GelaterieActivity" />
         <activity android:name=".BeachActivity" />
         <activity android:name=".FamilyActivity" />
         <activity android:name=".YoungActivity" />
         <activity android:name=".ChurchActivity" />
         <activity android:name=".MuseumActivity" />
         <activity android:name=".SignupActivity" />
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".HotelActivity" />
         <activity android:name=".RestaurantActivity" />
         <activity android:name=".InterestActivity" />
-        <activity android:name=".ExploreActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ExploreActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".JournalActivity" />
         <activity android:name=".CouponsActivity" />
         <activity android:name=".NewCouponActivity">

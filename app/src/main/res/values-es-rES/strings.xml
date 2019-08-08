@@ -26,5 +26,6 @@
     <string name="title_monument_list">Monumentos</string>
     <string name="navigation_drawer_closed">Abrir menu lateral</string>
     <string name="navigation_drawer_open">Cerrar menu lateral</string>
+    <string name="title_gelateria_detail">Detalle Gelateria</string>
 
 </resources>

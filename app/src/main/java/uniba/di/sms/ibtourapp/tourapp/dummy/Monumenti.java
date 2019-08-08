@@ -11,7 +11,7 @@ import java.util.Map;
  * <p>
  * TODO: Replace all uses of this class before publishing your app.
  */
-public class DummyContent {
+public class Monumenti {
 
     /**
      * An array of sample (dummy) items.
@@ -38,7 +38,6 @@ public class DummyContent {
 
     private static String makeDetails(String descrizione) {
         StringBuilder builder = new StringBuilder();
-        builder.append("Per saperne di più...\n ");
         builder.append(descrizione);
 
         return builder.toString();
