@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import uniba.di.sms.ibtourapp.tourapp.dummy.Alberghi;
 
 import java.util.List;
@@ -124,7 +126,7 @@ public class AlbergoListActivity extends AppCompatActivity {
             holder.mNomeHotel.setText(mValues.get(position).nomeHotel);
             holder.mViaHotel.setText(mValues.get(position).viaHotel);
             holder.mCostoHotel.setText(mValues.get(position).costoHotel);
-
+            Picasso.get().load(mValues.get(position).immagineHotel).into(holder.mImmagineHOtel);
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
         }

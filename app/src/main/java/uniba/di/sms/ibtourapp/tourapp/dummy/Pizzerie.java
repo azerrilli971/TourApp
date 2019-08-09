@@ -71,7 +71,7 @@ public class Pizzerie {
             this.immaginePizzeria  = immaginePizzeria;
             this.dettagliPizzeria = dettagliPizzeria;
         }
-
+        public DummyItem() {}
         @Override
         public String toString() {
             return nomePizzeria;

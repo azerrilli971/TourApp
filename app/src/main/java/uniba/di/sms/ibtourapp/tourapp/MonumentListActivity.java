@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import uniba.di.sms.ibtourapp.tourapp.dummy.Monumenti;
 
 import java.util.List;
@@ -133,7 +135,6 @@ public class MonumentListActivity extends AppCompatActivity {
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mViaView.setText(mValues.get(position).viaMonumento);
             holder.mNomeView.setText(mValues.get(position).nomeMonumento);
-
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
         }

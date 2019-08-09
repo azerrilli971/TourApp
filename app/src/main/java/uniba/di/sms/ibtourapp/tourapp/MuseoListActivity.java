@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import uniba.di.sms.ibtourapp.tourapp.dummy.Musei;
 
 import java.util.List;
@@ -121,7 +123,7 @@ public class MuseoListActivity extends AppCompatActivity {
             holder.mNomeMuseo.setText(mValues.get(position).nomeMuseo);
             holder.mViaMuseo.setText(mValues.get(position).viaMuseo);
             holder.mOrariMuseo.setText(mValues.get(position).orariMuseo);
-
+            Picasso.get().load(mValues.get(position).immagineMuseo).into(holder.mImmagineMuseo);
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
         }

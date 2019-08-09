@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import uniba.di.sms.ibtourapp.tourapp.dummy.BeBs;
 
 import java.util.List;
@@ -123,7 +125,7 @@ public class BeBListActivity extends AppCompatActivity {
             holder.mNomeBB.setText(mValues.get(position).nomeBB);
             holder.mViaBB.setText(mValues.get(position).viaBB);
             holder.mCostoBB.setText(mValues.get(position).costoBB);
-
+            Picasso.get().load(mValues.get(position).immagineBB).into(holder.mImmagineBB);
 
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);

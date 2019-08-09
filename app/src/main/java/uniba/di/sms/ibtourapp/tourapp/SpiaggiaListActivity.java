@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import uniba.di.sms.ibtourapp.tourapp.dummy.Spiagge;
 
 import java.util.List;
@@ -122,7 +124,7 @@ public class SpiaggiaListActivity extends AppCompatActivity {
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mNomeSpiaggia.setText(mValues.get(position).nomeSpiaggia);
             holder.mViaSpiaggia.setText(mValues.get(position).viaSpiaggia);
-
+            Picasso.get().load(mValues.get(position).immagineSpiaggia).into(holder.mImmagineSpiaggia);
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
         }

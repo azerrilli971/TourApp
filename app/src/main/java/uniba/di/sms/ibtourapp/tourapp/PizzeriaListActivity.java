@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import uniba.di.sms.ibtourapp.tourapp.dummy.Pizzerie;
 
 import java.util.List;
@@ -122,7 +124,7 @@ public class PizzeriaListActivity extends AppCompatActivity {
             holder.mNomePizzeria.setText(mValues.get(position).nomePizzeria);
             holder.mViaPizzeria.setText(mValues.get(position).viaPizzeria);
             holder.mOrariPizzeria.setText(mValues.get(position).orariPizzeria);
-
+            Picasso.get().load(mValues.get(position).immaginePizzeria).into(holder.mImmaginePizzeria);
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
         }

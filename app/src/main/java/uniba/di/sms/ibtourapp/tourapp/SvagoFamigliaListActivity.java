@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import uniba.di.sms.ibtourapp.tourapp.dummy.SvagoFamiglie;
 
 import java.util.List;
@@ -124,7 +126,7 @@ public class SvagoFamigliaListActivity extends AppCompatActivity {
             holder.mViaSvago.setText(mValues.get(position).viaSvagoF);
             holder.mOrariSvago.setText(mValues.get(position).orariSvagoF);
             holder.mCostoSvago.setText(mValues.get(position).costoSvagoF);
-
+            Picasso.get().load(mValues.get(position).immagineSvagoF).into(holder.mImmagineSvago);
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
         }

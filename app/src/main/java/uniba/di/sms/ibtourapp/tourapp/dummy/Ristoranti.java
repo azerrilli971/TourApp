@@ -67,7 +67,7 @@ public class Ristoranti {
             this.orariRistorante = orariRistorante;
             this.immagineRistorante = immagineRistorante;
         }
-
+        public DummyItem () {}
         @Override
         public String toString() {
             return nomeRistorante;

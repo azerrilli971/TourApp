@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import uniba.di.sms.ibtourapp.tourapp.dummy.Ristoranti;
 
 import java.util.List;
@@ -122,7 +124,7 @@ public class RestaurantListActivity extends AppCompatActivity {
             holder.mNomeRistorante.setText(mValues.get(position).nomeRistorante);
             holder.mViaRistorante.setText(mValues.get(position).viaRistorante);
             holder.mOrariRistorante.setText(mValues.get(position).orariRistorante);
-
+            Picasso.get().load(mValues.get(position).immagineRistorante).into(holder.mImmagineRistorante);
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
         }

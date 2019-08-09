@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import uniba.di.sms.ibtourapp.tourapp.dummy.SvagoGiovani;
 
 import java.util.List;
@@ -123,6 +125,7 @@ public class SvagoGiovaniListActivity extends AppCompatActivity {
             holder.mViaSvagoG.setText(mValues.get(position).viaSvagoG);
             holder.mOrariSvagoG.setText(mValues.get(position).orariSvagoG);
             holder.mCostoSvagoG.setText(mValues.get(position).costoSvagoG);
+            Picasso.get().load(mValues.get(position).immagineSvagoG).into(holder.mImmagineSvagoG);
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
         }

@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import uniba.di.sms.ibtourapp.tourapp.dummy.Chiese;
 
 import java.util.List;
@@ -121,7 +123,7 @@ public class ChiesaListActivity extends AppCompatActivity {
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mNomeChiesa.setText(mValues.get(position).nomeChiesa);
             holder.mViaChiesa.setText(mValues.get(position).viaChiesa);
-
+            Picasso.get().load(mValues.get(position).immagineChiesa).into(holder.mImmagineChiesa);
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
         }
