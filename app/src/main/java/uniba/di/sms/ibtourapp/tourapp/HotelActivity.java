@@ -39,13 +39,13 @@ public class HotelActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
 
             case R.id.dormireBB: {
-                intent = new Intent(this, BBActivity.class);
+                intent = new Intent(this, BeBListActivity.class);
                 startActivity(intent);
                 break;
             }
 
             case R.id.dormireHotel: {
-                intent = new Intent(this, HotelsActivity.class);
+                intent = new Intent(this, AlbergoListActivity.class);
                 startActivity(intent);
                 break;
             }

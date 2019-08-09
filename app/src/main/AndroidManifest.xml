@@ -13,9 +13,35 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".BeBListActivity"
+            android:label="@string/title_beb_list"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".BeBDetailActivity"
+            android:label="@string/title_beb_detail"
+            android:parentActivityName=".BeBListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="uniba.di.sms.ibtourapp.tourapp.BeBListActivity" />
+        </activity>
+        <activity
+            android:name=".AlbergoListActivity"
+            android:label="@string/title_albergo_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AlbergoDetailActivity"
+            android:label="@string/title_albergo_detail"
+            android:parentActivityName=".AlbergoListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="uniba.di.sms.ibtourapp.tourapp.AlbergoListActivity" />
+        </activity>
+        <activity
             android:name=".SvagoGiovaniListActivity"
             android:label="@string/title_svagogiovani_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SvagoGiovaniDetailActivity"
             android:label="@string/title_svagogiovani_detail"
@@ -129,8 +155,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="uniba.di.sms.ibtourapp.tourapp.MonumentListActivity" />
         </activity>
-        <activity android:name=".BBActivity" />
-        <activity android:name=".HotelsActivity" />
         <activity android:name=".BeachActivity" />
         <activity android:name=".FamilyActivity" />
         <activity android:name=".YoungActivity" />

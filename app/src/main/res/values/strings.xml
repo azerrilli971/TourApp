@@ -55,5 +55,9 @@
     <string name="title_svagofamiglia_detail">Dettagli dello svago</string>
     <string name="title_svagogiovani_list">Svaghi per i Giovani</string>
     <string name="title_svagogiovani_detail">Dettagli sullo svago</string>
+    <string name="title_albergo_list">Alberghi</string>
+    <string name="title_albergo_detail">Dettaglio Albergo</string>
+    <string name="title_beb_list">B e B</string>
+    <string name="title_beb_detail">Dettaglio BeB </string>
 
 </resources>

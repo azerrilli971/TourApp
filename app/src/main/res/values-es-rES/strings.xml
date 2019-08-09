@@ -41,5 +41,9 @@
     <string name="title_svagofamiglia_list">Actividades para la familia</string>
     <string name="title_svagogiovani_detail">Detalles sobre la actividad</string>
     <string name="title_svagogiovani_list">Actividades para la juventud</string>
+    <string name="title_albergo_detail">Detalles hotel</string>
+    <string name="title_albergo_list">Hoteles</string>
+    <string name="title_beb_detail">Detalles ByB</string>
+    <string name="title_beb_list">B y B</string>
 
 </resources>

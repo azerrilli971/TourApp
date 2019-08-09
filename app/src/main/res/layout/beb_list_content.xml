@@ -1,14 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/hotelImmagine"
+        android:id="@+id/bbImmagine"
         android:layout_width="match_parent"
         android:layout_height="121dp"
         android:src="@drawable/nicolaus" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,30 +19,27 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/hotelNome"
+            android:id="@+id/bbNome"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_marginStart="5dp"
-            android:layout_toRightOf="@+id/hotelImmagine"
             android:paddingLeft="5dp"
-            android:text="Nome Hotel"
+            android:text="Nome BB"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/hotelVia"
+            android:id="@+id/bbVia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/hotelNome"
             android:layout_marginStart="5dp"
-            android:layout_toRightOf="@+id/hotelImmagine"
             android:paddingLeft="5dp"
             android:paddingTop="15dp"
             android:text="Indirizzo"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/hotelCosto"
+            android:id="@+id/bbCosto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/hotelVia"
@@ -49,7 +48,7 @@
             android:paddingLeft="5dp"
             android:paddingTop="30dp"
             android:text="Costo" />
-    </LinearLayout>
 
+    </LinearLayout>
 
 </LinearLayout>
