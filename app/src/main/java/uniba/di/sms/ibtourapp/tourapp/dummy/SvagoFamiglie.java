@@ -30,7 +30,7 @@ public class SvagoFamiglie {
         addItem(new DummyItem("1", "werds", "dklas", "oidskl", "fejdsklm", "dskjlm", "gfrdkjlc"));
     }
 
-    private static void addItem(DummyItem item) {
+    public static void addItem(DummyItem item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.id, item);
     }

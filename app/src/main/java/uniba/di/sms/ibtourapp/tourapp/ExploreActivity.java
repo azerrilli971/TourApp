@@ -77,8 +77,6 @@ public class ExploreActivity extends AppCompatActivity implements View.OnClickLi
             }
 
             case R.id.esploraInteressi:{
-                MyAsyncTask myAsyncTask = new MyAsyncTask("Monumenti");
-                myAsyncTask.execute();
                 intent = new Intent(this, InterestActivity.class);
                 startActivity(intent);
                 break;
