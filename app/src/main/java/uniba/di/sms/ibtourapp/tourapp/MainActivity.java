@@ -32,6 +32,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.homeEsplora:{
                 MyAsyncTask myAsyncTask = new MyAsyncTask("Gelaterie");
                 myAsyncTask.execute();
+                MyAsyncTask myAsyncTask2 = new MyAsyncTask("Monumenti");
+                myAsyncTask2.execute();
+                MyAsyncTask myAsyncTask1 = new MyAsyncTask("Musei");
+                myAsyncTask1.execute();
                 intent = new Intent(this, ExploreActivity.class);
                 startActivity(intent);
                 break;

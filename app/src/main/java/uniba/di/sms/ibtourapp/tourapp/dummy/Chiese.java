@@ -30,7 +30,7 @@ public class Chiese {
         addItem(new DummyItem("1","ao", "ce", "emoif", "wfk"));
     }
 
-    private static void addItem(DummyItem item) {
+    public static void addItem(DummyItem item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.id, item);
     }

@@ -30,7 +30,7 @@ public class Musei {
         addItem(new DummyItem("1","uffizi","awe", "bella zio", "oeifmslò", "lfekl"));
     }
 
-    private static void addItem(DummyItem item) {
+    public static void addItem(DummyItem item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.id, item);
     }
