@@ -111,6 +111,11 @@ public class RestaurantActivity extends AppCompatActivity implements View.OnClic
                 Intent g= new Intent(this,CouponsActivity.class);
                 startActivity(g);
                 break;
+            case R.id.nav_logout:
+                Intent n = new Intent (this, LoginActivity.class);
+                startActivity(n);
+                break;
+
 
 
         }
