@@ -12,8 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignUpInfoActivity"></activity>
-        <activity android:name=".LoginInfoActivity"></activity>
+        <activity android:name=".MainInfoActivity"></activity>
+        <activity android:name=".SignUpInfoActivity" />
+        <activity android:name=".LoginInfoActivity" />
         <activity
             android:name=".BeBListActivity"
             android:label="@string/title_beb_list"
@@ -175,10 +176,12 @@
         <activity
             android:name=".ExploreActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".JournalActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".CouponsActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".JournalActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CouponsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".NewCouponActivity">
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
@@ -195,7 +198,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
