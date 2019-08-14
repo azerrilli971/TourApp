@@ -46,5 +46,8 @@
     <string name="title_beb_detail">B and B details</string>
     <string name="title_beb_list">B and B</string>
     <string name="textLoginInfoPoint">Info Point? Click here</string>
+    <string name="elimina">Delete</string>
+    <string name="aggiungi">Add</string>
+    <string name="modifica">Modify</string>
 
 </resources>

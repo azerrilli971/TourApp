@@ -62,4 +62,8 @@
 
     <string name="textLoginInfoPoint">Info Point? Clicca qui</string>
     <string name="logout" translatable="false">Logout</string>
+
+    <string name="aggiungi">Aggiungi</string>
+    <string name="elimina">Elimina</string>
+    <string name="modifica">Modifica</string>
 </resources>

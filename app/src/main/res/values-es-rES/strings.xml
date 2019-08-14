@@ -46,5 +46,8 @@
     <string name="title_beb_detail">Detalles ByB</string>
     <string name="title_beb_list">B y B</string>
     <string name="textLoginInfoPoint">¿Info Point? Pulses aquí</string>
+    <string name="elimina">Borrar</string>
+    <string name="aggiungi">" Añadir"</string>
+    <string name="modifica">Modificar</string>
 
 </resources>
