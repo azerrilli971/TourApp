@@ -9,7 +9,6 @@
     android:id="@+id/drawer_layout"
     android:fitsSystemWindows="true"
     tools:context=".ExploreActivity"
-    app:statusBarBackground="@color/colorPrimaryDark"
 
     >
 

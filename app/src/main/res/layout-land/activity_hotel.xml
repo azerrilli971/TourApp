@@ -1,45 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
-    android:padding="10dp"
+    android:orientation="vertical"
     tools:context=".ExploreActivity">
-    <ImageView
-        android:layout_width="wrap_content"
+    <LinearLayout
+
+        android:id="@+id/fragmentExplore"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher_round"
-        />
+        android:orientation="vertical">
+
+    <include layout="@layout/toolbar_hamburger" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal"
         android:padding="20dp"
 
         >
 
         <android.support.v7.widget.CardView
-            android:foreground="?android:selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
             android:id="@+id/dormireHotel"
-            android:layout_margin="10dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:selectableItemBackground">
 
             <LinearLayout
 
-                android:orientation="vertical"
-                android:gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="64dp"
@@ -50,16 +59,14 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:background="@color/LightViolet"
-                    />
+                    android:background="@color/LightViolet" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/dormireHotel"
-                    android:textStyle="bold"
                     android:textSize="20sp"
-                    />
+                    android:textStyle="bold" />
 
 
             </LinearLayout>
@@ -67,33 +74,30 @@
     </LinearLayout>
 
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:layout_weight="1"
-        android:padding="20dp"
-        >
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="20dp">
 
         <android.support.v7.widget.CardView
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?android:selectableItemBackground"
             android:id="@+id/dormireBB"
-            android:layout_margin="10dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:selectableItemBackground">
 
             <LinearLayout
 
-                android:orientation="vertical"
-                android:gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="64dp"
@@ -104,22 +108,28 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:background="@color/AuChico"
-                    />
+                    android:background="@color/AuChico" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/dormireBB"
-                    android:textStyle="bold"
                     android:textSize="20sp"
-                    />
+                    android:textStyle="bold" />
 
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
     </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/menu" />
 
 
-
-</LinearLayout>
+</android.support.v4.widget.DrawerLayout>
