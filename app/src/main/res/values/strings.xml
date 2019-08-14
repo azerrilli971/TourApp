@@ -61,4 +61,5 @@
     <string name="title_beb_detail">Dettaglio BeB </string>
 
     <string name="textLoginInfoPoint">Info Point? Clicca qui</string>
+    <string name="logout" translatable="false">Logout</string>
 </resources>

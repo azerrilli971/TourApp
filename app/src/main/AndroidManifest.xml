@@ -175,8 +175,10 @@
         <activity
             android:name=".ExploreActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".JournalActivity" />
-        <activity android:name=".CouponsActivity" />
+        <activity android:name=".JournalActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".CouponsActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".NewCouponActivity">
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />

@@ -1,28 +1,82 @@
 package uniba.di.sms.ibtourapp.tourapp;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-public class JournalActivity extends AppCompatActivity {
+public class JournalActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+    private DrawerLayout drawer;
+    private Toolbar toolbar;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal);
+        toolbar = findViewById(R.id.toolbar);
+        drawer = findViewById(R.id.drawer_layout);
+        //setting toolbar as an actionbar
+        toolbar.setTitle(R.string.esploraDormire);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_menu_hamburger);
 
-        //aggiunta tasto per tornare indietro
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_closed );
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+
+    }
+
+
+    @Override
+    public void onBackPressed(){
+        if(drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @Override
-    public boolean onOptionsItemSelected( MenuItem item){
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+        switch (id){
 
-        if(item.getItemId() == android.R.id.home){
-            finish();
+            case R.id.nav_explore:
+                Intent h= new Intent(this,ExploreActivity.class);
+                startActivity(h);
+                break;
+            case R.id.nav_diary:
+                Intent i= new Intent(this,JournalActivity.class);
+                startActivity(i);
+                break;
+            case R.id.nav_coupon:
+                Intent g= new Intent(this,CouponsActivity.class);
+                startActivity(g);
+                break;
+
+            case R.id.nav_logout:
+                Intent n = new Intent (this, LoginActivity.class);
+                startActivity(n);
+                break;
+
+
         }
 
-        return super.onOptionsItemSelected(item);
+
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

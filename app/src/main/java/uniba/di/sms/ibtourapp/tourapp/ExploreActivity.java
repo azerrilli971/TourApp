@@ -126,6 +126,11 @@ public class ExploreActivity extends AppCompatActivity implements View.OnClickLi
                 Intent g= new Intent(this,CouponsActivity.class);
                 startActivity(g);
                 break;
+            case R.id.nav_logout:
+                Intent n = new Intent (this, LoginActivity.class);
+                startActivity(n);
+                break;
+
 
 
         }

@@ -132,6 +132,11 @@ public class InterestActivity extends AppCompatActivity implements View.OnClickL
                 Intent g= new Intent(this,CouponsActivity.class);
                 startActivity(g);
                 break;
+            case R.id.nav_logout:
+                Intent n = new Intent (this, LoginActivity.class);
+                startActivity(n);
+                break;
+
 
 
         }
