@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -15,29 +14,48 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
-public class LoginInfoActivity extends AppCompatActivity implements View.OnClickListener {
-    FirebaseAuth mAuth;
-    EditText editTextEmail, editTextPassword;
+public class SignUpInfoActivity extends AppCompatActivity implements View.OnClickListener{
+
     ProgressBar progressBar;
+    EditText editTextEmail, editTextPassword;
+
+    private FirebaseAuth mAuth;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_signup);
 
-        mAuth = FirebaseAuth.getInstance();
 
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
 
-        findViewById(R.id.textViewSignup).setOnClickListener(this);
-        findViewById(R.id.buttonLogin).setOnClickListener(this);
+        mAuth = FirebaseAuth.getInstance();
+
+        findViewById(R.id.buttonSignUp).setOnClickListener(this);
+        findViewById(R.id.textViewLogin).setOnClickListener(this);
     }
 
-    private void userLogin() {
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.buttonSignUp:
+                registerUser();
+                break;
+
+            case R.id.textViewLogin:
+                finish();
+                startActivity(new Intent(this, MainActivity.class));
+                break;
+        }
+    }
+
+    private void registerUser() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
@@ -67,43 +85,24 @@ public class LoginInfoActivity extends AppCompatActivity implements View.OnClick
 
         progressBar.setVisibility(View.VISIBLE);
 
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
                     finish();
-                    Intent intent = new Intent(LoginInfoActivity.this, MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
+                    startActivity(new Intent(SignUpInfoActivity.this, MainActivity.class));
                 } else {
-                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
+                    if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                        Toast.makeText(getApplicationContext(), "You are already registered", Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             }
         });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        if (mAuth.getCurrentUser() != null) {
-            finish();
-            startActivity(new Intent(this, MainActivity.class));
-        }
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.textViewSignup:
-                finish();
-                startActivity(new Intent(this, SignupActivity.class));
-                break;
-
-            case R.id.buttonLogin:
-                userLogin();
-                break;
-        }
     }
 }
