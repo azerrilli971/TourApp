@@ -98,7 +98,7 @@ public class LoginInfoActivity extends AppCompatActivity implements View.OnClick
         switch (view.getId()) {
             case R.id.textViewSignup:
                 finish();
-                startActivity(new Intent(this, SignupActivity.class));
+                startActivity(new Intent(this, SignUpInfoActivity.class));
                 break;
 
             case R.id.buttonLogin:

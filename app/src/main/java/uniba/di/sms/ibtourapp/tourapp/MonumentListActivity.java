@@ -2,7 +2,10 @@ package uniba.di.sms.ibtourapp.tourapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -15,7 +18,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 import uniba.di.sms.ibtourapp.tourapp.dummy.Monumenti;
@@ -37,6 +42,7 @@ public class MonumentListActivity extends AppCompatActivity {
      * device.
      */
     private boolean mTwoPane;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +52,46 @@ public class MonumentListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarsemplice);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
+        mAuth = FirebaseAuth.getInstance();
+        UsersDbHelper dbHelper = new UsersDbHelper(getApplicationContext());
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
 
+// Define a projection that specifies which columns from the database
+// you will actually use after this query.
+        String[] projection = {
+                BaseColumns._ID,
+                UsersList.FeedEntry.COLUMN_NAME_TITLE,
+                UsersList.FeedEntry.COLUMN_NAME_SUBTITLE
+        };
 
+// Filter results WHERE "title" = 'My Title'
+        String selection = UsersList.FeedEntry.COLUMN_NAME_TITLE + " = ?";
+        String[] selectionArgs = { mAuth.getCurrentUser().getUid() };
+
+// How you want the results sorted in the resulting Cursor
+        String sortOrder =
+                UsersList.FeedEntry.COLUMN_NAME_SUBTITLE + " DESC";
+
+        Cursor cursor = db.query(
+                UsersList.FeedEntry.TABLE_NAME,   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                sortOrder               // The sort order
+        );
+
+        while(cursor.moveToNext()) {
+            int itemId = cursor.getInt(
+                    cursor.getColumnIndexOrThrow(UsersList.FeedEntry.COLUMN_NAME_SUBTITLE));
+            if(itemId == 0) {
+                Toast.makeText(getApplicationContext(), "Questo utente non è un infopoint", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "Questo utente è un infopoint", Toast.LENGTH_LONG).show();
+            }
+        }
+        cursor.close();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 

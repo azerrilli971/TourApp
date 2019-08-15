@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         menuEsploraCV = findViewById(R.id.homeEsplora);
         menuDiarioCV = findViewById(R.id.homeDiario);
         menuCouponCV = findViewById(R.id.homeCoupon);

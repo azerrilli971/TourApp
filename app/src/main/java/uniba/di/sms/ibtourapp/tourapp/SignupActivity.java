@@ -1,6 +1,8 @@
 package uniba.di.sms.ibtourapp.tourapp;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+
 
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -91,6 +94,19 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
                     finish();
+                    UsersDbHelper dbHelper = new UsersDbHelper(getApplicationContext());
+                    // Gets the data repository in write mode
+                    SQLiteDatabase db = dbHelper.getWritableDatabase();
+                    String user = mAuth.getCurrentUser().getUid();
+                    ContentValues values = new ContentValues();
+
+                    values.put(UsersList.FeedEntry.COLUMN_NAME_TITLE, user);
+                    values.put(UsersList.FeedEntry.COLUMN_NAME_SUBTITLE, 0);
+
+                    long newRowId = db.insert(UsersList.FeedEntry.TABLE_NAME, null, values);
+                    if(newRowId != 0) {
+                        Toast.makeText(getApplicationContext(), "Utente registrato correttamente", Toast.LENGTH_LONG).show();
+                    }
                     startActivity(new Intent(SignupActivity.this, MainActivity.class));
                 } else {
 

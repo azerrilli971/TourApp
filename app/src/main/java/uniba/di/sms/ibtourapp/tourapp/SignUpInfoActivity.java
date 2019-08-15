@@ -1,6 +1,8 @@
 package uniba.di.sms.ibtourapp.tourapp;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -92,6 +94,19 @@ public class SignUpInfoActivity extends AppCompatActivity implements View.OnClic
                 progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
                     finish();
+                    UsersDbHelper dbHelper = new UsersDbHelper(getApplicationContext());
+                    // Gets the data repository in write mode
+                    SQLiteDatabase db = dbHelper.getWritableDatabase();
+                    String user = mAuth.getCurrentUser().getUid();
+                    ContentValues values = new ContentValues();
+
+                    values.put(UsersList.FeedEntry.COLUMN_NAME_TITLE, user);
+                    values.put(UsersList.FeedEntry.COLUMN_NAME_SUBTITLE, 1);
+
+                    long newRowId = db.insert(UsersList.FeedEntry.TABLE_NAME, null, values);
+                    if(newRowId != 0) {
+                        Toast.makeText(getApplicationContext(), "Utente registrato correttamente", Toast.LENGTH_LONG).show();
+                    }
                     startActivity(new Intent(SignUpInfoActivity.this, MainActivity.class));
                 } else {
 

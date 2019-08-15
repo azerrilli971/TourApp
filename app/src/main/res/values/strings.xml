@@ -9,6 +9,17 @@
     <string name="btnCoupon">Salva Coupon</string>
     <string name="loading">Caricamento in corso...</string>
 
+    <string-array name="planets_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+
     <string name="homeEsplora">Esplora</string>
     <string name="homeDiario">Il mio diario</string>
     <string name="homeCoupon">I miei coupon</string>
