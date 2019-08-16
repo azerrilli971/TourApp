@@ -172,7 +172,8 @@
         </activity>
         <activity android:name=".HotelActivity" />
         <activity android:name=".RestaurantActivity" />
-        <activity android:name=".InterestActivity" />
+        <activity android:name=".InterestActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ExploreActivity"
             android:theme="@style/AppTheme.NoActionBar" />
