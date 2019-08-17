@@ -134,6 +134,9 @@ public class AlbergoListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Alberghi.DummyItem item = (Alberghi.DummyItem) view.getTag();
+                if(view.getId()== R.id.iconaMenuInfo){
+                    //Toast.makeText(getApplicationContext(), "Funziona", Toast.LENGTH_LONG).show();
+                }
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
                     arguments.putString(AlbergoDetailFragment.ARG_ITEM_ID, item.id);

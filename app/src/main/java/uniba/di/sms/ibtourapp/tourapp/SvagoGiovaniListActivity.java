@@ -132,6 +132,9 @@ public class SvagoGiovaniListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SvagoGiovani.DummyItem item = (SvagoGiovani.DummyItem) view.getTag();
+                if(view.getId()== R.id.iconaMenuInfo){
+                    //Toast.makeText(getApplicationContext(), "Funziona", Toast.LENGTH_LONG).show();
+                }
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
                     arguments.putString(SvagoGiovaniDetailFragment.ARG_ITEM_ID, item.id);
