@@ -10,7 +10,9 @@
         android:id="@+id/toolbarsemplice"
         app:titleTextColor="@color/cardview_light_background"
         android:background="@color/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        >
+
 
     </android.support.v7.widget.Toolbar>
 

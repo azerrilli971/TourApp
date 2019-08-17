@@ -8,14 +8,20 @@ import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,10 +50,13 @@ public class MonumentListActivity extends AppCompatActivity {
     private boolean mTwoPane;
     private FirebaseAuth mAuth;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monument_list);
+
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarsemplice);
         setSupportActionBar(toolbar);
@@ -92,6 +101,7 @@ public class MonumentListActivity extends AppCompatActivity {
             }
         }
         cursor.close();
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -99,8 +109,7 @@ public class MonumentListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startActivity( new Intent(MonumentListActivity.this, MainActivity.class));
             }
         });
 
@@ -115,7 +124,6 @@ public class MonumentListActivity extends AppCompatActivity {
         View recyclerView = findViewById(R.id.monument_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
-
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
     @Override
@@ -132,7 +140,7 @@ public class MonumentListActivity extends AppCompatActivity {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, Monumenti.ITEMS, mTwoPane));
     }
 
-    public static class SimpleItemRecyclerViewAdapter
+    public  class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final MonumentListActivity mParentActivity;
@@ -142,6 +150,9 @@ public class MonumentListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Monumenti.DummyItem item = (Monumenti.DummyItem) view.getTag();
+                if(view.getId()== R.id.iconaMenuInfo){
+                    //Toast.makeText(getApplicationContext(), "Funziona", Toast.LENGTH_LONG).show();
+                }
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
                     arguments.putString(MonumentDetailFragment.ARG_ITEM_ID, item.id);
@@ -158,6 +169,7 @@ public class MonumentListActivity extends AppCompatActivity {
                     context.startActivity(intent);
                 }
             }
+
         };
 
         SimpleItemRecyclerViewAdapter(MonumentListActivity parent,
@@ -174,11 +186,43 @@ public class MonumentListActivity extends AppCompatActivity {
                     .inflate(R.layout.monument_list_content, parent, false);
             return new ViewHolder(view);
         }
-
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mViaView.setText(mValues.get(position).viaMonumento);
             holder.mNomeView.setText(mValues.get(position).nomeMonumento);
+            holder.mInfoMenu.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    PopupMenu popup = new PopupMenu(MonumentListActivity.this, view);
+                    popup.getMenuInflater().inflate(R.menu.menu_info,
+                            popup.getMenu());
+                    popup.show();
+                    popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+
+                            switch (item.getItemId()) {
+                                case R.id.menuModifica:
+
+                                    //Or Some other code you want to put here.. This is just an example. e puzzi
+                                    Toast.makeText(getApplicationContext(), " Install Clicked at position " + " : " , Toast.LENGTH_LONG).show();
+
+                                    break;
+                                case R.id.menuElimina:
+
+                                    Toast.makeText(getApplicationContext(), "Add to Wish List Clicked at position " + " : " , Toast.LENGTH_LONG).show();
+
+                                    break;
+
+                                default:
+                                    break;
+                            }
+
+                            return true;
+                        }
+                    });
+                }
+            });
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
         }
@@ -192,15 +236,20 @@ public class MonumentListActivity extends AppCompatActivity {
              TextView mViaView;
              TextView mNomeView;
              ImageView mImmagineView;
+             ImageView mInfoMenu;
+
 
             ViewHolder(View view) {
                 super(view);
                 mViaView = (TextView) view.findViewById(R.id.monumentoVia);
                 mNomeView = (TextView) view.findViewById(R.id.monumentoNome);
                 mImmagineView = (ImageView)view.findViewById(R.id.monumentoImmagine);
+                mInfoMenu = (ImageView) view.findViewById(R.id.iconaMenuInfo);
 
             }
         }
     }
+
+
 
 }
