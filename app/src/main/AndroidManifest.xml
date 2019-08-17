@@ -158,7 +158,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="uniba.di.sms.ibtourapp.tourapp.MonumentListActivity" />
         </activity>
-        <activity android:name=".BeachActivity" />
         <activity android:name=".FamilyActivity" />
         <activity android:name=".YoungActivity" />
         <activity android:name=".SignupActivity" />

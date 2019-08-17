@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:paddingTop="10dp"
+    android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/museoImmagine"
-        android:layout_width="match_parent"
-        android:layout_height="121dp"
+        android:layout_width="162dp"
+        android:layout_height="match_parent"
         android:src="@drawable/hotelnazioni" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="142dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="vertical">
 
@@ -20,8 +21,6 @@
             android:id="@+id/museoNome"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:layout_marginStart="5dp"
-            android:paddingLeft="5dp"
             android:text="Nome Museo"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -46,5 +45,18 @@
             />
 
 
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <ImageView
+            android:paddingTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_more_vert_black_24dp"
+            android:id="@+id/iconaMenuInfo"/>
     </LinearLayout>
 </LinearLayout>
