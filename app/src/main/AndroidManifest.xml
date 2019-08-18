@@ -160,10 +160,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="uniba.di.sms.ibtourapp.tourapp.MonumentListActivity" />
         </activity>
-        <activity android:name=".BeachActivity" />
-        <activity android:name=".FamilyActivity" />
         <activity android:name=".YoungActivity" />
-        <activity android:name=".MuseumActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
@@ -172,8 +169,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HotelActivity" />
-        <activity android:name=".RestaurantActivity" />
+        <activity android:name=".HotelActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".RestaurantActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".InterestActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity

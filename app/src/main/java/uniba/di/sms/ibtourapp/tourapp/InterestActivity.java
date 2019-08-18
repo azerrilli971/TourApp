@@ -28,7 +28,7 @@ public class InterestActivity extends AppCompatActivity implements View.OnClickL
         drawer = findViewById(R.id.drawer_layout);
         //setting toolbar as an actionbar
         toolbar.setTitle(R.string.esploraInteressi);
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_menu_hamburger);
 
         navigationView = findViewById(R.id.nav_view);

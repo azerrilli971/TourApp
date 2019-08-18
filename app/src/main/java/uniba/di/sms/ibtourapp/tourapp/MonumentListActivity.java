@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.squareup.picasso.Picasso;
 
 import uniba.di.sms.ibtourapp.tourapp.dummy.Monumenti;
 
@@ -47,6 +48,11 @@ public class MonumentListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monument_list);
+        Intent i = new Intent(MonumentListActivity.this, CustomListActivity.class);
+        String[] testi = {"Musei","Nome Museo", "Descrizione Museo", "Via Museo", "Orari Museo"};
+        String[] valori;
+        i.putExtra("Testi", testi);
+        startActivity(i);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarsemplice);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
@@ -89,7 +95,6 @@ public class MonumentListActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Questo utente è un infopoint", Toast.LENGTH_LONG).show();
             }
         }
-
         cursor.close();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -110,6 +115,7 @@ public class MonumentListActivity extends AppCompatActivity {
             // activity should be in two-pane mode.
             mTwoPane = true;
         }
+
         View recyclerView = findViewById(R.id.monument_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
@@ -130,7 +136,7 @@ public class MonumentListActivity extends AppCompatActivity {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, Monumenti.ITEMS, mTwoPane));
     }
 
-    public class SimpleItemRecyclerViewAdapter
+    public static class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final MonumentListActivity mParentActivity;

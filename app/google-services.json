@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "592727736270-tfjm8det0pr8bqctp67hcl8pgjuopjud.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uniba.di.sms.ibtourapp.tourapp",
+            "certificate_hash": "156adc3b0e8203e6681b7b8fb00c098628101d8d"
+          }
+        },
+        {
           "client_id": "592727736270-187eu7185m00f0sr5jp9u6et6ummta70.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

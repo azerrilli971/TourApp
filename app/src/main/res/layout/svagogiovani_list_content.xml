@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="horizontal"
+    android:paddingTop="10dp">
 
     <ImageView
         android:id="@+id/svagoGImmagine"
-        android:layout_width="match_parent"
-        android:layout_height="121dp"
+        android:layout_width="140dp"
+        android:layout_height="115dp"
         android:src="@drawable/hotelnazioni" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="142dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/svagoGNome"
             android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_marginStart="5dp"
-            android:paddingLeft="5dp"
+            android:layout_height="wrap_content"
             android:text="Nome Svago Giovani"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -38,7 +37,7 @@
             android:id="@+id/svagoGOrari"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="8dp"
+            android:paddingTop="5dp"
             android:layout_marginStart="5dp"
             android:text="Orari"
 
@@ -49,7 +48,7 @@
             android:id="@+id/svagoGCosto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="8dp"
+            android:paddingTop="5dp"
             android:layout_marginStart="5dp"
             android:text="Orari"
 
@@ -57,5 +56,18 @@
             />
 
 
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <ImageView
+            android:paddingTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_more_vert_black_24dp"
+            android:id="@+id/iconaMenuInfo"/>
     </LinearLayout>
 </LinearLayout>

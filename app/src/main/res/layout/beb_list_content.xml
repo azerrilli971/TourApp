@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="horizontal"
+    android:paddingTop="10dp">
 
     <ImageView
         android:id="@+id/bbImmagine"
-        android:layout_width="match_parent"
-        android:layout_height="121dp"
+        android:layout_width="154dp"
+        android:layout_height="97dp"
         android:src="@drawable/nicolaus" />
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="142dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="vertical">
 
@@ -22,8 +23,6 @@
             android:id="@+id/bbNome"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:layout_marginStart="5dp"
-            android:paddingLeft="5dp"
             android:text="Nome BB"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -46,9 +45,22 @@
             android:layout_marginStart="5dp"
             android:layout_toRightOf="@+id/nicolaus"
             android:paddingLeft="5dp"
-            android:paddingTop="30dp"
+            android:paddingTop="10dp"
             android:text="Costo" />
 
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <ImageView
+            android:paddingTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_more_vert_black_24dp"
+            android:id="@+id/iconaMenuInfo"/>
     </LinearLayout>
 
 </LinearLayout>

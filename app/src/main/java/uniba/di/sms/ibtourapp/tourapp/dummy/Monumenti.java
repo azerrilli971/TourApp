@@ -1,7 +1,10 @@
 package uniba.di.sms.ibtourapp.tourapp.dummy;
 
+import android.widget.EditText;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -43,10 +46,47 @@ public class Monumenti {
         return builder.toString();
     }
 
+    public static DummyItem addItemList(ArrayList<EditText> lista) {
+        DummyItem item = new DummyItem();
+        Iterator<EditText> iterator = lista.iterator();
+        EditText e = iterator.next();
+        item.setNomeMonumento(e.getText().toString());
+        e = iterator.next();
+        item.setDescrizioneMonumento(e.getText().toString());
+        e = iterator.next();
+        item.setViaMonumento(e.getText().toString());
+        return item;
+    }
+
     /**
      * A dummy item representing a piece of content.
      */
     public static class DummyItem {
+
+        public String getNomeMonumento() {
+            return nomeMonumento;
+        }
+
+        public void setNomeMonumento(String nomeMonumento) {
+            this.nomeMonumento = nomeMonumento;
+        }
+
+        public String getViaMonumento() {
+            return viaMonumento;
+        }
+
+        public void setViaMonumento(String viaMonumento) {
+            this.viaMonumento = viaMonumento;
+        }
+
+        public String getDescrizioneMonumento() {
+            return descrizioneMonumento;
+        }
+
+        public void setDescrizioneMonumento(String descrizioneMonumento) {
+            this.descrizioneMonumento = descrizioneMonumento;
+        }
+
         public String id;
         public String nomeMonumento;
         public String viaMonumento;
