@@ -1,7 +1,10 @@
 package uniba.di.sms.ibtourapp.tourapp.dummy;
 
+import android.widget.EditText;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -53,6 +56,39 @@ public class Spiagge {
      */
     public static class DummyItem {
         public String id;
+
+        public String getNomeSpiaggia() {
+            return nomeSpiaggia;
+        }
+
+        public void setNomeSpiaggia(String nomeSpiaggia) {
+            this.nomeSpiaggia = nomeSpiaggia;
+        }
+
+        public String getViaSpiaggia() {
+            return viaSpiaggia;
+        }
+
+        public void setViaSpiaggia(String viaSpiaggia) {
+            this.viaSpiaggia = viaSpiaggia;
+        }
+
+        public String getDescrizioneSpiaggia() {
+            return descrizioneSpiaggia;
+        }
+
+        public void setDescrizioneSpiaggia(String descrizioneSpiaggia) {
+            this.descrizioneSpiaggia = descrizioneSpiaggia;
+        }
+
+        public String getImmagineSpiaggia() {
+            return immagineSpiaggia;
+        }
+
+        public void setImmagineSpiaggia(String immagineSpiaggia) {
+            this.immagineSpiaggia = immagineSpiaggia;
+        }
+
         public String nomeSpiaggia;
         public String viaSpiaggia;
         public String descrizioneSpiaggia;
@@ -66,9 +102,22 @@ public class Spiagge {
             this.immagineSpiaggia = immagineSpiaggia;
         }
 
+        public DummyItem(){}
         @Override
         public String toString() {
             return nomeSpiaggia;
         }
+    }
+
+    public static DummyItem addItemList(ArrayList<EditText> lista) {
+        DummyItem item = new DummyItem();
+        Iterator<EditText> iterator = lista.iterator();
+        EditText e = iterator.next();
+        item.setNomeSpiaggia(e.getText().toString());
+        e = iterator.next();
+        item.setDescrizioneSpiaggia(e.getText().toString());
+        e = iterator.next();
+        item.setViaSpiaggia(e.getText().toString());
+        return item;
     }
 }

@@ -1,7 +1,10 @@
 package uniba.di.sms.ibtourapp.tourapp.dummy;
 
+import android.widget.EditText;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -58,6 +61,47 @@ public class Pizzerie {
     public static class DummyItem {
         public String id;
         public String nomePizzeria;
+
+        public String getNomePizzeria() {
+            return nomePizzeria;
+        }
+
+        public void setNomePizzeria(String nomePizzeria) {
+            this.nomePizzeria = nomePizzeria;
+        }
+
+        public String getViaPizzeria() {
+            return viaPizzeria;
+        }
+
+        public void setViaPizzeria(String viaPizzeria) {
+            this.viaPizzeria = viaPizzeria;
+        }
+
+        public String getOrariPizzeria() {
+            return orariPizzeria;
+        }
+
+        public void setOrariPizzeria(String orariPizzeria) {
+            this.orariPizzeria = orariPizzeria;
+        }
+
+        public String getImmaginePizzeria() {
+            return immaginePizzeria;
+        }
+
+        public void setImmaginePizzeria(String immaginePizzeria) {
+            this.immaginePizzeria = immaginePizzeria;
+        }
+
+        public String getDettagliPizzeria() {
+            return dettagliPizzeria;
+        }
+
+        public void setDettagliPizzeria(String dettagliPizzeria) {
+            this.dettagliPizzeria = dettagliPizzeria;
+        }
+
         public String viaPizzeria;
         public String orariPizzeria;
         public String immaginePizzeria;
@@ -76,5 +120,18 @@ public class Pizzerie {
         public String toString() {
             return nomePizzeria;
         }
+    }
+    public static DummyItem addItemList(ArrayList<EditText> lista) {
+        DummyItem item = new DummyItem();
+        Iterator<EditText> iterator = lista.iterator();
+        EditText e = iterator.next();
+        item.setNomePizzeria(e.getText().toString());
+        e = iterator.next();
+        item.setDettagliPizzeria(e.getText().toString());
+        e = iterator.next();
+        item.setViaPizzeria(e.getText().toString());
+        e = iterator.next();
+        item.setOrariPizzeria(e.getText().toString());
+        return item;
     }
 }

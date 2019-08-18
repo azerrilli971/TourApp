@@ -43,8 +43,17 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import uniba.di.sms.ibtourapp.tourapp.dummy.Alberghi;
+import uniba.di.sms.ibtourapp.tourapp.dummy.BeBs;
+import uniba.di.sms.ibtourapp.tourapp.dummy.Chiese;
+import uniba.di.sms.ibtourapp.tourapp.dummy.Gelaterie;
 import uniba.di.sms.ibtourapp.tourapp.dummy.Monumenti;
 import uniba.di.sms.ibtourapp.tourapp.dummy.Musei;
+import uniba.di.sms.ibtourapp.tourapp.dummy.Pizzerie;
+import uniba.di.sms.ibtourapp.tourapp.dummy.Ristoranti;
+import uniba.di.sms.ibtourapp.tourapp.dummy.Spiagge;
+import uniba.di.sms.ibtourapp.tourapp.dummy.SvagoFamiglie;
+import uniba.di.sms.ibtourapp.tourapp.dummy.SvagoGiovani;
 
 public class CustomListActivity extends AppCompatActivity {
 
@@ -108,6 +117,68 @@ public class CustomListActivity extends AppCompatActivity {
                         museo.setImmagineMuseo(download);
                         ref.child(testi[0]).child("01").setValue(museo);
                         break;
+                    case "Monumenti":
+                        Monumenti.DummyItem monumento = new Monumenti.DummyItem();
+                        monumento = Monumenti.addItemList(dummyInfo);
+                        monumento.setImmagineMonumento(download);
+                        ref.child(testi[0]).child("01").setValue(monumento);
+                        break;
+                    case "Chiese":
+                        Chiese.DummyItem chiesa = new Chiese.DummyItem();
+                        chiesa = Chiese.addItemList(dummyInfo);
+                        chiesa.setImmagineChiesa(download);
+                        ref.child(testi[0]).child("01").setValue(chiesa);
+                        break;
+                    case "Spiagge":
+                        Spiagge.DummyItem spiaggia = new Spiagge.DummyItem();
+                        spiaggia = Spiagge.addItemList(dummyInfo);
+                        spiaggia.setImmagineSpiaggia(download);
+                        ref.child(testi[0]).child("01").setValue(spiaggia);
+                        break;
+                    case "SvagoFamiglie":
+                        SvagoFamiglie.DummyItem svagoF = new SvagoFamiglie.DummyItem();
+                        svagoF = SvagoFamiglie.addItemList(dummyInfo);
+                        svagoF.setImmagineSvagoF(download);
+                        ref.child(testi[0]).child("01").setValue(svagoF);
+                        break;
+                    case "SvagoGiovani":
+                        SvagoGiovani.DummyItem svagoG = new SvagoGiovani.DummyItem();
+                        svagoG = SvagoGiovani.addItemList(dummyInfo);
+                        svagoG.setImmagineSvagoG(download);
+                        ref.child(testi[0]).child("01").setValue(svagoG);
+                        break;
+                    case "Alberghi":
+                        Alberghi.DummyItem albergo = new Alberghi.DummyItem();
+                        albergo = Alberghi.addItemList(dummyInfo);
+                        albergo.setImmagineHotel(download);
+                        ref.child(testi[0]).child("01").setValue(albergo);
+                        break;
+                    case "BeB":
+                        BeBs.DummyItem bb = new BeBs.DummyItem();
+                        bb = BeBs.addItemList(dummyInfo);
+                        bb.setImmagineBB(download);
+                        ref.child(testi[0]).child("01").setValue(bb);
+                        break;
+                    case "Ristoranti":
+                        Ristoranti.DummyItem ristorante = new Ristoranti.DummyItem();
+                        ristorante = Ristoranti.addItemList(dummyInfo);
+                        ristorante.setImmagineRistorante(download);
+                        ref.child(testi[0]).child("01").setValue(ristorante);
+                        break;
+                    case "Gelaterie":
+                        Gelaterie.DummyItem gelateria = new Gelaterie.DummyItem();
+                        gelateria = Gelaterie.addItemList(dummyInfo);
+                        gelateria.setImmagine(download);
+                        ref.child(testi[0]).child("01").setValue(gelateria);
+                        break;
+                    case "Pizzerie":
+                        Pizzerie.DummyItem pizzeria = new Pizzerie.DummyItem();
+                        pizzeria = Pizzerie.addItemList(dummyInfo);
+                        pizzeria.setImmaginePizzeria(download);
+                        ref.child(testi[0]).child("01").setValue(pizzeria);
+
+
+
                 }
 
             }

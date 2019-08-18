@@ -1,7 +1,10 @@
 package uniba.di.sms.ibtourapp.tourapp.dummy;
 
+import android.widget.EditText;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -60,6 +63,54 @@ public class SvagoFamiglie {
         public String descrizioneSvagoF;
         public String immagineSvagoF;
 
+        public String getNomeSvagoF() {
+            return nomeSvagoF;
+        }
+
+        public void setNomeSvagoF(String nomeSvagoF) {
+            this.nomeSvagoF = nomeSvagoF;
+        }
+
+        public String getViaSvagoF() {
+            return viaSvagoF;
+        }
+
+        public void setViaSvagoF(String viaSvagoF) {
+            this.viaSvagoF = viaSvagoF;
+        }
+
+        public String getOrariSvagoF() {
+            return orariSvagoF;
+        }
+
+        public void setOrariSvagoF(String orariSvagoF) {
+            this.orariSvagoF = orariSvagoF;
+        }
+
+        public String getCostoSvagoF() {
+            return costoSvagoF;
+        }
+
+        public void setCostoSvagoF(String costoSvagoF) {
+            this.costoSvagoF = costoSvagoF;
+        }
+
+        public String getDescrizioneSvagoF() {
+            return descrizioneSvagoF;
+        }
+
+        public void setDescrizioneSvagoF(String descrizioneSvagoF) {
+            this.descrizioneSvagoF = descrizioneSvagoF;
+        }
+
+        public String getImmagineSvagoF() {
+            return immagineSvagoF;
+        }
+
+        public void setImmagineSvagoF(String immagineSvagoF) {
+            this.immagineSvagoF = immagineSvagoF;
+        }
+
         public DummyItem(String id, String nomeSvagoF, String viaSvagoF, String orariSvagoF, String costoSvagoF, String descrizioneSvagoF, String immagineSvagoF) {
             this.id = id;
             this.nomeSvagoF = nomeSvagoF;
@@ -75,5 +126,20 @@ public class SvagoFamiglie {
         public String toString() {
             return nomeSvagoF;
         }
+    }
+    public static DummyItem addItemList(ArrayList<EditText> lista) {
+        DummyItem item = new DummyItem();
+        Iterator<EditText> iterator = lista.iterator();
+        EditText e = iterator.next();
+        item.setNomeSvagoF(e.getText().toString());
+        e = iterator.next();
+        item.setDescrizioneSvagoF(e.getText().toString());
+        e = iterator.next();
+        item.setViaSvagoF(e.getText().toString());
+        e = iterator.next();
+        item.setOrariSvagoF(e.getText().toString());
+        e = iterator.next();
+        item.setCostoSvagoF(e.getText().toString());
+        return item;
     }
 }

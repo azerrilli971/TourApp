@@ -1,7 +1,10 @@
 package uniba.di.sms.ibtourapp.tourapp.dummy;
 
+import android.widget.EditText;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -60,6 +63,54 @@ public class SvagoGiovani {
         public String descrizioneSvagoG;
         public String immagineSvagoG;
 
+        public String getImmagineSvagoG() {
+            return immagineSvagoG;
+        }
+
+        public void setImmagineSvagoG(String immagineSvagoG) {
+            this.immagineSvagoG = immagineSvagoG;
+        }
+
+        public String getNomeSvagoG() {
+            return nomeSvagoG;
+        }
+
+        public void setNomeSvagoG(String nomeSvagoG) {
+            this.nomeSvagoG = nomeSvagoG;
+        }
+
+        public String getViaSvagoG() {
+            return viaSvagoG;
+        }
+
+        public void setViaSvagoG(String viaSvagoG) {
+            this.viaSvagoG = viaSvagoG;
+        }
+
+        public String getOrariSvagoG() {
+            return orariSvagoG;
+        }
+
+        public void setOrariSvagoG(String orariSvagoG) {
+            this.orariSvagoG = orariSvagoG;
+        }
+
+        public String getCostoSvagoG() {
+            return costoSvagoG;
+        }
+
+        public void setCostoSvagoG(String costoSvagoG) {
+            this.costoSvagoG = costoSvagoG;
+        }
+
+        public String getDescrizioneSvagoG() {
+            return descrizioneSvagoG;
+        }
+
+        public void setDescrizioneSvagoG(String descrizioneSvagoG) {
+            this.descrizioneSvagoG = descrizioneSvagoG;
+        }
+
         public DummyItem(String id, String nomeSvagoG, String viaSvagoG, String orariSvagoG, String costoSvagoG, String descrizioneSvagoG, String immagineSvagoG) {
             this.id = id;
             this.nomeSvagoG = nomeSvagoG;
@@ -77,5 +128,20 @@ public class SvagoGiovani {
         public String toString() {
             return nomeSvagoG ;
         }
+    }
+    public static DummyItem addItemList(ArrayList<EditText> lista) {
+        DummyItem item = new DummyItem();
+        Iterator<EditText> iterator = lista.iterator();
+        EditText e = iterator.next();
+        item.setNomeSvagoG(e.getText().toString());
+        e = iterator.next();
+        item.setDescrizioneSvagoG(e.getText().toString());
+        e = iterator.next();
+        item.setViaSvagoG(e.getText().toString());
+        e = iterator.next();
+        item.setOrariSvagoG(e.getText().toString());
+        e = iterator.next();
+        item.setCostoSvagoG(e.getText().toString());
+        return item;
     }
 }

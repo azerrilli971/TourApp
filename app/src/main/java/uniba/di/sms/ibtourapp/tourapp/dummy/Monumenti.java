@@ -87,10 +87,20 @@ public class Monumenti {
             this.descrizioneMonumento = descrizioneMonumento;
         }
 
+
+        public String getImmagineMonumento() {
+            return immagineMonumento;
+        }
+
+        public void setImmagineMonumento(String immagineMonumento) {
+            this.immagineMonumento = immagineMonumento;
+        }
+
         public String id;
         public String nomeMonumento;
         public String viaMonumento;
         public String descrizioneMonumento;
+        public String immagineMonumento;
 
 
 

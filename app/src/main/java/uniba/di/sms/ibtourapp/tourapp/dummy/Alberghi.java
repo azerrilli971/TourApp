@@ -1,7 +1,10 @@
 package uniba.di.sms.ibtourapp.tourapp.dummy;
 
+import android.widget.EditText;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -57,6 +60,47 @@ public class Alberghi {
         public String viaHotel;
         public String costoHotel;
         public String descrizioneHotel;
+
+        public String getNomeHotel() {
+            return nomeHotel;
+        }
+
+        public void setNomeHotel(String nomeHotel) {
+            this.nomeHotel = nomeHotel;
+        }
+
+        public String getViaHotel() {
+            return viaHotel;
+        }
+
+        public void setViaHotel(String viaHotel) {
+            this.viaHotel = viaHotel;
+        }
+
+        public String getCostoHotel() {
+            return costoHotel;
+        }
+
+        public void setCostoHotel(String costoHotel) {
+            this.costoHotel = costoHotel;
+        }
+
+        public String getDescrizioneHotel() {
+            return descrizioneHotel;
+        }
+
+        public void setDescrizioneHotel(String descrizioneHotel) {
+            this.descrizioneHotel = descrizioneHotel;
+        }
+
+        public String getImmagineHotel() {
+            return immagineHotel;
+        }
+
+        public void setImmagineHotel(String immagineHotel) {
+            this.immagineHotel = immagineHotel;
+        }
+
         public String immagineHotel;
 
         public DummyItem(String id, String nomeHotel, String viaHotel, String costoHotel, String descrizioneHotel, String immagineHotel) {
@@ -73,5 +117,18 @@ public class Alberghi {
         public String toString() {
             return nomeHotel;
         }
+    }
+    public static DummyItem addItemList(ArrayList<EditText> lista) {
+        DummyItem item = new DummyItem();
+        Iterator<EditText> iterator = lista.iterator();
+        EditText e = iterator.next();
+        item.setNomeHotel(e.getText().toString());
+        e = iterator.next();
+        item.setDescrizioneHotel(e.getText().toString());
+        e = iterator.next();
+        item.setViaHotel(e.getText().toString());
+        e = iterator.next();
+        item.setCostoHotel(e.getText().toString());
+        return item;
     }
 }

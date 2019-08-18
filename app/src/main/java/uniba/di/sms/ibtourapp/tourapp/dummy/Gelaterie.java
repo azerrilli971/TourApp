@@ -1,7 +1,10 @@
 package uniba.di.sms.ibtourapp.tourapp.dummy;
 
+import android.widget.EditText;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -44,6 +47,47 @@ public class Gelaterie {
         public  String nomeGelateria;
         public  String viaGelateria;
         public  String orariGelateria;
+
+        public String getNomeGelateria() {
+            return nomeGelateria;
+        }
+
+        public void setNomeGelateria(String nomeGelateria) {
+            this.nomeGelateria = nomeGelateria;
+        }
+
+        public String getViaGelateria() {
+            return viaGelateria;
+        }
+
+        public void setViaGelateria(String viaGelateria) {
+            this.viaGelateria = viaGelateria;
+        }
+
+        public String getOrariGelateria() {
+            return orariGelateria;
+        }
+
+        public void setOrariGelateria(String orariGelateria) {
+            this.orariGelateria = orariGelateria;
+        }
+
+        public String getDescrizioneGelateria() {
+            return descrizioneGelateria;
+        }
+
+        public void setDescrizioneGelateria(String descrizioneGelateria) {
+            this.descrizioneGelateria = descrizioneGelateria;
+        }
+
+        public String getImmagine() {
+            return immagine;
+        }
+
+        public void setImmagine(String immagine) {
+            this.immagine = immagine;
+        }
+
         public  String descrizioneGelateria;
         public  String immagine;
 
@@ -62,5 +106,18 @@ public class Gelaterie {
         public String toString() {
             return nomeGelateria;
         }
+    }
+    public static DummyItem addItemList(ArrayList<EditText> lista) {
+        DummyItem item = new DummyItem();
+        Iterator<EditText> iterator = lista.iterator();
+        EditText e = iterator.next();
+        item.setNomeGelateria(e.getText().toString());
+        e = iterator.next();
+        item.setDescrizioneGelateria(e.getText().toString());
+        e = iterator.next();
+        item.setViaGelateria(e.getText().toString());
+        e = iterator.next();
+        item.setOrariGelateria(e.getText().toString());
+        return item;
     }
 }

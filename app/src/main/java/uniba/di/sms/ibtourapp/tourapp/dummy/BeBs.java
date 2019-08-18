@@ -1,7 +1,10 @@
 package uniba.di.sms.ibtourapp.tourapp.dummy;
 
+import android.widget.EditText;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -57,6 +60,47 @@ public class BeBs {
         public String viaBB;
         public String costoBB;
         public String descrizioneBB;
+
+        public String getNomeBB() {
+            return nomeBB;
+        }
+
+        public void setNomeBB(String nomeBB) {
+            this.nomeBB = nomeBB;
+        }
+
+        public String getViaBB() {
+            return viaBB;
+        }
+
+        public void setViaBB(String viaBB) {
+            this.viaBB = viaBB;
+        }
+
+        public String getCostoBB() {
+            return costoBB;
+        }
+
+        public void setCostoBB(String costoBB) {
+            this.costoBB = costoBB;
+        }
+
+        public String getDescrizioneBB() {
+            return descrizioneBB;
+        }
+
+        public void setDescrizioneBB(String descrizioneBB) {
+            this.descrizioneBB = descrizioneBB;
+        }
+
+        public String getImmagineBB() {
+            return immagineBB;
+        }
+
+        public void setImmagineBB(String immagineBB) {
+            this.immagineBB = immagineBB;
+        }
+
         public String immagineBB;
 
         public DummyItem(String id, String nomeBB, String viaBB, String costoBB, String descrizioneBB, String immagineBB) {
@@ -67,10 +111,24 @@ public class BeBs {
             this.descrizioneBB=descrizioneBB;
             this.immagineBB=immagineBB;
         }
+        public DummyItem(){}
 
         @Override
         public String toString() {
             return nomeBB;
         }
+    }
+    public static DummyItem addItemList(ArrayList<EditText> lista) {
+        DummyItem item = new DummyItem();
+        Iterator<EditText> iterator = lista.iterator();
+        EditText e = iterator.next();
+        item.setNomeBB(e.getText().toString());
+        e = iterator.next();
+        item.setDescrizioneBB(e.getText().toString());
+        e = iterator.next();
+        item.setViaBB(e.getText().toString());
+        e = iterator.next();
+        item.setCostoBB(e.getText().toString());
+        return item;
     }
 }

@@ -1,7 +1,10 @@
 package uniba.di.sms.ibtourapp.tourapp.dummy;
 
+import android.widget.EditText;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -57,6 +60,47 @@ public class Ristoranti {
         public String dettagliRistorante;
         public String viaRistorante;
         public String orariRistorante;
+
+        public String getNomeRistorante() {
+            return nomeRistorante;
+        }
+
+        public void setNomeRistorante(String nomeRistorante) {
+            this.nomeRistorante = nomeRistorante;
+        }
+
+        public String getDettagliRistorante() {
+            return dettagliRistorante;
+        }
+
+        public void setDettagliRistorante(String dettagliRistorante) {
+            this.dettagliRistorante = dettagliRistorante;
+        }
+
+        public String getViaRistorante() {
+            return viaRistorante;
+        }
+
+        public void setViaRistorante(String viaRistorante) {
+            this.viaRistorante = viaRistorante;
+        }
+
+        public String getOrariRistorante() {
+            return orariRistorante;
+        }
+
+        public void setOrariRistorante(String orariRistorante) {
+            this.orariRistorante = orariRistorante;
+        }
+
+        public String getImmagineRistorante() {
+            return immagineRistorante;
+        }
+
+        public void setImmagineRistorante(String immagineRistorante) {
+            this.immagineRistorante = immagineRistorante;
+        }
+
         public String immagineRistorante;
 
         public DummyItem(String id, String nomeRistorante, String viaRistorante, String orariRistorante, String dettagliRistorante, String immagineRistorante) {
@@ -72,5 +116,18 @@ public class Ristoranti {
         public String toString() {
             return nomeRistorante;
         }
+    }
+    public static DummyItem addItemList(ArrayList<EditText> lista) {
+        DummyItem item = new DummyItem();
+        Iterator<EditText> iterator = lista.iterator();
+        EditText e = iterator.next();
+        item.setNomeRistorante(e.getText().toString());
+        e = iterator.next();
+        item.setDettagliRistorante(e.getText().toString());
+        e = iterator.next();
+        item.setViaRistorante(e.getText().toString());
+        e = iterator.next();
+        item.setOrariRistorante(e.getText().toString());
+        return item;
     }
 }

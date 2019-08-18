@@ -1,7 +1,10 @@
 package uniba.di.sms.ibtourapp.tourapp.dummy;
 
+import android.widget.EditText;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -53,9 +56,43 @@ public class Chiese {
      */
     public static class DummyItem {
         public String id;
+
+        public String getNomeChiesa() {
+            return nomeChiesa;
+        }
+
+        public void setNomeChiesa(String nomeChiesa) {
+            this.nomeChiesa = nomeChiesa;
+        }
+
+        public String getViaChiesa() {
+            return viaChiesa;
+        }
+
+        public void setViaChiesa(String viaChiesa) {
+            this.viaChiesa = viaChiesa;
+        }
+
+        public String getDescrizioneChiesa() {
+            return descrizioneChiesa;
+        }
+
+        public void setDescrizioneChiesa(String descrizioneChiesa) {
+            this.descrizioneChiesa = descrizioneChiesa;
+        }
+
         public String nomeChiesa;
         public String viaChiesa;
         public String descrizioneChiesa;
+
+        public String getImmagineChiesa() {
+            return immagineChiesa;
+        }
+
+        public void setImmagineChiesa(String immagineChiesa) {
+            this.immagineChiesa = immagineChiesa;
+        }
+
         public String immagineChiesa;
 
         public DummyItem(String id, String nomeChiesa, String viaChiesa, String descrizioneChiesa, String immagineChiesa) {
@@ -72,5 +109,17 @@ public class Chiese {
         public String toString() {
             return nomeChiesa;
         }
+    }
+
+    public static DummyItem addItemList(ArrayList<EditText> lista){
+        DummyItem item = new DummyItem();
+        Iterator<EditText> iterator = lista.iterator();
+        EditText e = iterator.next();
+        item.setNomeChiesa(e.getText().toString());
+        e = iterator.next();
+        item.setDescrizioneChiesa(e.getText().toString());
+        e = iterator.next();
+        item.setViaChiesa(e.getText().toString());
+        return item;
     }
 }
