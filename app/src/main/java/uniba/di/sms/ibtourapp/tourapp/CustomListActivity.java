@@ -104,9 +104,9 @@ public class CustomListActivity extends AppCompatActivity {
                 switch (testi[0]) {
                     case "Musei":
                         Musei.DummyItem museo = new Musei.DummyItem();
-                        monumento = Musei.addItemList(dummyInfo);
-                        monumento.setImmagineMuseo(download);
-                        ref.child(testi[0]).child("01").setValue(monumento);
+                        museo = Musei.addItemList(dummyInfo);
+                        museo.setImmagineMuseo(download);
+                        ref.child(testi[0]).child("01").setValue(museo);
                         break;
                 }
 
