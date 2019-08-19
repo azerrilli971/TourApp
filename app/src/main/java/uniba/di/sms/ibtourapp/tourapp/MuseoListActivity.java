@@ -63,19 +63,15 @@ public class MuseoListActivity extends AppCompatActivity {
         UsersDbHelper dbHelper = new UsersDbHelper(getApplicationContext());
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-// Define a projection that specifies which columns from the database
-// you will actually use after this query.
         String[] projection = {
                 BaseColumns._ID,
                 UsersList.FeedEntry.COLUMN_NAME_TITLE,
                 UsersList.FeedEntry.COLUMN_NAME_SUBTITLE
         };
 
-// Filter results WHERE "title" = 'My Title'
         String selection = UsersList.FeedEntry.COLUMN_NAME_TITLE + " = ?";
         String[] selectionArgs = { mAuth.getCurrentUser().getUid() };
 
-// How you want the results sorted in the resulting Cursor
         String sortOrder =
                 UsersList.FeedEntry.COLUMN_NAME_SUBTITLE + " DESC";
 
@@ -85,8 +81,8 @@ public class MuseoListActivity extends AppCompatActivity {
                 selection,              // The columns for the WHERE clause
                 selectionArgs,          // The values for the WHERE clause
                 null,                   // don't group the rows
-                null,                   // don't filter by row groups
-                sortOrder               // The sort order
+                null,
+                sortOrder
         );
 
         while(cursor.moveToNext()) {

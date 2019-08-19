@@ -171,7 +171,7 @@ public class RestaurantListActivity extends AppCompatActivity {
 
 
         @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
+        public void onBindViewHolder(ViewHolder holder, int position) {
             holder.mNomeRistorante.setText(mValues.get(position).nomeRistorante);
             holder.mViaRistorante.setText(mValues.get(position).viaRistorante);
             holder.mOrariRistorante.setText(mValues.get(position).orariRistorante);
@@ -219,10 +219,10 @@ public class RestaurantListActivity extends AppCompatActivity {
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
-            TextView mNomeRistorante;
-            TextView mViaRistorante;
-            TextView mOrariRistorante;
-            ImageView mImmagineRistorante;
+            final TextView mNomeRistorante;
+            final TextView mViaRistorante;
+            final TextView mOrariRistorante;
+            final ImageView mImmagineRistorante;
             ImageView mInfoMenu;
 
             ViewHolder(View view) {
