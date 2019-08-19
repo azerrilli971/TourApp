@@ -106,7 +106,11 @@ public class RestaurantListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity( new Intent(RestaurantListActivity.this, MainActivity.class));
+                Intent i = new Intent(RestaurantListActivity.this, CustomListActivity.class);
+                String[] testi = {"Ristoranti","Nome Ristorante", "Descrizione Ristorante", "Via Ristorante", "Orario Ristorante"};
+                String[] valori;
+                i.putExtra("Testi", testi);
+                startActivity(i);
             }
         });
 
@@ -198,7 +202,7 @@ public class RestaurantListActivity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), " Install Clicked at position " + " : " , Toast.LENGTH_LONG).show();
                                     Intent i = new Intent(RestaurantListActivity.this, CustomListActivity.class);
                                     String[] testi = {"Ristoranti","Nome Ristorante", "Descrizione Ristorante", "Via Ristorante", "Orari Ristorante"};
-                                    String[] valori = {mValues.get(position).nomeRistorante, mValues.get(position).dettagliRistorante, mValues.get(position).viaRistorante, mValues.get(position).orariRistorante, mValues.get(position).id};
+                    String[] valori = {mValues.get(position).nomeRistorante, mValues.get(position).dettagliRistorante, mValues.get(position).viaRistorante, mValues.get(position).orariRistorante, mValues.get(position).id};
                                     i.putExtra("Testi", testi);
                                     i.putExtra("Valori", valori);
                                     startActivity(i);
@@ -210,7 +214,7 @@ public class RestaurantListActivity extends AppCompatActivity {
                                     ref.child("Ristoranti").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
                                         @Override
                                         public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                                            MyAsyncTask task = new MyAsyncTask("Ristoranti");
+                                            MyAsyncTask task = new MyAsyncTask("Pizzerie");
                                             task.execute();
                                             mValues.remove(position);
                                             onBindViewHolder(holder, position - 1);
@@ -238,10 +242,10 @@ public class RestaurantListActivity extends AppCompatActivity {
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
-            TextView mNomeRistorante;
-            TextView mViaRistorante;
-            TextView mOrariRistorante;
-            ImageView mImmagineRistorante;
+            final TextView mNomeRistorante;
+            final TextView mViaRistorante;
+            final TextView mOrariRistorante;
+            final ImageView mImmagineRistorante;
             ImageView mInfoMenu;
 
             ViewHolder(View view) {

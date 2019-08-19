@@ -7,7 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
@@ -21,6 +23,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import uniba.di.sms.ibtourapp.tourapp.dummy.Monumenti;
@@ -134,7 +139,7 @@ public class MonumentListActivity extends AppCompatActivity {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, Monumenti.ITEMS, mTwoPane));
     }
 
-    public static class SimpleItemRecyclerViewAdapter
+    public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final MonumentListActivity mParentActivity;
@@ -178,9 +183,57 @@ public class MonumentListActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.mViaView.setText(mValues.get(position).viaMonumento);
             holder.mNomeView.setText(mValues.get(position).nomeMonumento);
+            holder.mInfoMenu.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    PopupMenu popup = new PopupMenu(MonumentListActivity.this, view);
+                    popup.getMenuInflater().inflate(R.menu.menu_info,
+                            popup.getMenu());
+                    popup.show();
+                    popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+
+                            switch (item.getItemId()) {
+                                case R.id.menuModifica:
+
+                                    //Or Some other code you want to put here.. This is just an example
+                                    Toast.makeText(getApplicationContext(), " Install Clicked at position " + " : " , Toast.LENGTH_LONG).show();
+                                    Intent i = new Intent(MonumentListActivity.this, CustomListActivity.class);
+                                    String[] testi = {"Monumenti","Nome Monumento", "Descrizione Monumento", "Via Monumento"};
+                                    String[] valori = {mValues.get(position).nomeMonumento, mValues.get(position).descrizioneMonumento, mValues.get(position).viaMonumento, mValues.get(position).id};
+                                    i.putExtra("Testi", testi);
+                                    i.putExtra("Valori", valori);
+                                    startActivity(i);
+                                    break;
+                                case R.id.menuElimina:
+
+                                    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                    DatabaseReference ref = database.getReference();
+                                    ref.child("Monumenti").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
+                                        @Override
+                                        public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                                            MyAsyncTask task = new MyAsyncTask("Monumenti");
+                                            task.execute();
+                                            mValues.remove(position);
+                                            onBindViewHolder(holder, position - 1);
+                                            Toast.makeText(getApplicationContext(), "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                    break;
+
+                                default:
+                                    break;
+                            }
+
+                            return true;
+                        }
+                    });
+                }
+            });
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
         }
@@ -194,12 +247,14 @@ public class MonumentListActivity extends AppCompatActivity {
              TextView mViaView;
              TextView mNomeView;
              ImageView mImmagineView;
+             ImageView mInfoMenu;
 
             ViewHolder(View view) {
                 super(view);
                 mViaView = (TextView) view.findViewById(R.id.monumentoVia);
                 mNomeView = (TextView) view.findViewById(R.id.monumentoNome);
                 mImmagineView = (ImageView)view.findViewById(R.id.monumentoImmagine);
+                mInfoMenu = (ImageView) view.findViewById(R.id.iconaMenuInfo);
 
             }
         }

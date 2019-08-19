@@ -106,7 +106,11 @@ public class PizzeriaListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity( new Intent(PizzeriaListActivity.this, MainActivity.class));
+                Intent i = new Intent(PizzeriaListActivity.this, CustomListActivity.class);
+                String[] testi = {"Pizzerie","Nome Pizzeria", "Descrizione Pizzeria", "Via Pizzeria", "Orari Pizzeria"};
+                String[] valori;
+                i.putExtra("Testi", testi);
+                startActivity(i);
             }
         });
 

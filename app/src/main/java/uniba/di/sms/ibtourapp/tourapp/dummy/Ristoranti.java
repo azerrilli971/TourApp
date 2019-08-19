@@ -125,6 +125,7 @@ public class Ristoranti {
             return nomeRistorante;
         }
     }
+
     public static DummyItem addItemList(ArrayList<EditText> lista) {
         DummyItem item = new DummyItem();
         Iterator<EditText> iterator = lista.iterator();

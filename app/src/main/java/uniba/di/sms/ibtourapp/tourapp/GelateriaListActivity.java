@@ -103,7 +103,11 @@ public class GelateriaListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity( new Intent(GelateriaListActivity.this, MainActivity.class));
+                Intent i = new Intent(GelateriaListActivity.this, CustomListActivity.class);
+                String[] testi = {"Gelaterie","Nome Gelateria", "Descrizione Gelateria", "Via Gelateria", "Orari Gelateria"};
+                String[] valori;
+                i.putExtra("Testi", testi);
+                startActivity(i);
             }
         });
 
