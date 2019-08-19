@@ -104,7 +104,6 @@ public class MuseoListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(MuseoListActivity.this, CustomListActivity.class);
                 String[] testi = {"Musei","Nome Museo", "Descrizione Museo", "Via Museo", "Orari Museo"};
-                String[] valori;
                 i.putExtra("Testi", testi);
                 startActivity(i);
             }
