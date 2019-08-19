@@ -48,11 +48,6 @@ public class MonumentListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monument_list);
-        Intent i = new Intent(MonumentListActivity.this, CustomListActivity.class);
-        String[] testi = {"Musei","Nome Museo", "Descrizione Museo", "Via Museo", "Orari Museo"};
-        String[] valori;
-        i.putExtra("Testi", testi);
-        startActivity(i);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarsemplice);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
@@ -103,8 +98,11 @@ public class MonumentListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent i = new Intent(MonumentListActivity.this, CustomListActivity.class);
+                String[] testi = {"Musei","Nome Museo", "Descrizione Museo", "Via Museo", "Orari Museo"};
+                String[] valori;
+                i.putExtra("Testi", testi);
+                startActivity(i);
             }
         });
 

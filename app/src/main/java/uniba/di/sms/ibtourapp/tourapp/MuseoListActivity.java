@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
@@ -21,7 +22,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import uniba.di.sms.ibtourapp.tourapp.dummy.Musei;
@@ -101,7 +106,11 @@ public class MuseoListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity( new Intent(MuseoListActivity.this, MainActivity.class));
+                Intent i = new Intent(MuseoListActivity.this, CustomListActivity.class);
+                String[] testi = {"Musei","Nome Museo", "Descrizione Museo", "Via Museo", "Orari Museo"};
+                String[] valori;
+                i.putExtra("Testi", testi);
+                startActivity(i);
             }
         });
 
@@ -169,10 +178,11 @@ public class MuseoListActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.mNomeMuseo.setText(mValues.get(position).nomeMuseo);
             holder.mViaMuseo.setText(mValues.get(position).viaMuseo);
             holder.mOrariMuseo.setText(mValues.get(position).orariMuseo);
+            Toast.makeText(getApplicationContext(), mValues.get(position).id.toString(), Toast.LENGTH_SHORT).show();
             holder.mInfoMenu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -187,14 +197,29 @@ public class MuseoListActivity extends AppCompatActivity {
                             switch (item.getItemId()) {
                                 case R.id.menuModifica:
 
-                                    //Or Some other code you want to put here.. This is just an example. e puzzi
+                                    //Or Some other code you want to put here.. This is just an example
                                     Toast.makeText(getApplicationContext(), " Install Clicked at position " + " : " , Toast.LENGTH_LONG).show();
-
+                                    Intent i = new Intent(MuseoListActivity.this, CustomListActivity.class);
+                                    String[] testi = {"Musei","Nome Museo", "Descrizione Museo", "Via Museo", "Orari Museo"};
+                                    String[] valori = {mValues.get(position).nomeMuseo, mValues.get(position).descrizioneMuseo, mValues.get(position).viaMuseo, mValues.get(position).orariMuseo, mValues.get(position).id};
+                                    i.putExtra("Testi", testi);
+                                    i.putExtra("Valori", valori);
+                                    startActivity(i);
                                     break;
                                 case R.id.menuElimina:
 
-                                    Toast.makeText(getApplicationContext(), "Add to Wish List Clicked at position " + " : " , Toast.LENGTH_LONG).show();
-
+                                    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                    DatabaseReference ref = database.getReference();
+                                    ref.child("Musei").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
+                                        @Override
+                                        public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                                            MyAsyncTask task = new MyAsyncTask("Musei");
+                                            task.execute();
+                                            mValues.remove(position);
+                                            onBindViewHolder(holder, position - 1);
+                                            Toast.makeText(getApplicationContext(), "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                     break;
 
                                 default:

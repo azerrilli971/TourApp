@@ -55,6 +55,14 @@ public class SvagoGiovani {
      * A dummy item representing a piece of content.
      */
     public static class DummyItem {
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
         public String id;
         public String nomeSvagoG;
         public String viaSvagoG;

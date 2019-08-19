@@ -1,16 +1,12 @@
 package uniba.di.sms.ibtourapp.tourapp;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,16 +24,12 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -58,14 +50,14 @@ import uniba.di.sms.ibtourapp.tourapp.dummy.SvagoGiovani;
 public class CustomListActivity extends AppCompatActivity {
 
     private final int select_photo = 1;
-    ArrayList<String> valori = new ArrayList<>();
     ArrayList<EditText> dummyInfo = new ArrayList<>();
-    ImageView gallery_image, galleryDown;
-    Musei.DummyItem monumento = new Musei.DummyItem();
+    ImageView gallery_image;
     private Uri imageuri;
     FirebaseStorage storage;
     StorageReference storageReference;
     private String download;
+    String[] val = {"0"};
+    String path = "01";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +68,9 @@ public class CustomListActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         final String[] testi;
         testi = b.getStringArray("Testi");
+        if(b.size() > 1) {
+            val = b.getStringArray("Valori");
+        }
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT));
@@ -84,21 +79,14 @@ public class CustomListActivity extends AppCompatActivity {
         Button imgButton = new Button(this);
         imgButton.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         imgButton.setText("Seleziona");
-        // Implement click listener over button
         imgButton.setOnClickListener(
                 new View.OnClickListener() {
 
                     @Override
                     public void onClick(View arg0) {
-
-                        // Intent to gallery
                         Intent in = new Intent(Intent.ACTION_PICK);
                         in.setType("image/*");
-                        startActivityForResult(in, select_photo);// start
-                        // activity
-                        // for
-                        // result
-
+                        startActivityForResult(in, select_photo);
                     }
                 });
         Button pushButton = new Button(this);
@@ -115,7 +103,22 @@ public class CustomListActivity extends AppCompatActivity {
                         Musei.DummyItem museo = new Musei.DummyItem();
                         museo = Musei.addItemList(dummyInfo);
                         museo.setImmagineMuseo(download);
-                        ref.child(testi[0]).child("01").setValue(museo);
+                        if(val[0] != "0") {
+                            ref.child(testi[0]).child(val[val.length - 1]).setValue(museo).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        } else {
+                            ref.child(testi[0]).child(path).setValue(museo).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                        finish();
                         break;
                     case "Monumenti":
                         Monumenti.DummyItem monumento = new Monumenti.DummyItem();
@@ -176,19 +179,19 @@ public class CustomListActivity extends AppCompatActivity {
                         pizzeria = Pizzerie.addItemList(dummyInfo);
                         pizzeria.setImmaginePizzeria(download);
                         ref.child(testi[0]).child("01").setValue(pizzeria);
-
-
-
                 }
-
             }
         });
         addTextViews(testi, linearLayout);
         linearLayout.addView(gallery_image);
         linearLayout.addView(imgButton);
         linearLayout.addView(pushButton);
-        linearLayout.addView(galleryDown);
         setContentView(linearLayout);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 
     protected void onActivityResult(int requestcode, int resultcode,
@@ -198,22 +201,12 @@ public class CustomListActivity extends AppCompatActivity {
             case select_photo:
                 if (resultcode == RESULT_OK) {
                     try {
-
-                        imageuri = imagereturnintent.getData();// Get intent
-                        // data;
-                        Bitmap bitmap = decodeUri(CustomListActivity.this, imageuri, 300);// call
-                        // deocde
-                        // uri
-                        // method
-                        // Check if bitmap is not null then set image else show
-                        // toast
+                        imageuri = imagereturnintent.getData();
+                        Bitmap bitmap = decodeUri(CustomListActivity.this, imageuri, 300);
                         if (bitmap != null) {
                             gallery_image.setImageBitmap(bitmap);
                             uploadImage();
                         }
-                            // Set image over
-                            // bitmap
-
                         else
                             Toast.makeText(CustomListActivity.this,
                                     "Error while decoding image.",
@@ -228,8 +221,6 @@ public class CustomListActivity extends AppCompatActivity {
         }
     }
 
-    // Method that deocde uri into bitmap. This method is necessary to deocde
-    // large size images to load over imageview
     public static Bitmap decodeUri(Context context, Uri uri,
                                    final int requiredSize) throws FileNotFoundException {
         BitmapFactory.Options o = new BitmapFactory.Options();
@@ -254,70 +245,28 @@ public class CustomListActivity extends AppCompatActivity {
                 .openInputStream(uri), null, o2);
     }
 
-    // Get Original image path
-    public static String getRealPathFromUri(Context context, Uri contentUri) {
-        Cursor cursor = null;
-        try {
-            String[] proj = {MediaStore.Images.Media.DATA};
-            cursor = context.getContentResolver().query(contentUri, proj, null,
-                    null, null);
-            int column_index = cursor
-                    .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            cursor.moveToFirst();
-            return cursor.getString(column_index);
-        } finally {
-            if (cursor != null) {
-                cursor.close();
-            }
-        }
-    }
-
-
     private void addTextViews(String[] test, ViewGroup linearLayout) {
-        //Adding a LinearLayout with HORIZONTAL orientation
         for (int i = 1; i < test.length; i++) {
             TextView textView1 = new TextView(this);
             textView1.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT));
             textView1.setText(test[i]);
-            textView1.setPadding(20, 20, 20, 20); // in pixels (left, top, right, bottom)
+            textView1.setPadding(20, 20, 20, 20);
             linearLayout.addView(textView1);
-            addEditTexts(linearLayout);
+            EditText editText = addEditTexts(linearLayout);
+            if(val[0] != "0") {
+                if(val[i-1] != null) {
+                    editText.setText(val[i-1]);
+                }
+            }
         }
     }
-
-    private void setTextViewAttributes(TextView textView) {
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-
-        params.setMargins(convertDpToPixel(16),
-                convertDpToPixel(16),
-                0, 0
-        );
-
-        textView.setTextColor(Color.BLACK);
-        textView.setLayoutParams(params);
-    }
-
     private int convertDpToPixel(float dp) {
         DisplayMetrics metrics = Resources.getSystem().getDisplayMetrics();
         float px = dp * (metrics.densityDpi / 160f);
         return Math.round(px);
     }
-
-    private void addLineSeperator(ViewGroup linearLayout) {
-        LinearLayout lineLayout = new LinearLayout(this);
-        lineLayout.setBackgroundColor(Color.GRAY);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                2);
-        params.setMargins(0, convertDpToPixel(10), 0, convertDpToPixel(10));
-        lineLayout.setLayoutParams(params);
-        linearLayout.addView(lineLayout);
-    }
-
-    private void addEditTexts(ViewGroup linearLayout) {
+    private EditText addEditTexts(ViewGroup linearLayout) {
 
         EditText editText = new EditText(this);
         LinearLayout.LayoutParams layoutParam = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -325,10 +274,10 @@ public class CustomListActivity extends AppCompatActivity {
         editText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
         linearLayout.addView(editText);
         dummyInfo.add(editText);
+        return editText;
     }
 
     private void uploadImage() {
-
         if (imageuri != null) {
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");

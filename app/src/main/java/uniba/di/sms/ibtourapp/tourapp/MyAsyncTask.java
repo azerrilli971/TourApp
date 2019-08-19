@@ -3,6 +3,7 @@ package uniba.di.sms.ibtourapp.tourapp;
 import android.os.AsyncTask;
 import android.widget.ImageView;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,30 +39,47 @@ public class MyAsyncTask extends AsyncTask {
                     switch(context) {
                         case "Monumenti" :
                             Monumenti.DummyItem item = data.getValue(Monumenti.DummyItem.class);
+                            item.setId(data.getKey());
                             Monumenti.addItem(new Monumenti.DummyItem(item.id, item.nomeMonumento, item.viaMonumento, item.descrizioneMonumento));
                             break;
                         case "Gelaterie":
                             Gelaterie.DummyItem dummyItem = data.getValue(Gelaterie.DummyItem.class);
+                            dummyItem.setId(data.getKey());
                             Gelaterie.addItem(new Gelaterie.DummyItem(dummyItem.id, dummyItem.nomeGelateria, dummyItem.viaGelateria, dummyItem.orariGelateria, dummyItem.descrizioneGelateria, dummyItem.immagine));
                             break;
                         case "Chiese" :
                             Chiese.DummyItem chiesa = data.getValue(Chiese.DummyItem.class);
+                            chiesa.setId(data.getKey());
                             Chiese.addItem(new Chiese.DummyItem(chiesa.id, chiesa.nomeChiesa, chiesa.viaChiesa, chiesa.descrizioneChiesa, chiesa.immagineChiesa));
                             break;
                         case "Musei" :
                             Musei.DummyItem museo = data.getValue(Musei.DummyItem.class);
-                            Musei.addItem(new Musei.DummyItem(museo.id, museo.nomeMuseo, museo.viaMuseo, museo.orariMuseo, museo.descrizioneMuseo, museo.immagineMuseo));
+                            museo.setId(data.getKey());
+                            int flag = 1;
+                            for (Musei.DummyItem mus: Musei.ITEMS
+                                 ) {
+                                if(mus.id == museo.id)
+                                    flag = 0;
+                            }
+                            if(flag == 1) {
+                                Musei.addItem(new Musei.DummyItem(museo.id, museo.nomeMuseo, museo.viaMuseo, museo.orariMuseo, museo.descrizioneMuseo, museo.immagineMuseo));
+                            }
+
                         case "Pizzerie" :
                             Pizzerie.DummyItem pizzeria = data.getValue(Pizzerie.DummyItem.class);
+                            pizzeria.setId(data.getKey());
                             Pizzerie.addItem(new Pizzerie.DummyItem(pizzeria.id, pizzeria.nomePizzeria, pizzeria.viaPizzeria, pizzeria.orariPizzeria, pizzeria.dettagliPizzeria, pizzeria.immaginePizzeria));
                         case "Ristoranti" :
                             Ristoranti.DummyItem ristorante = data.getValue(Ristoranti.DummyItem.class);
+                            ristorante.setId(data.getKey());
                             Ristoranti.addItem(new Ristoranti.DummyItem(ristorante.id, ristorante.nomeRistorante, ristorante.viaRistorante, ristorante.orariRistorante, ristorante.dettagliRistorante, ristorante.immagineRistorante));
                         case "SvagoGiovani" :
                             SvagoGiovani.DummyItem svagoGiovani = data.getValue(SvagoGiovani.DummyItem.class);
+                            svagoGiovani.setId(data.getKey());
                             SvagoGiovani.addItem(new SvagoGiovani.DummyItem(svagoGiovani.id, svagoGiovani.nomeSvagoG, svagoGiovani.viaSvagoG, svagoGiovani.orariSvagoG, svagoGiovani.costoSvagoG, svagoGiovani.descrizioneSvagoG, svagoGiovani.immagineSvagoG));
                         case "SvagoFamiglie" :
                             SvagoFamiglie.DummyItem svagoFamiglie = data.getValue(SvagoFamiglie.DummyItem.class);
+                            svagoFamiglie.setId(data.getKey());
                             SvagoFamiglie.addItem(new SvagoFamiglie.DummyItem(svagoFamiglie.id, svagoFamiglie.nomeSvagoF, svagoFamiglie.viaSvagoF, svagoFamiglie.orariSvagoF, svagoFamiglie.costoSvagoF, svagoFamiglie.descrizioneSvagoF, svagoFamiglie.immagineSvagoF));
                     }
                 }

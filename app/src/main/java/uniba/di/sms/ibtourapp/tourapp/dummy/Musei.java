@@ -2,6 +2,8 @@ package uniba.di.sms.ibtourapp.tourapp.dummy;
 
 import android.widget.EditText;
 
+import com.google.android.gms.tasks.Task;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -71,8 +73,15 @@ public class Musei {
      * A dummy item representing a piece of content.
      */
     public static class DummyItem {
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
         public String id;
-        private static int counter = 0;
 
         public String getNomeMuseo() {
             return nomeMuseo;
