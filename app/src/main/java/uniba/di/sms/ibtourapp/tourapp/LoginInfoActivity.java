@@ -90,6 +90,7 @@ public class LoginInfoActivity extends AppCompatActivity implements View.OnClick
         if (mAuth.getCurrentUser() != null) {
             finish();
             startActivity(new Intent(this, MainActivity.class));
+            //rDZAs6xnCUh2aVmkQLHtaLUrAjd2
         }
     }
 

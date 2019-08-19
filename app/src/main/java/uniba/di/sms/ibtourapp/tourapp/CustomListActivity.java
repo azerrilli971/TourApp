@@ -125,60 +125,221 @@ public class CustomListActivity extends AppCompatActivity {
                         monumento = Monumenti.addItemList(dummyInfo);
                         monumento.setImmagineMonumento(download);
                         ref.child(testi[0]).child("01").setValue(monumento);
+                        if(val[0] != "0") {
+                            ref.child(testi[0]).child(val[val.length - 1]).setValue(monumento).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        } else {
+                            ref.child(testi[0]).child(path).setValue(monumento).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                        finish();
                         break;
                     case "Chiese":
                         Chiese.DummyItem chiesa = new Chiese.DummyItem();
                         chiesa = Chiese.addItemList(dummyInfo);
                         chiesa.setImmagineChiesa(download);
                         ref.child(testi[0]).child("01").setValue(chiesa);
+                        if(val[0] != "0") {
+                            ref.child(testi[0]).child(val[val.length - 1]).setValue(chiesa).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        } else {
+                            ref.child(testi[0]).child(path).setValue(chiesa).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                        finish();
                         break;
                     case "Spiagge":
                         Spiagge.DummyItem spiaggia = new Spiagge.DummyItem();
                         spiaggia = Spiagge.addItemList(dummyInfo);
                         spiaggia.setImmagineSpiaggia(download);
                         ref.child(testi[0]).child("01").setValue(spiaggia);
+                        if(val[0] != "0") {
+                            ref.child(testi[0]).child(val[val.length - 1]).setValue(spiaggia).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        } else {
+                            ref.child(testi[0]).child(path).setValue(spiaggia).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                        finish();
                         break;
                     case "SvagoFamiglie":
                         SvagoFamiglie.DummyItem svagoF = new SvagoFamiglie.DummyItem();
                         svagoF = SvagoFamiglie.addItemList(dummyInfo);
                         svagoF.setImmagineSvagoF(download);
                         ref.child(testi[0]).child("01").setValue(svagoF);
+                        if(val[0] != "0") {
+                            ref.child(testi[0]).child(val[val.length - 1]).setValue(svagoF).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        } else {
+                            ref.child(testi[0]).child(path).setValue(svagoF).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                        finish();
                         break;
                     case "SvagoGiovani":
                         SvagoGiovani.DummyItem svagoG = new SvagoGiovani.DummyItem();
                         svagoG = SvagoGiovani.addItemList(dummyInfo);
                         svagoG.setImmagineSvagoG(download);
                         ref.child(testi[0]).child("01").setValue(svagoG);
+                        if(val[0] != "0") {
+                            ref.child(testi[0]).child(val[val.length - 1]).setValue(svagoG).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        } else {
+                            ref.child(testi[0]).child(path).setValue(svagoG).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                        finish();
                         break;
                     case "Alberghi":
                         Alberghi.DummyItem albergo = new Alberghi.DummyItem();
                         albergo = Alberghi.addItemList(dummyInfo);
                         albergo.setImmagineHotel(download);
                         ref.child(testi[0]).child("01").setValue(albergo);
+                        if(val[0] != "0") {
+                            ref.child(testi[0]).child(val[val.length - 1]).setValue(albergo).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        } else {
+                            ref.child(testi[0]).child(path).setValue(albergo).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                        finish();
                         break;
                     case "BeB":
                         BeBs.DummyItem bb = new BeBs.DummyItem();
                         bb = BeBs.addItemList(dummyInfo);
                         bb.setImmagineBB(download);
                         ref.child(testi[0]).child("01").setValue(bb);
+                        if(val[0] != "0") {
+                            ref.child(testi[0]).child(val[val.length - 1]).setValue(bb).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        } else {
+                            ref.child(testi[0]).child(path).setValue(bb).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                        finish();
                         break;
                     case "Ristoranti":
                         Ristoranti.DummyItem ristorante = new Ristoranti.DummyItem();
                         ristorante = Ristoranti.addItemList(dummyInfo);
                         ristorante.setImmagineRistorante(download);
                         ref.child(testi[0]).child("01").setValue(ristorante);
+                        if(val[0] != "0") {
+                            ref.child(testi[0]).child(val[val.length - 1]).setValue(ristorante).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        } else {
+                            ref.child(testi[0]).child(path).setValue(ristorante).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                        finish();
                         break;
                     case "Gelaterie":
                         Gelaterie.DummyItem gelateria = new Gelaterie.DummyItem();
                         gelateria = Gelaterie.addItemList(dummyInfo);
                         gelateria.setImmagine(download);
                         ref.child(testi[0]).child("01").setValue(gelateria);
+                        if(val[0] != "0") {
+                            ref.child(testi[0]).child(val[val.length - 1]).setValue(gelateria).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        } else {
+                            ref.child(testi[0]).child(path).setValue(gelateria).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                        finish();
                         break;
                     case "Pizzerie":
                         Pizzerie.DummyItem pizzeria = new Pizzerie.DummyItem();
                         pizzeria = Pizzerie.addItemList(dummyInfo);
                         pizzeria.setImmaginePizzeria(download);
                         ref.child(testi[0]).child("01").setValue(pizzeria);
+                        if(val[0] != "0") {
+                            ref.child(testi[0]).child(val[val.length - 1]).setValue(pizzeria).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        } else {
+                            ref.child(testi[0]).child(path).setValue(pizzeria).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                        finish();
+                        break;
                 }
             }
         });
