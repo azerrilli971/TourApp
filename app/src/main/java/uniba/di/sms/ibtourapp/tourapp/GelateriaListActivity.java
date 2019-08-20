@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +23,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import uniba.di.sms.ibtourapp.tourapp.dummy.Gelaterie;
@@ -174,7 +178,7 @@ public class GelateriaListActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.mGelateriaNome.setText(mValues.get(position).nomeGelateria);
             holder.mGelateriaVia.setText(mValues.get(position).viaGelateria);
             holder.mGelateriaOrari.setText(mValues.get(position).orariGelateria);
@@ -193,14 +197,29 @@ public class GelateriaListActivity extends AppCompatActivity {
                             switch (item.getItemId()) {
                                 case R.id.menuModifica:
 
-                                    //Or Some other code you want to put here.. This is just an example. e puzzi
+                                    //Or Some other code you want to put here.. This is just an example
                                     Toast.makeText(getApplicationContext(), " Install Clicked at position " + " : " , Toast.LENGTH_LONG).show();
-
+                                    Intent i = new Intent(GelateriaListActivity.this, CustomListActivity.class);
+                                    String[] testi = {"Gelaterie","Nome Gelateria", "Descrizione Gelateria", "Via Gelateria", "Orari Gelateria"};
+                                    String[] valori = {mValues.get(position).nomeGelateria, mValues.get(position).descrizioneGelateria, mValues.get(position).viaGelateria, mValues.get(position).orariGelateria, mValues.get(position).id};
+                                    i.putExtra("Testi", testi);
+                                    i.putExtra("Valori", valori);
+                                    startActivity(i);
                                     break;
                                 case R.id.menuElimina:
 
-                                    Toast.makeText(getApplicationContext(), "Add to Wish List Clicked at position " + " : " , Toast.LENGTH_LONG).show();
-
+                                    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                    DatabaseReference ref = database.getReference();
+                                    ref.child("Gelaterie").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
+                                        @Override
+                                        public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                                            MyAsyncTask task = new MyAsyncTask("Gelaterie");
+                                            task.execute();
+                                            mValues.remove(position);
+                                            onBindViewHolder(holder, position - 1);
+                                            Toast.makeText(getApplicationContext(), "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                     break;
 
                                 default:

@@ -8,6 +8,7 @@ import android.media.Image;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
@@ -23,6 +24,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import uniba.di.sms.ibtourapp.tourapp.dummy.Spiagge;
@@ -101,7 +105,10 @@ public class SpiaggiaListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity( new Intent(SpiaggiaListActivity.this, MainActivity.class));
+                Intent i = new Intent(SpiaggiaListActivity.this, CustomListActivity.class);
+                String[] testi = {"Spiagge","Nome Spiaggia", "Descrizione Spiaggia", "Via Spiaggia"};
+                i.putExtra("Testi", testi);
+                startActivity(i);
             }
         });
 
@@ -166,7 +173,7 @@ public class SpiaggiaListActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.mNomeSpiaggia.setText(mValues.get(position).nomeSpiaggia);
             holder.mViaSpiaggia.setText(mValues.get(position).viaSpiaggia);
             Picasso.get().load(mValues.get(position).immagineSpiaggia).into(holder.mImmagineSpiaggia);
@@ -184,16 +191,30 @@ public class SpiaggiaListActivity extends AppCompatActivity {
                             switch (item.getItemId()) {
                                 case R.id.menuModifica:
 
-                                    //Or Some other code you want to put here.. This is just an example. e puzzi
+                                    //Or Some other code you want to put here.. This is just an example
                                     Toast.makeText(getApplicationContext(), " Install Clicked at position " + " : " , Toast.LENGTH_LONG).show();
-
+                                    Intent i = new Intent(SpiaggiaListActivity.this, CustomListActivity.class);
+                                    String[] testi = {"Spiagge","Nome Spiaggia", "Descrizione Spiaggia", "Via Spiaggia"};
+                                    String[] valori = {mValues.get(position).nomeSpiaggia, mValues.get(position).descrizioneSpiaggia, mValues.get(position).viaSpiaggia, mValues.get(position).id};
+                                    i.putExtra("Testi", testi);
+                                    i.putExtra("Valori", valori);
+                                    startActivity(i);
                                     break;
                                 case R.id.menuElimina:
 
-                                    Toast.makeText(getApplicationContext(), "Add to Wish List Clicked at position " + " : " , Toast.LENGTH_LONG).show();
-
+                                    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                    DatabaseReference ref = database.getReference();
+                                    ref.child("Spiagge").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
+                                        @Override
+                                        public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                                            MyAsyncTask task = new MyAsyncTask("Spiagge");
+                                            task.execute();
+                                            mValues.remove(position);
+                                            onBindViewHolder(holder, position - 1);
+                                            Toast.makeText(getApplicationContext(), "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                     break;
-
                                 default:
                                     break;
                             }

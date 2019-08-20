@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +23,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import uniba.di.sms.ibtourapp.tourapp.dummy.SvagoGiovani;
@@ -101,7 +105,10 @@ public class SvagoGiovaniListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity( new Intent(SvagoGiovaniListActivity.this, MainActivity.class));
+                Intent i = new Intent(SvagoGiovaniListActivity.this, CustomListActivity.class);
+                String[] testi = {"Svago Giovani","Nome Svago Giovani", "Descrizione Svago Giovani", "Via Svago Giovani", "Orari Svago Giovani", "Costo Svago Giovani"};
+                i.putExtra("Testi", testi);
+                startActivity(i);
             }
         });
 
@@ -169,7 +176,7 @@ public class SvagoGiovaniListActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.mNomeSvagoG.setText(mValues.get(position).nomeSvagoG);
             holder.mViaSvagoG.setText(mValues.get(position).viaSvagoG);
             holder.mOrariSvagoG.setText(mValues.get(position).orariSvagoG);
@@ -189,14 +196,29 @@ public class SvagoGiovaniListActivity extends AppCompatActivity {
                             switch (item.getItemId()) {
                                 case R.id.menuModifica:
 
-                                    //Or Some other code you want to put here.. This is just an example. e puzzi
+                                    //Or Some other code you want to put here.. This is just an example
                                     Toast.makeText(getApplicationContext(), " Install Clicked at position " + " : " , Toast.LENGTH_LONG).show();
-
+                                    Intent i = new Intent(SvagoGiovaniListActivity.this, CustomListActivity.class);
+                                    String[] testi = {"Svago Giovani","Nome Svago Giovani", "Descrizione Svago Giovani", "Via Svago Giovani", "Orari Svago Giovani", "Costo Svago Giovani"};
+                                    String[] valori = {mValues.get(position).nomeSvagoG, mValues.get(position).descrizioneSvagoG, mValues.get(position).viaSvagoG, mValues.get(position).orariSvagoG, mValues.get(position).costoSvagoG, mValues.get(position).id};
+                                    i.putExtra("Testi", testi);
+                                    i.putExtra("Valori", valori);
+                                    startActivity(i);
                                     break;
                                 case R.id.menuElimina:
 
-                                    Toast.makeText(getApplicationContext(), "Add to Wish List Clicked at position " + " : " , Toast.LENGTH_LONG).show();
-
+                                    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                    DatabaseReference ref = database.getReference();
+                                    ref.child("Svago Giovani").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
+                                        @Override
+                                        public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                                            MyAsyncTask task = new MyAsyncTask("Svago Giovani");
+                                            task.execute();
+                                            mValues.remove(position);
+                                            onBindViewHolder(holder, position - 1);
+                                            Toast.makeText(getApplicationContext(), "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                     break;
 
                                 default:

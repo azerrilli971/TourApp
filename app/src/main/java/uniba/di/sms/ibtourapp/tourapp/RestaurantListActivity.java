@@ -214,7 +214,7 @@ public class RestaurantListActivity extends AppCompatActivity {
                                     ref.child("Ristoranti").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
                                         @Override
                                         public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                                            MyAsyncTask task = new MyAsyncTask("Pizzerie");
+                                            MyAsyncTask task = new MyAsyncTask("Ristoranti");
                                             task.execute();
                                             mValues.remove(position);
                                             onBindViewHolder(holder, position - 1);

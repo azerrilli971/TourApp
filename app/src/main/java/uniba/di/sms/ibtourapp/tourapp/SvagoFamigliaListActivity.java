@@ -8,6 +8,7 @@ import android.media.Image;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
@@ -23,6 +24,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import uniba.di.sms.ibtourapp.tourapp.dummy.SvagoFamiglie;
@@ -102,7 +106,10 @@ public class SvagoFamigliaListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity( new Intent(SvagoFamigliaListActivity.this, MainActivity.class));
+                Intent i = new Intent(SvagoFamigliaListActivity.this, CustomListActivity.class);
+                String[] testi = {"Svago Famiglie","Nome Svago Famiglia", "Descrizione Svago Famiglia", "Via Svago Famiglia", "Orari Svago Famiglia", "Costo Svago Famiglia"};
+                i.putExtra("Testi", testi);
+                startActivity(i);
             }
         });
 
@@ -170,7 +177,7 @@ public class SvagoFamigliaListActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.mNomeSvago.setText(mValues.get(position).nomeSvagoF);
             holder.mViaSvago.setText(mValues.get(position).viaSvagoF);
             holder.mOrariSvago.setText(mValues.get(position).orariSvagoF);
@@ -190,16 +197,30 @@ public class SvagoFamigliaListActivity extends AppCompatActivity {
                             switch (item.getItemId()) {
                                 case R.id.menuModifica:
 
-                                    //Or Some other code you want to put here.. This is just an example. e puzzi
+                                    //Or Some other code you want to put here.. This is just an example
                                     Toast.makeText(getApplicationContext(), " Install Clicked at position " + " : " , Toast.LENGTH_LONG).show();
-
+                                    Intent i = new Intent(SvagoFamigliaListActivity.this, CustomListActivity.class);
+                                    String[] testi = {"Svago Famiglie","Nome Svago Famiglia", "Descrizione Svago Famiglia", "Via Svago Famiglia", "Orari Svago Famiglia", "Costo Svago Famiglia"};
+                                    String[] valori = {mValues.get(position).nomeSvagoF, mValues.get(position).descrizioneSvagoF, mValues.get(position).viaSvagoF, mValues.get(position).orariSvagoF, mValues.get(position).costoSvagoF, mValues.get(position).id};
+                                    i.putExtra("Testi", testi);
+                                    i.putExtra("Valori", valori);
+                                    startActivity(i);
                                     break;
                                 case R.id.menuElimina:
 
-                                    Toast.makeText(getApplicationContext(), "Add to Wish List Clicked at position " + " : " , Toast.LENGTH_LONG).show();
-
+                                    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                    DatabaseReference ref = database.getReference();
+                                    ref.child("Svago Famiglie").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
+                                        @Override
+                                        public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                                            MyAsyncTask task = new MyAsyncTask("Svago Famiglie");
+                                            task.execute();
+                                            mValues.remove(position);
+                                            onBindViewHolder(holder, position - 1);
+                                            Toast.makeText(getApplicationContext(), "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                     break;
-
                                 default:
                                     break;
                             }
