@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             case R.id.homeDiario:{
-                intent = new Intent(this, JournalActivity.class);
+                intent = new Intent(this, DiarioListActivity.class);
                 startActivity(intent);
                 break;
             }

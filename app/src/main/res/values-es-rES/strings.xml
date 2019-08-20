@@ -49,5 +49,7 @@
     <string name="elimina">Borrar</string>
     <string name="aggiungi">" Añadir"</string>
     <string name="modifica">Modificar</string>
+    <string name="title_diario_detail">Detalles del recuerdo</string>
+    <string name="title_diario_list">Diario</string>
 
 </resources>
