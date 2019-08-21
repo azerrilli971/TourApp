@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -38,6 +39,7 @@ import java.util.UUID;
 import uniba.di.sms.ibtourapp.tourapp.dummy.Alberghi;
 import uniba.di.sms.ibtourapp.tourapp.dummy.BeBs;
 import uniba.di.sms.ibtourapp.tourapp.dummy.Chiese;
+import uniba.di.sms.ibtourapp.tourapp.dummy.Diari;
 import uniba.di.sms.ibtourapp.tourapp.dummy.Gelaterie;
 import uniba.di.sms.ibtourapp.tourapp.dummy.Monumenti;
 import uniba.di.sms.ibtourapp.tourapp.dummy.Musei;
@@ -58,6 +60,7 @@ public class CustomListActivity extends AppCompatActivity {
     private String download;
     String[] val = {"0"};
     String path = "01";
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +74,7 @@ public class CustomListActivity extends AppCompatActivity {
         if(b.size() > 1) {
             val = b.getStringArray("Valori");
         }
+        mAuth = FirebaseAuth.getInstance();
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT));
@@ -329,6 +333,18 @@ public class CustomListActivity extends AppCompatActivity {
                                 }
                             });
                         }
+                        finish();
+                        break;
+                    case "Diari" :
+                        Diari.DummyItem diario = new Diari.DummyItem();
+                        diario = Diari.addItemList(dummyInfo);
+                        diario.setRicordo(download);
+                        ref.child("Diari").child(mAuth.getCurrentUser().getUid()).child("01").setValue(diario).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                         finish();
                         break;
                 }

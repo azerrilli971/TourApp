@@ -1,6 +1,12 @@
 package uniba.di.sms.ibtourapp.tourapp;
 
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
+import android.util.Log;
+import android.widget.Toast;
+import android.widget.Toolbar;
+
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -9,6 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import uniba.di.sms.ibtourapp.tourapp.dummy.Alberghi;
 import uniba.di.sms.ibtourapp.tourapp.dummy.Chiese;
+import uniba.di.sms.ibtourapp.tourapp.dummy.Diari;
 import uniba.di.sms.ibtourapp.tourapp.dummy.Gelaterie;
 import uniba.di.sms.ibtourapp.tourapp.dummy.Monumenti;
 import uniba.di.sms.ibtourapp.tourapp.dummy.Musei;
@@ -22,16 +29,17 @@ public class MyAsyncTask extends AsyncTask {
     public MyAsyncTask(String newContex) {
         this.context = newContex;
     }
+    private FirebaseAuth mAuth;
 
     @Override
     protected Object doInBackground(Object[] objects) {
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference();
-
+        final DatabaseReference ref = database.getReference();
+        mAuth = FirebaseAuth.getInstance();
         ref.child(context).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                for (final DataSnapshot data : dataSnapshot.getChildren()) {
                     switch(context) {
                         case "Monumenti" :
                             Monumenti.DummyItem item = data.getValue(Monumenti.DummyItem.class);
@@ -85,6 +93,32 @@ public class MyAsyncTask extends AsyncTask {
                             Alberghi.DummyItem albergo = data.getValue(Alberghi.DummyItem.class);
                             albergo.setId(data.getKey());
                             Alberghi.addItem(new Alberghi.DummyItem(albergo.id, albergo.nomeHotel, albergo.viaHotel, albergo.costoHotel, albergo.descrizioneHotel, albergo.immagineHotel));
+                            break;
+                        case "Diari" :
+                            ref.child(context).child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    for (DataSnapshot temp: dataSnapshot.getChildren()
+                                         ) {
+                                            Diari.DummyItem diario = new Diari.DummyItem();
+                                            diario = temp.getValue(Diari.DummyItem.class);
+                                            diario.setId(temp.getKey());
+                                            int flag = 1;
+                                        for (Diari.DummyItem ite: Diari.ITEMS
+                                             ) {
+                                            if (ite.getId() == diario.getId())
+                                                flag = 0;
+                                        }
+                                        if (flag == 1)
+                                            Diari.addItem(new Diari.DummyItem(diario.id, diario.ricordo, diario.descrizioneRicordo));
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
                         default:
                             break;
                     }
