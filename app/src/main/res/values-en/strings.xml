@@ -49,5 +49,7 @@
     <string name="elimina">Delete</string>
     <string name="aggiungi">Add</string>
     <string name="modifica">Modify</string>
+    <string name="title_diario_detail">Memories details</string>
+    <string name="title_diario_list">Journal</string>
 
 </resources>

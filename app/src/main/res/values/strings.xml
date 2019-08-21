@@ -77,4 +77,6 @@
     <string name="aggiungi">Aggiungi</string>
     <string name="elimina">Elimina</string>
     <string name="modifica">Modifica</string>
+    <string name="title_diario_list">Diari</string>
+    <string name="title_diario_detail">Dettaglio Ricordo</string>
 </resources>

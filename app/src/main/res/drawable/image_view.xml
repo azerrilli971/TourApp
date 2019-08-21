@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView
+        android:id="@+id/ricordo"
+        android:layout_width="202dp"
+        android:layout_height="104dp"
+        android:src="@drawable/hotelnazioni" />
+</selector>

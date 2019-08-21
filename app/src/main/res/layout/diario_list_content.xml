@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="10dp">
+
+
+
+           <ImageView
+               android:id="@+id/ricordo"
+               android:layout_width="202dp"
+               android:layout_height="104dp"
+               android:src="@drawable/hotelnazioni" />
+
+</LinearLayout>
