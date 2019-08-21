@@ -13,6 +13,7 @@ import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
@@ -32,10 +33,8 @@ public class DiarioDetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
         ImageView toolbarImage = (ImageView) findViewById(R.id.image_id);
-        String url = "https://www.voyage-prive.it/s/images/visual/login/backgrounds/2048x1463-ponton.jpg"; //place your url here
-        picassoLoader(this, toolbarImage, url);
-
-
+        Bundle a = getIntent().getExtras();
+        picassoLoader(this, toolbarImage, a.getString("Immagine"));
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

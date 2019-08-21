@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +16,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import uniba.di.sms.ibtourapp.tourapp.dummy.Diari;
 
@@ -35,6 +44,8 @@ public class DiarioListActivity extends AppCompatActivity {
      * device.
      */
     private boolean mTwoPane;
+    private FirebaseAuth mAuth;
+    private String image = "https://firebasestorage.googleapis.com/v0/b/tourapp-9d024.appspot.com/o/images%2F947bde07-5138-4029-a77d-34fa9febf8d6?alt=media&token=e2acdc3d-aa98-4414-85d4-7e930df44562";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +61,8 @@ public class DiarioListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(DiarioListActivity.this, CustomListActivity.class);
-                //String[] testi = {"Diari","Descrizione Ricordo"};
-                //String[] valori;
-                //i.putExtra("Testi", testi);
+                String[] testi = {"Diari","Descrizione Ricordo"};
+                i.putExtra("Testi", testi);
                 startActivity(i);
             }
         });
@@ -64,7 +74,7 @@ public class DiarioListActivity extends AppCompatActivity {
             // activity should be in two-pane mode.
             mTwoPane = true;
         }
-
+        mAuth = FirebaseAuth.getInstance();
         View recyclerView = findViewById(R.id.diario_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
@@ -74,7 +84,7 @@ public class DiarioListActivity extends AppCompatActivity {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, Diari.ITEMS, mTwoPane));
     }
 
-    public static class SimpleItemRecyclerViewAdapter
+    public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final DiarioListActivity mParentActivity;
@@ -96,7 +106,7 @@ public class DiarioListActivity extends AppCompatActivity {
                     Context context = view.getContext();
                     Intent intent = new Intent(context, DiarioDetailActivity.class);
                     intent.putExtra(DiarioDetailFragment.ARG_ITEM_ID, item.id);
-
+                    intent.putExtra("Immagine", image);
                     context.startActivity(intent);
                 }
             }
@@ -118,29 +128,30 @@ public class DiarioListActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
-
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.mEliminaRicordo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //inserire query eliminazione
-                    /*final
+
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference ref = database.getReference();
-                    ref.child("Diari").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
+                    ref.child("Diari").child(mAuth.getCurrentUser().getUid()).child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
                     @Override
-                    public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                        MyAsyncTask task = new MyAsyncTask("Diari");
-                        task.execute();
-                                mValues.remove(position);
-                                            onBindViewHolder(holder, position - 1);
-                                            Toast.makeText(getApplicationContext(), "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });*/
+                        public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+
+                            MyAsyncTask task = new MyAsyncTask("Diari");
+                            task.execute();
+                            mValues.remove(position);
+                            onBindViewHolder(holder, position - 1);
+                            Toast.makeText(DiarioListActivity.this, "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             });
+            Picasso.get().load(mValues.get(position).ricordo).into(holder.mRicordo);
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
+            image = mValues.get(position).ricordo;
         }
 
         @Override
