@@ -7,6 +7,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import uniba.di.sms.ibtourapp.tourapp.dummy.Alberghi;
 import uniba.di.sms.ibtourapp.tourapp.dummy.Chiese;
 import uniba.di.sms.ibtourapp.tourapp.dummy.Gelaterie;
 import uniba.di.sms.ibtourapp.tourapp.dummy.Monumenti;
@@ -80,6 +81,10 @@ public class MyAsyncTask extends AsyncTask {
                             svagoFamiglie.setId(data.getKey());
                             SvagoFamiglie.addItem(new SvagoFamiglie.DummyItem(svagoFamiglie.id, svagoFamiglie.nomeSvagoF, svagoFamiglie.viaSvagoF, svagoFamiglie.orariSvagoF, svagoFamiglie.costoSvagoF, svagoFamiglie.descrizioneSvagoF, svagoFamiglie.immagineSvagoF));
                             break;
+                        case "Alberghi" :
+                            Alberghi.DummyItem albergo = data.getValue(Alberghi.DummyItem.class);
+                            albergo.setId(data.getKey());
+                            Alberghi.addItem(new Alberghi.DummyItem(albergo.id, albergo.nomeHotel, albergo.viaHotel, albergo.costoHotel, albergo.descrizioneHotel, albergo.immagineHotel));
                         default:
                             break;
                     }

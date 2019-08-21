@@ -34,7 +34,6 @@ public class JournalActivity extends AppCompatActivity implements NavigationView
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-
     }
 
 
