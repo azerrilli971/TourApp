@@ -3,6 +3,7 @@ package uniba.di.sms.ibtourapp.tourapp;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -48,8 +49,11 @@ public class DiarioListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent i = new Intent(DiarioListActivity.this, CustomListActivity.class);
+                //String[] testi = {"Diari","Descrizione Ricordo"};
+                //String[] valori;
+                //i.putExtra("Testi", testi);
+                startActivity(i);
             }
         });
 
@@ -116,7 +120,25 @@ public class DiarioListActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
 
-
+            holder.mEliminaRicordo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //inserire query eliminazione
+                    /*final
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference ref = database.getReference();
+                    ref.child("Diari").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                        MyAsyncTask task = new MyAsyncTask("Diari");
+                        task.execute();
+                                mValues.remove(position);
+                                            onBindViewHolder(holder, position - 1);
+                                            Toast.makeText(getApplicationContext(), "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });*/
+                }
+            });
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
         }
@@ -128,10 +150,12 @@ public class DiarioListActivity extends AppCompatActivity {
 
         class ViewHolder extends RecyclerView.ViewHolder {
             final ImageView mRicordo;
+            final ImageView mEliminaRicordo;
 
             ViewHolder(View view) {
                 super(view);
                 mRicordo = (ImageView) view.findViewById(R.id.ricordo);
+                mEliminaRicordo = (ImageView) view.findViewById(R.id.tasto_elimina);
             }
         }
     }

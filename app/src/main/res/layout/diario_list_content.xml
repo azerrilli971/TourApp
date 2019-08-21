@@ -2,16 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="10dp">
+    android:orientation="horizontal"
+    android:paddingTop="10dp">
 
 
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
-           <ImageView
-               android:id="@+id/ricordo"
-               android:layout_width="202dp"
-               android:layout_height="104dp"
-               android:src="@drawable/hotelnazioni" />
+        <ImageView
+            android:id="@+id/ricordo"
+            android:layout_width="202dp"
+            android:layout_height="104dp"
+            android:src="@drawable/hotelnazioni" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_gravity="end">
+
+        <ImageView
+            android:id="@+id/tasto_elimina"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_delete_black_24dp" />
+    </LinearLayout>
 
 </LinearLayout>
