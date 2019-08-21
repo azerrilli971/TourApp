@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         menuEsploraCV.setOnClickListener(this);
         menuDiarioCV.setOnClickListener(this);
         menuCouponCV.setOnClickListener(this);
+
     }
 
     @Override
