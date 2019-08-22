@@ -1,43 +1,38 @@
 package uniba.di.sms.ibtourapp.tourapp;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.ImageView;
-
-import com.squareup.picasso.Picasso;
 
 /**
- * An activity representing a single Diario detail screen. This
+ * An activity representing a single Coupon detail screen. This
  * activity is only used on narrow width devices. On tablet-size devices,
  * item details are presented side-by-side with a list of items
- * in a {@link DiarioListActivity}.
+ * in a {@link CouponListActivity}.
  */
-public class DiarioDetailActivity extends AppCompatActivity {
+public class CouponDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_diario_detail);
+        setContentView(R.layout.activity_coupon_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
 
-        //---------------------------------------------
-        ImageView toolbarImage = (ImageView) findViewById(R.id.image_id);
-        Bundle a = getIntent().getExtras();
-        picassoLoader(this, toolbarImage, a.getString("Immagine"));
-        //---------------------------------------------
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
         // Show the Up button in the action bar.
         ActionBar actionBar = getSupportActionBar();
@@ -58,12 +53,12 @@ public class DiarioDetailActivity extends AppCompatActivity {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(DiarioDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(DiarioDetailFragment.ARG_ITEM_ID));
-            DiarioDetailFragment fragment = new DiarioDetailFragment();
+            arguments.putString(CouponDetailFragment.ARG_ITEM_ID,
+                    getIntent().getStringExtra(CouponDetailFragment.ARG_ITEM_ID));
+            CouponDetailFragment fragment = new CouponDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.diario_detail_container, fragment)
+                    .add(R.id.coupon_detail_container, fragment)
                     .commit();
         }
     }
@@ -78,19 +73,9 @@ public class DiarioDetailActivity extends AppCompatActivity {
             //
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
             //
-            navigateUpTo(new Intent(this, DiarioListActivity.class));
+            navigateUpTo(new Intent(this, CouponListActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-    //---------------------------------------------------------
-    public void picassoLoader(Context context, ImageView imageView, String url){
-        Log.d("PICASSO", "loading image");
-        Picasso.get()
-                .load(url)
-                //.resize(30,30)
-                .placeholder(R.drawable.niente_immagine)
-                .error(R.drawable.ops)
-                .into(imageView);
     }
 }

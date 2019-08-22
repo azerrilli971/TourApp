@@ -155,7 +155,9 @@ public class DiarioListActivity extends AppCompatActivity {
                                     MyAsyncTask task = new MyAsyncTask("Diari");
                                     task.execute();
                                     mValues.remove(position);
-                                    onBindViewHolder(holder, position - 1);
+                                    if(position != 0) {
+                                        onBindViewHolder(holder, position - 1);
+                                    }
                                     Toast.makeText(DiarioListActivity.this, "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
                                 }
                             });
@@ -169,6 +171,7 @@ public class DiarioListActivity extends AppCompatActivity {
 
             Picasso.get().load(mValues.get(position).ricordo).into(holder.mRicordo);
             holder.itemView.setTag(mValues.get(position));
+            holder.mDataRicordo.setText(mValues.get(position).dataRicordo);
             holder.itemView.setOnClickListener(mOnClickListener);
             image = mValues.get(position).ricordo;
         }
@@ -181,11 +184,13 @@ public class DiarioListActivity extends AppCompatActivity {
         class ViewHolder extends RecyclerView.ViewHolder {
             final ImageView mRicordo;
             final ImageView mEliminaRicordo;
+            final TextView mDataRicordo;
 
             ViewHolder(View view) {
                 super(view);
                 mRicordo = (ImageView) view.findViewById(R.id.ricordo);
                 mEliminaRicordo = (ImageView) view.findViewById(R.id.tasto_elimina);
+                mDataRicordo = (TextView) view.findViewById(R.id.data);
             }
         }
     }

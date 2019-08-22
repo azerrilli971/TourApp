@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class ExploreActivity extends AppCompatActivity implements View.OnClickListener ,NavigationView.OnNavigationItemSelectedListener {
 
@@ -187,12 +188,10 @@ public class ExploreActivity extends AppCompatActivity implements View.OnClickLi
                 }
                 break;
             case R.id.nav_logout:
+                FirebaseAuth.getInstance().signOut();
                 Intent n = new Intent (this, LoginActivity.class);
                 startActivity(n);
                 break;
-
-
-
         }
 
 

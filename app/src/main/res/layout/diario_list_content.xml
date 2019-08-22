@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingTop="10dp"
-    android:gravity="center_vertical"
+    android:gravity="center"
     >
 
 
@@ -36,14 +36,23 @@
 
         <ImageView
             android:id="@+id/tasto_elimina"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:src="@drawable/ic_more_vert_black_24dp" />
     </LinearLayout>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        style="@style/TextAppearance.AppCompat.Medium"
+        />
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@color/colorPrimary" />
+
 </LinearLayout>

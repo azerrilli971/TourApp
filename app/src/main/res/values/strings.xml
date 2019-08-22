@@ -9,41 +9,31 @@
     <string name="btnCoupon">Salva Coupon</string>
     <string name="loading">Caricamento in corso...</string>
 
-    <string-array name="planets_array">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
-    </string-array>
-
     <string name="homeEsplora">Esplora</string>
+
     <string name="homeDiario">Il mio diario</string>
     <string name="homeCoupon">I miei coupon</string>
-
     <string name="esploraInteressi">Interessi</string>
+
     <string name="esploraMangiare">Dove mangiare</string>
     <string name="esploraDormire">Dove dormire</string>
-
-
     <string name="mangiareGelaterie" translatable="false">Gelaterie</string>
+
+
     <string name="mangiareRistoranti">Ristoranti</string>
     <string name="mangiarePizzerie" translatable="false">Pizzerie</string>
-
     <string name="dormireHotel" translatable="false">Hotel</string>
-    <string name="dormireBB" translatable="false">B and B</string>
 
+    <string name="dormireBB" translatable="false">B and B</string>
     <string name="interessiFamiglie">Svago per famiglie</string>
+
     <string name="interessiGiovani">Locali e discoteche</string>
     <string name="interessiLidi">Lidi</string>
     <string name="interessiMusei">Musei</string>
     <string name="interessiMonumenti">Monumenti</string>
     <string name="interessiChiese">Chiese</string>
-
     <string name="hotelNicolaus" translatable="false">Nicolaus Hotel</string>
+
     <string name="hotelNicolausVia">Via Ciasca, 27, 70124, Bari, Italia</string>
     <string name="hotelNicolausCosto" translatable="false">$$$$</string>
     <string name="title_monument_list">Monumenti</string>
@@ -70,13 +60,25 @@
     <string name="title_albergo_detail">Dettaglio Albergo</string>
     <string name="title_beb_list">B e B</string>
     <string name="title_beb_detail">Dettaglio BeB </string>
-
     <string name="textLoginInfoPoint">Info Point? Clicca qui</string>
-    <string name="logout" translatable="false">Logout</string>
 
+    <string name="logout" translatable="false">Logout</string>
     <string name="aggiungi">Aggiungi</string>
+
     <string name="elimina">Elimina</string>
     <string name="modifica">Modifica</string>
     <string name="title_diario_list">Diari</string>
     <string name="title_diario_detail">Dettaglio Ricordo</string>
+    <string name="title_coupon_list" translatable="false">Coupons</string>
+    <string name="title_coupon_detail" translatable="false">Coupon Detail</string>
+    <string-array name="planets_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
 </resources>
