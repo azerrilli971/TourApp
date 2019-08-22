@@ -7,6 +7,7 @@ import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
@@ -133,24 +134,39 @@ public class DiarioListActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.mEliminaRicordo.setOnClickListener(new View.OnClickListener() {
-                @Override
+                //giustp   @Override
                 public void onClick(View view) {
+                    PopupMenu popup = new PopupMenu(DiarioListActivity.this, view);
+                    popup.getMenuInflater().inflate(R.menu.menu_elimina,
+                            popup.getMenu());
+                    popup.show();
+                    popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
 
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    DatabaseReference ref = database.getReference();
-                    ref.child("Diari").child(mAuth.getCurrentUser().getUid()).child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
-                    @Override
-                        public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
 
-                            MyAsyncTask task = new MyAsyncTask("Diari");
-                            task.execute();
-                            mValues.remove(position);
-                            onBindViewHolder(holder, position - 1);
-                            Toast.makeText(DiarioListActivity.this, "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference ref = database.getReference();
+                            ref.child("Diari").child(mAuth.getCurrentUser().getUid()).child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
+
+                                @Override
+                                public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+
+                                    MyAsyncTask task = new MyAsyncTask("Diari");
+                                    task.execute();
+                                    mValues.remove(position);
+                                    onBindViewHolder(holder, position - 1);
+                                    Toast.makeText(DiarioListActivity.this, "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        return true;
                         }
                     });
                 }
             });
+
+
+
             Picasso.get().load(mValues.get(position).ricordo).into(holder.mRicordo);
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
