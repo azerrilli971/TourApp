@@ -195,9 +195,6 @@
             android:name=".ExploreActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".JournalActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".CouponsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".NewCouponActivity">

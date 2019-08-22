@@ -125,7 +125,7 @@ public class InterestActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(h);
                 break;
             case R.id.nav_diary:
-                Intent i= new Intent(this,JournalActivity.class);
+                Intent i= new Intent(this,DiarioListActivity.class);
                 startActivity(i);
                 break;
             case R.id.nav_coupon:

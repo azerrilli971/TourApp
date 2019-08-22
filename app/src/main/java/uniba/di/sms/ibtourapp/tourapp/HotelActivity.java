@@ -90,7 +90,7 @@ public class HotelActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(h);
                 break;
             case R.id.nav_diary:
-                Intent i= new Intent(this,JournalActivity.class);
+                Intent i= new Intent(this,DiarioListActivity.class);
                 startActivity(i);
                 break;
             case R.id.nav_coupon:

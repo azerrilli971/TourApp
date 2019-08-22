@@ -172,7 +172,7 @@ public class ExploreActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.nav_diary:
                 if (utente) {
-                    Intent i = new Intent(this, JournalActivity.class);
+                    Intent i = new Intent(this, DiarioListActivity.class);
                     startActivity(i);
                 } else {
                     Toast.makeText(getApplicationContext(), "Questa funzione non è disponibile per gli InfoPoint", Toast.LENGTH_LONG).show();
