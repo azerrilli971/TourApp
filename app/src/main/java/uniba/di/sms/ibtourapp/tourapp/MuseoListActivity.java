@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -106,6 +107,7 @@ public class MuseoListActivity extends AppCompatActivity {
                 String[] testi = {"Musei","Nome Museo", "Descrizione Museo", "Via Museo", "Orari Museo"};
                 i.putExtra("Testi", testi);
                 startActivity(i);
+
             }
         });
 
@@ -174,6 +176,14 @@ public class MuseoListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
+            if(position == -1) {
+                LinearLayout linearLayout = new LinearLayout(getApplicationContext());
+                linearLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                TextView view = new TextView(getApplicationContext());
+                view.setText("Non ci sono musei presenti");
+                view.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                setContentView(linearLayout);
+            }
             holder.mNomeMuseo.setText(mValues.get(position).nomeMuseo);
             holder.mViaMuseo.setText(mValues.get(position).viaMuseo);
             holder.mOrariMuseo.setText(mValues.get(position).orariMuseo);

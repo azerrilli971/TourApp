@@ -155,7 +155,9 @@ public class DiarioListActivity extends AppCompatActivity {
                                     MyAsyncTask task = new MyAsyncTask("Diari");
                                     task.execute();
                                     mValues.remove(position);
-                                    onBindViewHolder(holder, position - 1);
+                                    if(position != 0) {
+                                        onBindViewHolder(holder, position - 1);
+                                    }
                                     Toast.makeText(DiarioListActivity.this, "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
                                 }
                             });

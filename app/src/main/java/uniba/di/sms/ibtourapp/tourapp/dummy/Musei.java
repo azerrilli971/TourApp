@@ -30,11 +30,6 @@ public class Musei {
 
     private static final int COUNT = 25;
 
-    static {
-        // Add some sample items.
-        addItem(new DummyItem("1","uffizi","awe", "bella zio", "oeifmslò", "lfekl"));
-    }
-
     public static void addItem(DummyItem item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.id, item);

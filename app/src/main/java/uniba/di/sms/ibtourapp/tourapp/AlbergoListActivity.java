@@ -215,7 +215,9 @@ public class AlbergoListActivity extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
                                             mValues.remove(position);
-                                            onBindViewHolder(holder, position - 1);
+                                            if(position != 0) {
+                                                onBindViewHolder(holder, position - 1);
+                                            }
                                             Toast.makeText(getApplicationContext(), "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
                                         }
                                     });

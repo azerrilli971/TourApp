@@ -1,6 +1,9 @@
 package uniba.di.sms.ibtourapp.tourapp;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -89,6 +92,44 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onStart() {
         super.onStart();
+        if(mAuth.getCurrentUser() != null) {
+            UsersDbHelper dbHelper = new UsersDbHelper(getApplicationContext());
+            SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+            String[] projection = {
+                    BaseColumns._ID,
+                    UsersList.FeedEntry.COLUMN_NAME_TITLE,
+                    UsersList.FeedEntry.COLUMN_NAME_SUBTITLE
+            };
+
+            String selection = UsersList.FeedEntry.COLUMN_NAME_TITLE + " = ?";
+            String[] selectionArgs = { mAuth.getCurrentUser().getUid() };
+
+            String sortOrder =
+                    UsersList.FeedEntry.COLUMN_NAME_SUBTITLE + " DESC";
+
+            Cursor cursor = db.query(
+                    UsersList.FeedEntry.TABLE_NAME,   // The table to query
+                    projection,             // The array of columns to return (pass null to get all)
+                    selection,              // The columns for the WHERE clause
+                    selectionArgs,          // The values for the WHERE clause
+                    null,                   // don't group the rows
+                    null,
+                    sortOrder
+            );
+
+            while(cursor.moveToNext()) {
+                int itemId = cursor.getInt(
+                        cursor.getColumnIndexOrThrow(UsersList.FeedEntry.COLUMN_NAME_SUBTITLE));
+                if(itemId == 0) {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                } else {
+
+                }
+            }
+            cursor.close();
+        }
     }
 
     @Override
@@ -104,7 +145,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.textLoginInfoPoint:
-                finish();
                 startActivity(new Intent(this, LoginInfoActivity.class));
                 break;
         }

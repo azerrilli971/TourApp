@@ -214,7 +214,9 @@ public class ChiesaListActivity extends AppCompatActivity {
                                             MyAsyncTask task = new MyAsyncTask("Chiese");
                                             task.execute();
                                             mValues.remove(position);
-                                            onBindViewHolder(holder, position - 1);
+                                            if(position != 0) {
+                                                onBindViewHolder(holder, position - 1);
+                                            }
                                             Toast.makeText(getApplicationContext(), "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
                                         }
                                     });
