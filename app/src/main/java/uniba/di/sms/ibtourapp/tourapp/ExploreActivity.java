@@ -1,6 +1,9 @@
 package uniba.di.sms.ibtourapp.tourapp;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.provider.BaseColumns;
 import android.support.annotation.NonNull;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,6 +16,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ExploreActivity extends AppCompatActivity implements View.OnClickListener ,NavigationView.OnNavigationItemSelectedListener {
 
@@ -20,6 +26,7 @@ public class ExploreActivity extends AppCompatActivity implements View.OnClickLi
     private DrawerLayout drawer;
     private Toolbar toolbar;
     private NavigationView navigationView;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +119,51 @@ public class ExploreActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id=item.getItemId();
+        boolean utente = true;
+
+        mAuth = FirebaseAuth.getInstance();
+        UsersDbHelper dbHelper = new UsersDbHelper(getApplicationContext());
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+// Define a projection that specifies which columns from the database
+// you will actually use after this query.
+        String[] projection = {
+                BaseColumns._ID,
+                UsersList.FeedEntry.COLUMN_NAME_TITLE,
+                UsersList.FeedEntry.COLUMN_NAME_SUBTITLE
+        };
+
+// Filter results WHERE "title" = 'My Title'
+        String selection = UsersList.FeedEntry.COLUMN_NAME_TITLE + " = ?";
+        String[] selectionArgs = { mAuth.getCurrentUser().getUid() };
+
+// How you want the results sorted in the resulting Cursor
+        String sortOrder =
+                UsersList.FeedEntry.COLUMN_NAME_SUBTITLE + " DESC";
+
+        Cursor cursor = db.query(
+                UsersList.FeedEntry.TABLE_NAME,   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                sortOrder               // The sort order
+        );
+
+        while(cursor.moveToNext()) {
+            int itemId = cursor.getInt(
+                    cursor.getColumnIndexOrThrow(UsersList.FeedEntry.COLUMN_NAME_SUBTITLE));
+            if(itemId == 0) {
+
+                utente = true;
+                Toast.makeText(getApplicationContext(), "Questo utente non è un infopoint", Toast.LENGTH_LONG).show();
+            } else {
+
+              utente = false;
+            }
+        }
+        cursor.close();
         switch (id){
 
             case R.id.nav_explore:
@@ -119,12 +171,20 @@ public class ExploreActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(h);
                 break;
             case R.id.nav_diary:
-                Intent i= new Intent(this,JournalActivity.class);
-                startActivity(i);
+                if (utente) {
+                    Intent i = new Intent(this, JournalActivity.class);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Questa funzione non è disponibile per gli InfoPoint", Toast.LENGTH_LONG).show();
+                }
                 break;
             case R.id.nav_coupon:
+                if (utente){
                 Intent g= new Intent(this,CouponsActivity.class);
-                startActivity(g);
+                startActivity(g);}
+                else {
+                    Toast.makeText(getApplicationContext(), "Questa funzione non è disponibile per gli InfoPoint", Toast.LENGTH_LONG).show();
+                }
                 break;
             case R.id.nav_logout:
                 Intent n = new Intent (this, LoginActivity.class);
