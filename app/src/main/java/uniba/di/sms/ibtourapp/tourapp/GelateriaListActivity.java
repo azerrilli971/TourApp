@@ -220,6 +220,7 @@ public class GelateriaListActivity extends AppCompatActivity {
                                                 onBindViewHolder(holder, position - 1);
                                             }
                                             Toast.makeText(getApplicationContext(), "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
+                                            notifyDataSetChanged();
                                         }
                                     });
                                     break;
