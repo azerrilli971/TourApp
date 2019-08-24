@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,8 +26,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -61,6 +65,7 @@ public class CustomListActivity extends AppCompatActivity {
     String[] val = {"0"};
     String path = "01";
     private FirebaseAuth mAuth;
+    Long counter = new Long(0);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +120,19 @@ public class CustomListActivity extends AppCompatActivity {
                                 }
                             });
                         } else {
-                            ref.child(testi[0]).child(path).setValue(museo).addOnSuccessListener(new OnSuccessListener<Void>() {
+
+                            ref.child(testi[0]).addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    counter  = dataSnapshot.getChildrenCount();
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
+                            ref.child(testi[0]).child(counter.toString()).setValue(museo).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();

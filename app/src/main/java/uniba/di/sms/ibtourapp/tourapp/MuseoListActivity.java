@@ -14,10 +14,12 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -103,11 +105,12 @@ public class MuseoListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FrameLayout frame = findViewById(R.id.frameLayout);
+                frame.setVisibility(View.VISIBLE);
                 Intent i = new Intent(MuseoListActivity.this, CustomListActivity.class);
                 String[] testi = {"Musei","Nome Museo", "Descrizione Museo", "Via Museo", "Orari Museo"};
                 i.putExtra("Testi", testi);
                 startActivity(i);
-
             }
         });
 
@@ -122,7 +125,12 @@ public class MuseoListActivity extends AppCompatActivity {
         View recyclerView = findViewById(R.id.museo_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
+
+        if(Musei.COUNT == 0) {
+            Toast.makeText(getApplicationContext(), "Non ci sono musei" , Toast.LENGTH_LONG).show();
+        }
     }
+
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, Musei.ITEMS, mTwoPane));
@@ -175,70 +183,65 @@ public class MuseoListActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(final ViewHolder holder, final int position) {
-            if(position == -1) {
-                LinearLayout linearLayout = new LinearLayout(getApplicationContext());
-                linearLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-                TextView view = new TextView(getApplicationContext());
-                view.setText("Non ci sono musei presenti");
-                view.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-                setContentView(linearLayout);
-            }
-            holder.mNomeMuseo.setText(mValues.get(position).nomeMuseo);
-            holder.mViaMuseo.setText(mValues.get(position).viaMuseo);
-            holder.mOrariMuseo.setText(mValues.get(position).orariMuseo);
-            Toast.makeText(getApplicationContext(), mValues.get(position).id.toString(), Toast.LENGTH_SHORT).show();
-            holder.mInfoMenu.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    PopupMenu popup = new PopupMenu(MuseoListActivity.this, view);
-                    popup.getMenuInflater().inflate(R.menu.menu_info,
-                            popup.getMenu());
-                    popup.show();
-                    popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                        @Override
-                        public boolean onMenuItemClick(MenuItem item) {
+            public void onBindViewHolder(final ViewHolder holder, final int position) {
+                holder.mNomeMuseo.setText(mValues.get(position).nomeMuseo);
+                holder.mViaMuseo.setText(mValues.get(position).viaMuseo);
+                holder.mOrariMuseo.setText(mValues.get(position).orariMuseo);
+                holder.mInfoMenu.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        PopupMenu popup = new PopupMenu(MuseoListActivity.this, view);
+                        popup.getMenuInflater().inflate(R.menu.menu_info,
+                                popup.getMenu());
+                        popup.show();
+                        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem item) {
 
-                            switch (item.getItemId()) {
-                                case R.id.menuModifica:
+                                switch (item.getItemId()) {
+                                    case R.id.menuModifica:
+                                        //Or Some other code you want to put here.. This is just an example
+                                        Toast.makeText(getApplicationContext(), " Install Clicked at position " + " : " , Toast.LENGTH_LONG).show();
+                                        Intent i = new Intent(MuseoListActivity.this, CustomListActivity.class);
+                                        String[] testi = {"Musei","Nome Museo", "Descrizione Museo", "Via Museo", "Orari Museo"};
+                                        String[] valori = {mValues.get(position).nomeMuseo, mValues.get(position).descrizioneMuseo, mValues.get(position).viaMuseo, mValues.get(position).orariMuseo, mValues.get(position).id};
+                                        i.putExtra("Testi", testi);
+                                        i.putExtra("Valori", valori);
+                                        startActivity(i);
+                                        break;
+                                    case R.id.menuElimina:
 
-                                    //Or Some other code you want to put here.. This is just an example
-                                    Toast.makeText(getApplicationContext(), " Install Clicked at position " + " : " , Toast.LENGTH_LONG).show();
-                                    Intent i = new Intent(MuseoListActivity.this, CustomListActivity.class);
-                                    String[] testi = {"Musei","Nome Museo", "Descrizione Museo", "Via Museo", "Orari Museo"};
-                                    String[] valori = {mValues.get(position).nomeMuseo, mValues.get(position).descrizioneMuseo, mValues.get(position).viaMuseo, mValues.get(position).orariMuseo, mValues.get(position).id};
-                                    i.putExtra("Testi", testi);
-                                    i.putExtra("Valori", valori);
-                                    startActivity(i);
-                                    break;
-                                case R.id.menuElimina:
+                                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                        DatabaseReference ref = database.getReference();
+                                        ref.child("Musei").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
+                                            @Override
+                                            public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                                                mValues.remove(position);
+                                                Musei.ITEMS.remove(position);
+                                                MyAsyncTask task = new MyAsyncTask("Musei");
+                                                task.execute();
+                                                if((position-1) == -1) {
+                                                    FrameLayout frame = findViewById(R.id.frameLayout);
+                                                    frame.setVisibility(View.INVISIBLE);
+                                                } else {
+                                                    onBindViewHolder(holder, position - 1);
+                                                }
+                                                Toast.makeText(getApplicationContext(), "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                        break;
 
-                                    final FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                    DatabaseReference ref = database.getReference();
-                                    ref.child("Musei").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
-                                        @Override
-                                        public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                                            MyAsyncTask task = new MyAsyncTask("Musei");
-                                            task.execute();
-                                            mValues.remove(position);
-                                            onBindViewHolder(holder, position - 1);
-                                            Toast.makeText(getApplicationContext(), "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                                    break;
-
-                                default:
-                                    break;
+                                    default:
+                                        break;
+                                }
+                                return true;
                             }
-
-                            return true;
-                        }
-                    });
-                }
-            });
-            Picasso.get().load(mValues.get(position).immagineMuseo).into(holder.mImmagineMuseo);
-            holder.itemView.setTag(mValues.get(position));
-            holder.itemView.setOnClickListener(mOnClickListener);
+                        });
+                    }
+                });
+                Picasso.get().load(mValues.get(position).immagineMuseo).into(holder.mImmagineMuseo);
+                holder.itemView.setTag(mValues.get(position));
+                holder.itemView.setOnClickListener(mOnClickListener);
         }
 
         @Override
@@ -270,7 +273,6 @@ public class MuseoListActivity extends AppCompatActivity {
         if(item.getItemId() == android.R.id.home){
             finish();
         }
-
         return super.onOptionsItemSelected(item);
     }
 
