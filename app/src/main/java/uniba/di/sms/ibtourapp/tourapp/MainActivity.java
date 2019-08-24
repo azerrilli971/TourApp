@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         menuEsploraCV = findViewById(R.id.homeEsplora);
         menuDiarioCV = findViewById(R.id.homeDiario);
         menuCouponCV = findViewById(R.id.homeCoupon);
+        MyAsyncTask myAsyncTask = new MyAsyncTask("Diari");
+        myAsyncTask.execute();
 
         mAuth = FirebaseAuth.getInstance();
         UsersDbHelper dbHelper = new UsersDbHelper(getApplicationContext());
@@ -132,8 +134,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             case R.id.homeDiario:{
-                MyAsyncTask myAsyncTask = new MyAsyncTask("Diari");
-                myAsyncTask.execute();
+
                 intent = new Intent(this, DiarioListActivity.class);
                 startActivity(intent);
                 break;

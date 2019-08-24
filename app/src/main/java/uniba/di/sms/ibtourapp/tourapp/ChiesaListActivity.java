@@ -205,22 +205,25 @@ public class ChiesaListActivity extends AppCompatActivity {
                                     startActivity(i);
                                     break;
                                 case R.id.menuElimina:
-
                                     final FirebaseDatabase database = FirebaseDatabase.getInstance();
                                     DatabaseReference ref = database.getReference();
-                                    ref.child("Chiese").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
-                                        @Override
-                                        public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                                            MyAsyncTask task = new MyAsyncTask("Chiese");
-                                            task.execute();
-                                            mValues.remove(position);
-                                            if(position != 0) {
-                                                onBindViewHolder(holder, position - 1);
+                                    openDialog();
+                                        ref.child("Chiese").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
+                                            @Override
+                                            public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                                                MyAsyncTask task = new MyAsyncTask("Chiese");
+                                                task.execute();
+                                                mValues.remove(position);
+                                                if(position != 0) {
+                                                    onBindViewHolder(holder, position - 1);
+                                                }
+                                                Toast.makeText(getApplicationContext(), "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
+                                                notifyDataSetChanged();
                                             }
-                                            Toast.makeText(getApplicationContext(), "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
-                                            notifyDataSetChanged();
-                                        }
-                                    });
+                                        });
+
+
+
                                     break;
 
                                 default:
@@ -265,6 +268,14 @@ public class ChiesaListActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public  void openDialog(){
+        DeleteAlertDialog newDialog =  new DeleteAlertDialog();
+        newDialog.show(getSupportFragmentManager(), "Delete dialog");
+
+
+
     }
 
 }

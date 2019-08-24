@@ -210,7 +210,7 @@ public class MonumentListActivity extends AppCompatActivity {
                                     startActivity(i);
                                     break;
                                 case R.id.menuElimina:
-
+                                    openDialog();
                                     final FirebaseDatabase database = FirebaseDatabase.getInstance();
                                     DatabaseReference ref = database.getReference();
                                     ref.child("Monumenti").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
@@ -261,6 +261,13 @@ public class MonumentListActivity extends AppCompatActivity {
 
             }
         }
+    }
+    public  void openDialog(){
+        DeleteAlertDialog newDialog =  new DeleteAlertDialog();
+        newDialog.show(getSupportFragmentManager(), "Delete dialog");
+
+
+
     }
 
 }

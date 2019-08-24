@@ -146,7 +146,7 @@ public class DiarioListActivity extends AppCompatActivity {
                         @Override
                         public boolean onMenuItemClick(MenuItem item) {
 
-
+                            openDialog();
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
                             DatabaseReference ref = database.getReference();
                             ref.child("Diari").child(mAuth.getCurrentUser().getUid()).child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
@@ -207,5 +207,12 @@ public class DiarioListActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public  void openDialog(){
+        DeleteAlertDialog newDialog =  new DeleteAlertDialog();
+        newDialog.show(getSupportFragmentManager(), "Delete dialog");
+
+
+
     }
 }

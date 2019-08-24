@@ -51,5 +51,7 @@
     <string name="modifica">Modify</string>
     <string name="title_diario_detail">Memories details</string>
     <string name="title_diario_list">Journal</string>
+    <string name="titoloDialogElimina">Item deleted</string>
+    <string name="messaggioDialogElimina">Item deleted successfully</string>
 
 </resources>
