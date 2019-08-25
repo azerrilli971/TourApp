@@ -55,12 +55,13 @@
     <string name="messaggioDialogElimina">Item deleted successfully</string>
     <string name="signup">Sign Up</string>
     <string name="newAccount">Don\'t have account? Sign Up</string>
-    <string name="descrizioneCoupon">This page will show you how many coupons you have left. You can use one by clicking on the "Use Coupon" button or you can add another one by clicking on the "+" button. </string>
+    <string name="descrizioneCoupon">This page will show you how many coupons you have left. You can use one by clicking on the \"Use Coupon\" button or you can add another one by clicking on the "+" button. </string>
 
     <plurals name="couponsCount">
         <item quantity="zero">You have %d coupons</item>
         <item quantity="one">You have %d coupon</item>
         <item quantity="other">You have %d coupons</item>
     </plurals>
+    <string name="usaCoupon">Use Coupon</string>
 
 </resources>
