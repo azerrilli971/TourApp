@@ -12,7 +12,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.UUID;
+
+import uniba.di.sms.ibtourapp.tourapp.dummy.Coupon;
 
 public class NewCouponActivity extends AppCompatActivity {
 
@@ -52,8 +59,20 @@ public class NewCouponActivity extends AppCompatActivity {
         if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(action)
                 || NfcAdapter.ACTION_TECH_DISCOVERED.equals(action)
                 || NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)) {
-            String uuid = UUID.randomUUID().toString();
+            final String uuid = UUID.randomUUID().toString();
             uuid.replace("-","*");
+            FirebaseAuth auth ;
+            Coupon coupon = new Coupon();
+            coupon.setId(uuid);
+            auth = FirebaseAuth.getInstance();
+            FirebaseDatabase db = FirebaseDatabase.getInstance();
+            DatabaseReference reference = db.getReference();
+            reference.child("Coupon").child(auth.getCurrentUser().getUid()).child("lello").setValue(coupon).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                   Toast.makeText(getApplicationContext(), uuid + "Aggiunto correttamente", Toast.LENGTH_SHORT).show();
+                }
+            });
             message.setText(uuid);
         }
     }

@@ -3,6 +3,7 @@ package uniba.di.sms.ibtourapp.tourapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,16 +15,29 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class CouponsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
     private Toolbar toolbar;
     private NavigationView navigationView;
     private TextView numeroCoupon;
+    private static int counter = 0;
+    FirebaseAuth auth ;
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
+    DatabaseReference reference = db.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coupons);
+        auth = FirebaseAuth.getInstance();
 
         toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
@@ -36,8 +50,22 @@ public class CouponsActivity extends AppCompatActivity implements NavigationView
         navigationView.setNavigationItemSelectedListener(this);
 
         numeroCoupon = findViewById(R.id.numeroCoupon);
-        //setUpText(int counter);
+        reference.child("Coupon").child(auth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChildren() == true) {
+                    counter = (int) dataSnapshot.getChildrenCount();
+                    setUpText(counter);
+                } else {
+                    counter = 0;
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+        setUpText(counter);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_closed );
         drawer.addDrawerListener(toggle);
         toggle.syncState();
@@ -53,8 +81,42 @@ public class CouponsActivity extends AppCompatActivity implements NavigationView
 
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        reference.child("Coupon").child(auth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChildren() == true) {
+                    counter = (int) dataSnapshot.getChildrenCount();
+                    setUpText(counter);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+        setUpText(counter);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        reference.child("Coupon").child(auth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChildren() == true) {
+                    counter = (int) dataSnapshot.getChildrenCount();
+                    setUpText(counter);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
