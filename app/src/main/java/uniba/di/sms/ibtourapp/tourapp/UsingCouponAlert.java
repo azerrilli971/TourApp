@@ -8,13 +8,14 @@ import android.support.v7.app.AppCompatDialogFragment;
 
 public class UsingCouponAlert  extends AppCompatDialogFragment {
 
+    public String codice;
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState){
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.titoloDialogCoupon)
-                .setMessage(R.string.codiceCoupon)
+                .setMessage(codice)
                 .setMessage(R.string.messaggioDialogCoupon)
                 .setPositiveButton(R.string.positiveButton, new DialogInterface.OnClickListener() {
                     @Override

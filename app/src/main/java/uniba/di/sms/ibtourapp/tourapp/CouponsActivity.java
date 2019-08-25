@@ -165,8 +165,9 @@ public class CouponsActivity extends AppCompatActivity implements NavigationView
         numeroCoupon.setText(itemsFound);
     }
     public  void openDialog(){
-        DeleteAlertDialog newDialog =  new DeleteAlertDialog();
-        newDialog.show(getSupportFragmentManager(), "Delete dialog");
+        UsingCouponAlert newDialog =  new UsingCouponAlert();
+        newDialog.codice = "we";
+        newDialog.show(getSupportFragmentManager(), "Coupon dialog");
 
 
 
