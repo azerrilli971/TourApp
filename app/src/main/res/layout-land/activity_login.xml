@@ -64,7 +64,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="7dp"
-
                 android:text="Login"
                 android:textAllCaps="false"
                 android:textColor="@color/Black" />

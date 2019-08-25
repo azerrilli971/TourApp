@@ -84,4 +84,8 @@
         <item>Uranus</item>
         <item>Neptune</item>
     </string-array>
-</resources>
+    <string name="signup">Registrati</string>
+    <string name="newAccount"> Non hai un account? Registrati</string>
+
+<string name="descrizioneCoupon">In questa pagina potrai sapere quanti coupon hai accumulato. Clicca su "Usa un coupon" per usufruirne oppure aggiungi un coupon cliccando sul tasto +. </string>
+    </resources>
