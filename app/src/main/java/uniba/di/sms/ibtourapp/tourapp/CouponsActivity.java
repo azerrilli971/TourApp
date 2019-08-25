@@ -12,11 +12,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 public class CouponsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
     private Toolbar toolbar;
     private NavigationView navigationView;
+    private TextView numeroCoupon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,9 @@ public class CouponsActivity extends AppCompatActivity implements NavigationView
 
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        numeroCoupon = findViewById(R.id.numeroCoupon);
+        //setUpText(int counter);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_closed );
         drawer.addDrawerListener(toggle);
@@ -82,5 +87,9 @@ public class CouponsActivity extends AppCompatActivity implements NavigationView
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    private void setUpText(int counter) {
+        String itemsFound = getResources().getQuantityString(R.plurals.couponsCount, counter, counter);
+        numeroCoupon.setText(itemsFound);
     }
 }

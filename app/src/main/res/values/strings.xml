@@ -88,4 +88,10 @@
     <string name="newAccount"> Non hai un account? Registrati</string>
 
 <string name="descrizioneCoupon">In questa pagina potrai sapere quanti coupon hai accumulato. Clicca su "Usa un coupon" per usufruirne oppure aggiungi un coupon cliccando sul tasto +. </string>
+
+   <plurals name="couponsCount">
+       <item quantity="zero">Hai %d coupon</item>
+       <item quantity="one">Hai %d coupon</item>
+       <item quantity="other">Hai %d coupon</item>
+   </plurals>
     </resources>
