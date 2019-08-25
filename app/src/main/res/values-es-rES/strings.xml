@@ -62,6 +62,9 @@
         <item quantity="other">Tienes %d cupones</item>
     </plurals>
     <string name="usaCoupon">Utiliza Cupón</string>
+    <string name="codiceCoupon">codigo</string>
+    <string name="messaggioDialogCoupon">Enseña tu cupón al tendero antes de que pulses ok.</string>
+    <string name="titoloDialogCoupon">Utilizaste el cupón</string>
 
 
 </resources>

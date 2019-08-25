@@ -63,5 +63,8 @@
         <item quantity="other">You have %d coupons</item>
     </plurals>
     <string name="usaCoupon">Use Coupon</string>
+    <string name="codiceCoupon">code</string>
+    <string name="messaggioDialogCoupon">Show your coupon to the owner of the shop before proceeding</string>
+    <string name="titoloDialogCoupon">You used the coupon</string>
 
 </resources>
