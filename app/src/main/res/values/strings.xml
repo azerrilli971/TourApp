@@ -71,6 +71,9 @@
     <string name="title_diario_detail">Dettaglio Ricordo</string>
     <string name="title_coupon_list" translatable="false">Coupons</string>
     <string name="title_coupon_detail" translatable="false">Coupon Detail</string>
+    <string name="titoloDialogElimina">Elemento eliminato</string>
+    <string name="messaggioDialogElimina">Eliminazione avvenuta con successo</string>
+    <string name="positiveButton" translatable="false">Ok</string>
     <string-array name="planets_array">
         <item>Mercury</item>
         <item>Venus</item>

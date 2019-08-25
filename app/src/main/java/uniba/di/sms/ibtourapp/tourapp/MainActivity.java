@@ -132,8 +132,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             case R.id.homeDiario:{
-                MyAsyncTask myAsyncTask = new MyAsyncTask("Diari");
-                myAsyncTask.execute();
+
                 intent = new Intent(this, DiarioListActivity.class);
                 startActivity(intent);
                 break;

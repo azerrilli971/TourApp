@@ -51,5 +51,7 @@
     <string name="modifica">Modificar</string>
     <string name="title_diario_detail">Detalles del recuerdo</string>
     <string name="title_diario_list">Diario</string>
+    <string name="titoloDialogElimina">Elemento borrado</string>
+    <string name="messaggioDialogElimina">Elemento borrado con succeso</string>
 
 </resources>

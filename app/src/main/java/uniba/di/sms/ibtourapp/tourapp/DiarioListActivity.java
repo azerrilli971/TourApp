@@ -45,6 +45,7 @@ public class DiarioListActivity extends AppCompatActivity {
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
      */
+
     private boolean mTwoPane;
     private FirebaseAuth mAuth;
     private String image = "https://firebasestorage.googleapis.com/v0/b/tourapp-9d024.appspot.com/o/images%2F947bde07-5138-4029-a77d-34fa9febf8d6?alt=media&token=e2acdc3d-aa98-4414-85d4-7e930df44562";
@@ -68,6 +69,7 @@ public class DiarioListActivity extends AppCompatActivity {
                 String[] testi = {"Diari","Descrizione Ricordo"};
                 i.putExtra("Testi", testi);
                 startActivity(i);
+
             }
         });
 
@@ -144,7 +146,7 @@ public class DiarioListActivity extends AppCompatActivity {
                         @Override
                         public boolean onMenuItemClick(MenuItem item) {
 
-
+                            openDialog();
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
                             DatabaseReference ref = database.getReference();
                             ref.child("Diari").child(mAuth.getCurrentUser().getUid()).child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
@@ -159,9 +161,12 @@ public class DiarioListActivity extends AppCompatActivity {
                                         onBindViewHolder(holder, position - 1);
                                     }
                                     Toast.makeText(DiarioListActivity.this, "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
+
+                                    notifyDataSetChanged();
                                 }
                             });
                         return true;
+
                         }
                     });
                 }
@@ -202,5 +207,12 @@ public class DiarioListActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public  void openDialog(){
+        DeleteAlertDialog newDialog =  new DeleteAlertDialog();
+        newDialog.show(getSupportFragmentManager(), "Delete dialog");
+
+
+
     }
 }

@@ -201,7 +201,7 @@ public class SpiaggiaListActivity extends AppCompatActivity {
                                     startActivity(i);
                                     break;
                                 case R.id.menuElimina:
-
+                                    openDialog();
                                     final FirebaseDatabase database = FirebaseDatabase.getInstance();
                                     DatabaseReference ref = database.getReference();
                                     ref.child("Spiagge").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
@@ -214,6 +214,7 @@ public class SpiaggiaListActivity extends AppCompatActivity {
                                                 onBindViewHolder(holder, position - 1);
                                             }
                                             Toast.makeText(getApplicationContext(), "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
+                                            notifyDataSetChanged();
                                         }
                                     });
                                     break;
@@ -259,5 +260,12 @@ public class SpiaggiaListActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public  void openDialog(){
+        DeleteAlertDialog newDialog =  new DeleteAlertDialog();
+        newDialog.show(getSupportFragmentManager(), "Delete dialog");
+
+
+
     }
 }

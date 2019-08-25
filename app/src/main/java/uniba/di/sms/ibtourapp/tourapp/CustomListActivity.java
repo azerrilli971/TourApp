@@ -347,9 +347,11 @@ public class CustomListActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+
                                 }
                             });
                         }
+
                         finish();
                         break;
                     case "Diari" :
@@ -365,6 +367,7 @@ public class CustomListActivity extends AppCompatActivity {
                         finish();
                         break;
                 }
+
             }
         });
         addTextViews(testi, linearLayout);
@@ -401,7 +404,10 @@ public class CustomListActivity extends AppCompatActivity {
                         e.printStackTrace();
                         Toast.makeText(CustomListActivity.this, "File not found.",
                                 Toast.LENGTH_SHORT).show();
+
+
                     }
+
                 }
         }
     }
