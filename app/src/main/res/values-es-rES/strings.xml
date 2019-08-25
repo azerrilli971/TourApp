@@ -55,12 +55,13 @@
     <string name="messaggioDialogElimina">Elemento borrado con succeso</string>
     <string name="signup">Inscribirse</string>
     <string name="newAccount">¿No tienes una cuenta? Regístrate</string>
-    <string name="descrizioneCoupon">En esta página encontrarás el numero de cupones que tienes. Si quieres utilizar un cupón, haz clic en el botón "Utiliza un cupón" o si quieres añadir otro, haz clic en lo con "+". </string>
+    <string name="descrizioneCoupon">En esta página encontrarás el numero de cupones que tienes. Si quieres utilizar un cupón, haz clic en el botón \"Utiliza un cupón\" o si quieres añadir otro, haz clic en lo con "+". </string>
     <plurals name="couponsCount">
         <item quantity="zero">Tienes %d cupones</item>
         <item quantity="one">Tienes %d cupón</item>
         <item quantity="other">Tienes %d cupones</item>
     </plurals>
+    <string name="usaCoupon">Utiliza Cupón</string>
 
 
 </resources>
