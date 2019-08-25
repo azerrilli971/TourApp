@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,6 +29,7 @@ public class CouponsActivity extends AppCompatActivity implements NavigationView
     private Toolbar toolbar;
     private NavigationView navigationView;
     private TextView numeroCoupon;
+    private Button usaCoupon;
     private static int counter = 0;
     FirebaseAuth auth ;
     FirebaseDatabase db = FirebaseDatabase.getInstance();
@@ -38,6 +40,14 @@ public class CouponsActivity extends AppCompatActivity implements NavigationView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coupons);
         auth = FirebaseAuth.getInstance();
+
+        usaCoupon = findViewById(R.id.buttonUsaCoupon);
+        usaCoupon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialog();
+            }
+        });
 
         toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
@@ -153,5 +163,12 @@ public class CouponsActivity extends AppCompatActivity implements NavigationView
     private void setUpText(int counter) {
         String itemsFound = getResources().getQuantityString(R.plurals.couponsCount, counter, counter);
         numeroCoupon.setText(itemsFound);
+    }
+    public  void openDialog(){
+        DeleteAlertDialog newDialog =  new DeleteAlertDialog();
+        newDialog.show(getSupportFragmentManager(), "Delete dialog");
+
+
+
     }
 }

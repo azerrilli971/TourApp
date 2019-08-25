@@ -89,8 +89,11 @@
 
     <string name="usaCoupon">Usa Coupon</string>
 <string name="descrizioneCoupon">In questa pagina potrai sapere quanti coupon hai accumulato. Clicca su \"Usa un coupon\" per usufruirne oppure aggiungi un coupon cliccando sul tasto +. </string>
+    <string name="titoloDialogCoupon">Coupon utilizzato</string>
+    <string name="messaggioDialogCoupon">Mostra il coupon al negoziante prima di premere Ok.</string>
+    <string name="codiceCoupon">codice</string>
 
-   <plurals name="couponsCount">
+    <plurals name="couponsCount">
        <item quantity="zero">Hai %d coupon</item>
        <item quantity="one">Hai %d coupon</item>
        <item quantity="other">Hai %d coupon</item>
