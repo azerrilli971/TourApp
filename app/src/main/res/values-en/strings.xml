@@ -68,5 +68,7 @@
     <string name="titoloDialogCoupon">You used the coupon</string>
     <string name="singUpToLogin">Already have an account? Log In</string>
     <string name="password">Password</string>
+    <string name="ilTuoCoupon">Your coupon is:</string>
+    <string name="tornaIndietro">Your device has now access to this cose. You can go backt to use it.</string>
 
 </resources>

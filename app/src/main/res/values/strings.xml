@@ -101,4 +101,6 @@
     <string name="singUpToLogin">Hai un account? Fai l\'accesso</string>
     <string name="mail" translatable="false">E-mail</string>
     <string name="password">Password</string>
+    <string name="ilTuoCoupon">Il tuo coupon è:</string>
+    <string name="tornaIndietro"> Il codice che vedi è stato memorizzato, puoi tornare alla schermata precedente.</string>
     </resources>

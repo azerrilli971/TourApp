@@ -67,6 +67,8 @@
     <string name="titoloDialogCoupon">Utilizaste el cupón</string>
     <string name="singUpToLogin">¿Tienes una cuenta? Inicia sesión</string>
     <string name="password">Contraseña</string>
+    <string name="ilTuoCoupon">Tu cupón es:</string>
+    <string name="tornaIndietro">El código está memorizado. Puedes regresar a la página precedente para utilizarlo</string>
 
 
 </resources>

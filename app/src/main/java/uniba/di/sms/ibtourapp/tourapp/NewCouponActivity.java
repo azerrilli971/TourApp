@@ -39,7 +39,6 @@ public class NewCouponActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_coupon);
         context = this;
         message = findViewById(R.id.codeCoupon);
-        btnWrite = findViewById(R.id.btnCoupon);
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (nfcAdapter == null) {
 
