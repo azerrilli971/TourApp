@@ -153,15 +153,11 @@ public class DiarioListActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-
-                                    MyAsyncTask task = new MyAsyncTask("Diari");
-                                    task.execute();
                                     mValues.remove(position);
                                     if(position != 0) {
                                         onBindViewHolder(holder, position - 1);
                                     }
                                     Toast.makeText(DiarioListActivity.this, "Item rimosso correttamente", Toast.LENGTH_SHORT).show();
-
                                     notifyDataSetChanged();
                                 }
                             });
