@@ -169,7 +169,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="uniba.di.sms.ibtourapp.tourapp.MonumentListActivity" />
         </activity>
-        <activity android:name=".YoungActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>

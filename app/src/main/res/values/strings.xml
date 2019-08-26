@@ -73,7 +73,7 @@
     <string name="title_coupon_detail" translatable="false">Coupon Detail</string>
     <string name="titoloDialogElimina">Elemento eliminato</string>
     <string name="messaggioDialogElimina">Eliminazione avvenuta con successo</string>
-    <string name="positiveButton" translatable="false">Ok</string>
+    <string name="positiveButton" translatable="false">OK</string>
     <string-array name="planets_array">
         <item>Mercury</item>
         <item>Venus</item>
@@ -90,7 +90,7 @@
     <string name="usaCoupon">Usa Coupon</string>
 <string name="descrizioneCoupon">In questa pagina potrai sapere quanti coupon hai accumulato. Clicca su \"Usa un coupon\" per usufruirne oppure aggiungi un coupon cliccando sul tasto +. </string>
     <string name="titoloDialogCoupon">Coupon utilizzato</string>
-    <string name="messaggioDialogCoupon">Mostra il coupon al negoziante prima di premere Ok.</string>
+    <string name="messaggioDialogCoupon">Mostra il coupon al negoziante prima di premere OK.</string>
     <string name="codiceCoupon">codice</string>
 
     <plurals name="couponsCount">
