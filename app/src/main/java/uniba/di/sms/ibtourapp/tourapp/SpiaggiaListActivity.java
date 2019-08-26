@@ -106,7 +106,7 @@ public class SpiaggiaListActivity extends AppCompatActivity {
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         if (utente == 1){
-            fab.setVisibility(View.GONE);
+            fab.setVisibility(View.INVISIBLE);
         }
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -256,7 +256,7 @@ public class SpiaggiaListActivity extends AppCompatActivity {
                 mImmagineSpiaggia=(ImageView) view.findViewById(R.id.spiaggiaImmagine);
                 mInfoMenu = (ImageView) view.findViewById(R.id.iconaMenuInfo);
                 if(utente ==1){
-                    mInfoMenu.setVisibility(View.GONE);
+                    mInfoMenu.setVisibility(View.INVISIBLE);
                 }
             }
         }

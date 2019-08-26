@@ -50,7 +50,7 @@ public class MuseoListActivity extends AppCompatActivity {
      */
     private boolean mTwoPane;
     private FirebaseAuth mAuth;
-    private int utente = 0;
+    static private int utente = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -258,7 +258,7 @@ public class MuseoListActivity extends AppCompatActivity {
             final TextView mViaMuseo;
             final TextView mOrariMuseo;
             final ImageView mImmagineMuseo;
-            ImageView mInfoMenu;
+            ImageView mInfoMenu = new ImageView(getApplicationContext());
 
             ViewHolder(View view) {
                 super(view);
@@ -266,9 +266,8 @@ public class MuseoListActivity extends AppCompatActivity {
                 mViaMuseo = (TextView) view.findViewById(R.id.museoVia);
                 mOrariMuseo = (TextView) view.findViewById(R.id.museoOrari);
                 mImmagineMuseo = (ImageView) view.findViewById(R.id.museoImmagine);
-                mInfoMenu = (ImageView) view.findViewById(R.id.iconaMenuInfo);
-                if(utente == 1 ){
-                    mInfoMenu.setVisibility(View.GONE);
+                if(utente != 1 ){
+                    mInfoMenu = (ImageView) view.findViewById(R.id.iconaMenuInfo);
                 }
 
             }
