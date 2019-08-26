@@ -15,7 +15,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +25,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
+import uniba.di.sms.ibtourapp.tourapp.dummy.Coupon;
 
 public class CouponsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
@@ -34,7 +40,9 @@ public class CouponsActivity extends AppCompatActivity implements NavigationView
     FirebaseAuth auth ;
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference reference = db.getReference();
-
+    private String codice;
+    private String key = "00";
+    static ArrayList<Coupon>  lista = new ArrayList<Coupon>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,9 +50,39 @@ public class CouponsActivity extends AppCompatActivity implements NavigationView
         auth = FirebaseAuth.getInstance();
 
         usaCoupon = findViewById(R.id.buttonUsaCoupon);
+
+        reference.child("Coupon").child(auth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int i = 0;
+                for (DataSnapshot data: dataSnapshot.getChildren()
+                ) {
+                    lista.add(data.getValue(Coupon.class));
+                    lista.get(i++).setKey(data.getKey());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         usaCoupon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                codice = lista.get(0).getId();
+                if(lista.get(0).getKey() != null) {
+                    key = lista.get(0).getKey();
+                    reference.child("Coupon").child(auth.getCurrentUser().getUid()).child(key).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            lista.remove(0);
+                            //Toast.makeText(getApplicationContext(), "skdo", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    counter --;
+                    setUpText(counter);
+                }
                 openDialog();
             }
         });
@@ -97,7 +135,13 @@ public class CouponsActivity extends AppCompatActivity implements NavigationView
         reference.child("Coupon").child(auth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int i = 0;
                 if(dataSnapshot.hasChildren() == true) {
+                    for (DataSnapshot data: dataSnapshot.getChildren()
+                         ) {
+                        lista.add(data.getValue(Coupon.class));
+                        lista.get(i++).setKey(data.getKey());
+                    }
                     counter = (int) dataSnapshot.getChildrenCount();
                     setUpText(counter);
                 }
@@ -116,7 +160,14 @@ public class CouponsActivity extends AppCompatActivity implements NavigationView
         reference.child("Coupon").child(auth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int i = 0;
                 if(dataSnapshot.hasChildren() == true) {
+                    lista.removeAll(lista);
+                    for (DataSnapshot data: dataSnapshot.getChildren()
+                    ) {
+                        lista.add(data.getValue(Coupon.class));
+                        lista.get(i++).setKey(data.getKey());
+                    }
                     counter = (int) dataSnapshot.getChildrenCount();
                     setUpText(counter);
                 }
@@ -153,9 +204,6 @@ public class CouponsActivity extends AppCompatActivity implements NavigationView
 
 
         }
-
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -166,10 +214,7 @@ public class CouponsActivity extends AppCompatActivity implements NavigationView
     }
     public  void openDialog(){
         UsingCouponAlert newDialog =  new UsingCouponAlert();
-        newDialog.codice = "we";
+        newDialog.codice = codice;
         newDialog.show(getSupportFragmentManager(), "Coupon dialog");
-
-
-
     }
 }

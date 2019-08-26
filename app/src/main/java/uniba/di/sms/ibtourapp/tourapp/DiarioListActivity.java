@@ -211,8 +211,5 @@ public class DiarioListActivity extends AppCompatActivity {
     public  void openDialog(){
         DeleteAlertDialog newDialog =  new DeleteAlertDialog();
         newDialog.show(getSupportFragmentManager(), "Delete dialog");
-
-
-
     }
 }

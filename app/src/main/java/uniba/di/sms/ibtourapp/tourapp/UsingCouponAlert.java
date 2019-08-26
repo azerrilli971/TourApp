@@ -16,7 +16,8 @@ public class UsingCouponAlert  extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.titoloDialogCoupon)
                 .setMessage(codice)
-                .setMessage(R.string.messaggioDialogCoupon)
+                //.setMessage("weeeeeeee")
+                //.setMessage(R.string.messaggioDialogCoupon)
                 .setPositiveButton(R.string.positiveButton, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

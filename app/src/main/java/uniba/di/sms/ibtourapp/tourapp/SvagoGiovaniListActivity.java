@@ -48,7 +48,7 @@ public class SvagoGiovaniListActivity extends AppCompatActivity {
      */
     private boolean mTwoPane;
     private FirebaseAuth mAuth;
-    private int utente = 0;
+    private static int utente = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
