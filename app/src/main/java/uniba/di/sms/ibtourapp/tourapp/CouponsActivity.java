@@ -42,7 +42,7 @@ public class CouponsActivity extends AppCompatActivity implements NavigationView
     DatabaseReference reference = db.getReference();
     private String codice;
     private String key = "00";
-    ArrayList<Coupon> lista = new ArrayList<Coupon>();
+    static ArrayList<Coupon>  lista = new ArrayList<Coupon>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,7 +135,13 @@ public class CouponsActivity extends AppCompatActivity implements NavigationView
         reference.child("Coupon").child(auth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int i = 0;
                 if(dataSnapshot.hasChildren() == true) {
+                    for (DataSnapshot data: dataSnapshot.getChildren()
+                         ) {
+                        lista.add(data.getValue(Coupon.class));
+                        lista.get(i++).setKey(data.getKey());
+                    }
                     counter = (int) dataSnapshot.getChildrenCount();
                     setUpText(counter);
                 }
@@ -154,7 +160,14 @@ public class CouponsActivity extends AppCompatActivity implements NavigationView
         reference.child("Coupon").child(auth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int i = 0;
                 if(dataSnapshot.hasChildren() == true) {
+                    lista.removeAll(lista);
+                    for (DataSnapshot data: dataSnapshot.getChildren()
+                    ) {
+                        lista.add(data.getValue(Coupon.class));
+                        lista.get(i++).setKey(data.getKey());
+                    }
                     counter = (int) dataSnapshot.getChildrenCount();
                     setUpText(counter);
                 }

@@ -50,7 +50,7 @@ public class MuseoListActivity extends AppCompatActivity {
      */
     private boolean mTwoPane;
     private FirebaseAuth mAuth;
-    private int utente = 0;
+    private static int utente = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +103,7 @@ public class MuseoListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        if(utente ==1){
+        if(utente == 1){
             fab.setVisibility(View.GONE);
         }
         fab.setOnClickListener(new View.OnClickListener() {
@@ -258,7 +258,7 @@ public class MuseoListActivity extends AppCompatActivity {
             final TextView mViaMuseo;
             final TextView mOrariMuseo;
             final ImageView mImmagineMuseo;
-            ImageView mInfoMenu;
+            ImageView mInfoMenu = new ImageView(getApplicationContext());
 
             ViewHolder(View view) {
                 super(view);
@@ -270,13 +270,11 @@ public class MuseoListActivity extends AppCompatActivity {
                 if(utente == 1 ){
                     mInfoMenu.setVisibility(View.GONE);
                 }
-
             }
         }
     }
     @Override
     public boolean onOptionsItemSelected( MenuItem item){
-
         if(item.getItemId() == android.R.id.home){
             finish();
         }
