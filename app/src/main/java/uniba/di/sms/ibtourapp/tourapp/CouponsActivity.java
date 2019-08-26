@@ -30,7 +30,7 @@ import java.util.ArrayList;
 
 import uniba.di.sms.ibtourapp.tourapp.dummy.Coupon;
 
-public class CouponsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class  CouponsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
     private Toolbar toolbar;
     private NavigationView navigationView;

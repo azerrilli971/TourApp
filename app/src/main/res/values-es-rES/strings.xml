@@ -65,6 +65,8 @@
     <string name="codiceCoupon">codigo</string>
     <string name="messaggioDialogCoupon">Enseña tu cupón al tendero antes de que pulses ok.</string>
     <string name="titoloDialogCoupon">Utilizaste el cupón</string>
+    <string name="singUpToLogin">¿Tienes una cuenta? Inicia sesión</string>
+    <string name="password">Contraseña</string>
 
 
 </resources>

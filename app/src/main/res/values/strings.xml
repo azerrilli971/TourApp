@@ -98,4 +98,7 @@
        <item quantity="one">Hai %d coupon</item>
        <item quantity="other">Hai %d coupon</item>
    </plurals>
+    <string name="singUpToLogin">Hai un account? Fai l\'accesso</string>
+    <string name="mail" translatable="false">E-mail</string>
+    <string name="password">Password</string>
     </resources>
