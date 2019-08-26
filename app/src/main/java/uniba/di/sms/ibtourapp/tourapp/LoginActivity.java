@@ -1,5 +1,6 @@
 package uniba.di.sms.ibtourapp.tourapp;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -76,9 +77,47 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
-                    finish();
+                    UsersDbHelper dbHelper = new UsersDbHelper(getApplicationContext());
+                    SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+                    String[] projection = {
+                            BaseColumns._ID,
+                            UsersList.FeedEntry.COLUMN_NAME_TITLE,
+                            UsersList.FeedEntry.COLUMN_NAME_SUBTITLE
+                    };
+
+                    String selection = UsersList.FeedEntry.COLUMN_NAME_TITLE + " = ?";
+                    String[] selectionArgs = { mAuth.getCurrentUser().getUid() };
+
+                    String sortOrder =
+                            UsersList.FeedEntry.COLUMN_NAME_SUBTITLE + " DESC";
+
+                    Cursor cursor = db.query(
+                            UsersList.FeedEntry.TABLE_NAME,   // The table to query
+                            projection,             // The array of columns to return (pass null to get all)
+                            selection,              // The columns for the WHERE clause
+                            selectionArgs,          // The values for the WHERE clause
+                            null,                   // don't group the rows
+                            null,
+                            sortOrder
+                    );
+
+                    if(cursor.getCount() == 0) {
+                        SQLiteDatabase database = dbHelper.getWritableDatabase();
+                        String user = mAuth.getCurrentUser().getUid();
+                        ContentValues values = new ContentValues();
+
+                        values.put(UsersList.FeedEntry.COLUMN_NAME_TITLE, user);
+                        values.put(UsersList.FeedEntry.COLUMN_NAME_SUBTITLE, 0);
+
+                        long newRowId = database.insert(UsersList.FeedEntry.TABLE_NAME, null, values);
+                        if(newRowId != 0) {
+                            Toast.makeText(getApplicationContext(), "Utente registrato correttamente", Toast.LENGTH_LONG).show();
+                        }
+                    }
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    finish();
                     startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -116,14 +155,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     sortOrder
             );
 
+
             while(cursor.moveToNext()) {
                 int itemId = cursor.getInt(
                         cursor.getColumnIndexOrThrow(UsersList.FeedEntry.COLUMN_NAME_SUBTITLE));
-                if(itemId == 0) {
+                if(itemId == 1) {
+
+                } else {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
-                } else {
-
                 }
             }
             cursor.close();
