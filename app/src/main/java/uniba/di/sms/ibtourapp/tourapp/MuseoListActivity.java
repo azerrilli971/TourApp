@@ -50,6 +50,7 @@ public class MuseoListActivity extends AppCompatActivity {
      */
     private boolean mTwoPane;
     private FirebaseAuth mAuth;
+    private int utente = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,8 +91,10 @@ public class MuseoListActivity extends AppCompatActivity {
             int itemId = cursor.getInt(
                     cursor.getColumnIndexOrThrow(UsersList.FeedEntry.COLUMN_NAME_SUBTITLE));
             if(itemId == 0) {
+                utente = 1;
                 Toast.makeText(getApplicationContext(), "Questo utente non è un infopoint", Toast.LENGTH_LONG).show();
             } else {
+                utente = 2;
                 Toast.makeText(getApplicationContext(), "Questo utente è un infopoint", Toast.LENGTH_LONG).show();
             }
         }
@@ -100,6 +103,9 @@ public class MuseoListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        if(utente ==1){
+            fab.setVisibility(View.GONE);
+        }
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -261,6 +267,9 @@ public class MuseoListActivity extends AppCompatActivity {
                 mOrariMuseo = (TextView) view.findViewById(R.id.museoOrari);
                 mImmagineMuseo = (ImageView) view.findViewById(R.id.museoImmagine);
                 mInfoMenu = (ImageView) view.findViewById(R.id.iconaMenuInfo);
+                if(utente == 1 ){
+                    mInfoMenu.setVisibility(View.GONE);
+                }
 
             }
         }
