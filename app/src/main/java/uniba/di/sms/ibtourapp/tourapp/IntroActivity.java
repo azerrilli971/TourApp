@@ -24,21 +24,20 @@ public class IntroActivity extends AppIntro2 {
         Fragment fourthFragment;
 
         //Creazione e aggiunta allo slider dei fragment
-        firstFragment = AppIntro2Fragment.newInstance(getString(R.string.strTitleFirst), getString(R.string.strDescriptionFirst), R.drawable.first_fragment ,Color.DKGRAY );
-        addSlide(firstFragment);
 
-        secondFragment = AppIntro2Fragment.newInstance(getString(R.string.titoloHome), "This is a demo of the AppIntro library, with a custom background on each slide!", 0 ,Color.DKGRAY);
+        secondFragment = AppIntro2Fragment.newInstance(getString(R.string.homeEsplora), "This is a demo of the AppIntro library, with a custom background on each slide!", R.drawable.esplora_tutorial , getResources().getColor(R.color.Explore), getResources().getColor(R.color.Black), getResources().getColor(R.color.Black));
         addSlide(secondFragment);
 
-        thirdFragment = AppIntro2Fragment.newInstance(getString(R.string.titoloDiario), "This is a demo of the AppIntro library, with a custom background on each slide!", 0 ,Color.DKGRAY );
+        thirdFragment = AppIntro2Fragment.newInstance(getString(R.string.titoloDiario), "This is a demo of the AppIntro library, with a custom background on each slide!", R.drawable.diario_tutorial ,getResources().getColor(R.color.Journal), getResources().getColor(R.color.Black), getResources().getColor(R.color.Black) );
         addSlide(thirdFragment);
 
-        fourthFragment = AppIntro2Fragment.newInstance("Welcome4", "This is a demo of the AppIntro library, with a custom background on each slide!", 0 ,Color.DKGRAY);
+        fourthFragment = AppIntro2Fragment.newInstance(getString(R.string.homeCoupon), "This is a demo of the AppIntro library, with a custom background on each slide!", R.drawable.coupon_tutorial ,getResources().getColor(R.color.Coupon), getResources().getColor(R.color.Black), getResources().getColor(R.color.Black));
         addSlide(fourthFragment);
 
         setDepthAnimation();
         showSkipButton(false);
         setBarColor(Color.TRANSPARENT);
+
 
         doneButton.setOnClickListener(DoneListner);
         intent = new Intent(this,MainActivity.class);

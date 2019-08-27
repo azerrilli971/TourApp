@@ -13,5 +13,8 @@
     <color name="CoolPink">#E48681</color>
     <color name="Crimson">#DE1240</color>
     <color name="Black">#000000</color>
+    <color name="Coupon">#00C6E3</color>
+    <color name="Journal">#8FD4C6</color>
+    <color name="Explore">#D7E1E3</color>
 
 </resources>
