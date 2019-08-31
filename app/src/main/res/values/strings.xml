@@ -103,4 +103,11 @@
     <string name="password">Password</string>
     <string name="ilTuoCoupon">Il tuo coupon è:</string>
     <string name="tornaIndietro"> Il codice che vedi è stato memorizzato, puoi tornare alla schermata precedente.</string>
-    </resources>
+    <string name="tutorialDescrizioneEsplora">Non sai dove dormire, dove mangiare o cosa visitare? TourApp ti mostrerà le principali attrazioni, i migliori ristoranti e i più comodi hotel.</string>
+    <string name="tutorialCoupon">Coupon</string>
+    <string name="tutorialDiario">Diario di Viaggio</string>
+    <string name="tutorialEsplora">Esplora il mondo attorno a te</string>
+    <string name="tutorialDescrizioneDiario">Metti in pausa il tempo con i tuoi diari! Scatta  foto e commentale per rivivere i momenti più belli del tuo viaggio.</string>
+    <string name="tutorialDescrizioneCoupon">Viaggiare non è mai stato così conveniente! Registra i coupon presso l\'InfoPoint della città e spendili nei centri convenzionati!</string>
+
+</resources>

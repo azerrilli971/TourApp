@@ -69,6 +69,12 @@
     <string name="password">Contraseña</string>
     <string name="ilTuoCoupon">Tu cupón es:</string>
     <string name="tornaIndietro">El código está memorizado. Puedes regresar a la página precedente para utilizarlo</string>
+    <string name="tutorialCoupon">Cupones</string>
+    <string name="tutorialDescrizioneEsplora">¿No sabes dónde dormir, dónde comer y a dónde ir? TourApp te enseñará las principales atracciones, los mejores restaurantes y los hoteles más cómodos.</string>
+    <string name="tutorialDiario">Diario de viaje</string>
+    <string name="tutorialEsplora">Explora el mondo a tu alrededor</string>
+    <string name="tutorialDescrizioneCoupon">¡Viajar nunca ha estado tan conveniente! Registra los cupones en los Puntos de Información de la ciudad  y utilizalos en los centros habilitados.</string>
+    <string name="tutorialDescrizioneDiario">¡Pausa el tiempo!¡ Toma fotos y comentales para revivir los momentos mejores de tu viaje!</string>
 
 
 </resources>

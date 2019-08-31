@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">TourApp</string>
     <string name="strDescriptionFirst">Are you interested in coupons and more details about your trip? Sign Up!</string>
-    <string name="titoloDiario">Personal Journal</string>
+    <string name="titoloDiario">Personal Diary</string>
     <string name="titoloHome">Home</string>
     <string name="btnCoupon">Save Coupon</string>
     <string name="coupon">New Coupon</string>
@@ -50,7 +50,7 @@
     <string name="aggiungi">Add</string>
     <string name="modifica">Modify</string>
     <string name="title_diario_detail">Memories details</string>
-    <string name="title_diario_list">Journal</string>
+    <string name="title_diario_list">Diary</string>
     <string name="titoloDialogElimina">Item deleted</string>
     <string name="messaggioDialogElimina">Item deleted successfully</string>
     <string name="signup">Sign Up</string>
@@ -70,5 +70,10 @@
     <string name="password">Password</string>
     <string name="ilTuoCoupon">Your coupon is:</string>
     <string name="tornaIndietro">Your device has now access to this cose. You can go backt to use it.</string>
+    <string name="tutorialCoupon">Coupons</string>
+    <string name="tutorialDescrizioneEsplora">Not a clue about how you\'re going to spend the night? Or where you are going to eat or to visit? TourApp will show you the most popular attractions, the best restaurants and the most comfortable hotels.</string>
+    <string name="tutorialDiario">Journey Diary</string>
+    <string name="tutorialEsplora">Explore the world around you</string>
+    <string name="tutorialDescrizioneCoupon">"Travelling has never been this convenient! Collect coupons from the InfoPoint of the city you're visiting and use them in the partner shops. "</string>
 
 </resources>

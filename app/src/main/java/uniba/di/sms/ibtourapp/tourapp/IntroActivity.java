@@ -25,13 +25,13 @@ public class IntroActivity extends AppIntro2 {
 
         //Creazione e aggiunta allo slider dei fragment
 
-        secondFragment = AppIntro2Fragment.newInstance(getString(R.string.homeEsplora), "This is a demo of the AppIntro library, with a custom background on each slide!", R.drawable.esplora_tutorial , getResources().getColor(R.color.Explore), getResources().getColor(R.color.Black), getResources().getColor(R.color.Black));
+        secondFragment = AppIntro2Fragment.newInstance(getString(R.string.tutorialEsplora), getString(R.string.tutorialDescrizioneEsplora),R.drawable.esplora_tutorial, getResources().getColor(R.color.Explore), getResources().getColor(R.color.Black), getResources().getColor(R.color.Black));
         addSlide(secondFragment);
 
-        thirdFragment = AppIntro2Fragment.newInstance(getString(R.string.titoloDiario), "This is a demo of the AppIntro library, with a custom background on each slide!", R.drawable.diario_tutorial ,getResources().getColor(R.color.Journal), getResources().getColor(R.color.Black), getResources().getColor(R.color.Black) );
+        thirdFragment = AppIntro2Fragment.newInstance(getString(R.string.tutorialDiario),getString(R.string.tutorialDescrizioneDiario), R.drawable.diario_tutorial ,getResources().getColor(R.color.Journal), getResources().getColor(R.color.Black), getResources().getColor(R.color.Black) );
         addSlide(thirdFragment);
 
-        fourthFragment = AppIntro2Fragment.newInstance(getString(R.string.homeCoupon), "This is a demo of the AppIntro library, with a custom background on each slide!", R.drawable.coupon_tutorial ,getResources().getColor(R.color.Coupon), getResources().getColor(R.color.Black), getResources().getColor(R.color.Black));
+        fourthFragment = AppIntro2Fragment.newInstance(getString(R.string.tutorialCoupon),getString(R.string.tutorialDescrizioneCoupon), R.drawable.coupon_tutorial ,getResources().getColor(R.color.Coupon), getResources().getColor(R.color.Black), getResources().getColor(R.color.Black));
         addSlide(fourthFragment);
 
         setDepthAnimation();
