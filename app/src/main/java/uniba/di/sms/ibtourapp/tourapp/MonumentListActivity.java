@@ -110,7 +110,7 @@ public class MonumentListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MonumentListActivity.this, CustomListActivity.class);
-                String[] testi = {"Musei","Nome Museo", "Descrizione Museo", "Via Museo", "Orari Museo"};
+                String[] testi = {"Monumenti","Nome Monumento", "Descrizione Monumento", "Via Monumento"};
                 String[] valori;
                 i.putExtra("Testi", testi);
                 startActivity(i);

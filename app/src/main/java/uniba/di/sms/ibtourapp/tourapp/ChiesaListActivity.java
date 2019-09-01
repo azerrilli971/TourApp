@@ -227,9 +227,6 @@ public class ChiesaListActivity extends AppCompatActivity {
                                                 notifyDataSetChanged();
                                             }
                                         });
-
-
-
                                     break;
 
                                 default:
@@ -241,6 +238,7 @@ public class ChiesaListActivity extends AppCompatActivity {
                     });
                 }
             });
+            notifyDataSetChanged();
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
         }

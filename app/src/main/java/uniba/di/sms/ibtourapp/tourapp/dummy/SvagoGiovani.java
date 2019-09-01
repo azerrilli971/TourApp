@@ -26,7 +26,7 @@ public class SvagoGiovani {
      */
     public static final Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
 
-    private static final int COUNT = 25;
+    public static Long COUNT = new Long(0);
 
     static {
         // Add some sample items.

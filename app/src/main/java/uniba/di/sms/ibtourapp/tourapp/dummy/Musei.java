@@ -28,7 +28,7 @@ public class Musei {
      */
     public static Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
 
-    public static int COUNT = 0;
+    public static Long COUNT = new Long(0);
 
     public static void addItem(DummyItem item) {
         ITEMS.add(item);

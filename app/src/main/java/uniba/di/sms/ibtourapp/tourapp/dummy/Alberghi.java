@@ -26,12 +26,7 @@ public class Alberghi {
      */
     public static final Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
 
-    public static Integer COUNT = 0;
-
-    static {
-        // Add some sample items.
-        addItem(new DummyItem("1", "Nicolaus", "via we", "molto carino", "iodmsklÃ²", "nskla"));
-    }
+    public static Long COUNT = new Long(0);
 
     public static void addItem(DummyItem item) {
         ITEMS.add(item);

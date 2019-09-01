@@ -120,19 +120,8 @@ public class CustomListActivity extends AppCompatActivity {
                                 }
                             });
                         } else {
-
-                            ref.child(testi[0]).addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    counter  = dataSnapshot.getChildrenCount();
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                }
-                            });
-                            ref.child(testi[0]).child(counter.toString()).setValue(museo).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            Musei.COUNT = Musei.COUNT + 1;
+                            ref.child(testi[0]).child(Musei.COUNT.toString()).setValue(museo).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
@@ -153,7 +142,8 @@ public class CustomListActivity extends AppCompatActivity {
                                 }
                             });
                         } else {
-                            ref.child(testi[0]).child(path).setValue(monumento).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            Monumenti.COUNT = Monumenti.COUNT + 1;
+                            ref.child(testi[0]).child(Monumenti.COUNT.toString()).setValue(monumento).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
@@ -174,7 +164,8 @@ public class CustomListActivity extends AppCompatActivity {
                                 }
                             });
                         } else {
-                            ref.child(testi[0]).child(path).setValue(chiesa).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            Chiese.COUNT = Chiese.COUNT + 1;
+                            ref.child(testi[0]).child(Chiese.COUNT.toString()).setValue(chiesa).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
@@ -195,7 +186,8 @@ public class CustomListActivity extends AppCompatActivity {
                                 }
                             });
                         } else {
-                            ref.child(testi[0]).child(path).setValue(spiaggia).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            Spiagge.COUNT = Spiagge.COUNT + 1;
+                            ref.child(testi[0]).child(Spiagge.COUNT.toString()).setValue(spiaggia).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
@@ -216,7 +208,8 @@ public class CustomListActivity extends AppCompatActivity {
                                 }
                             });
                         } else {
-                            ref.child(testi[0]).child(path).setValue(svagoF).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            SvagoFamiglie.COUNT = SvagoFamiglie.COUNT + 1;
+                            ref.child(testi[0]).child(SvagoFamiglie.COUNT.toString()).setValue(svagoF).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
@@ -238,7 +231,8 @@ public class CustomListActivity extends AppCompatActivity {
                                 }
                             });
                         } else {
-                            ref.child(testi[0]).child(path).setValue(svagoG).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            SvagoGiovani.COUNT = SvagoGiovani.COUNT + 1;
+                            ref.child(testi[0]).child(SvagoGiovani.COUNT.toString()).setValue(svagoG).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
@@ -255,10 +249,11 @@ public class CustomListActivity extends AppCompatActivity {
                             ref.child(testi[0]).child(val[val.length - 1]).setValue(albergo).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "Item modificato con successo!", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         } else {
+                            Alberghi.COUNT = Alberghi.COUNT + 1;
                             ref.child(testi[0]).child(Alberghi.COUNT.toString()).setValue(albergo).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
@@ -280,7 +275,8 @@ public class CustomListActivity extends AppCompatActivity {
                                 }
                             });
                         } else {
-                            ref.child(testi[0]).child(path).setValue(bb).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            BeBs.COUNT = BeBs.COUNT + 1;
+                            ref.child(testi[0]).child(BeBs.COUNT.toString()).setValue(bb).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
@@ -301,7 +297,8 @@ public class CustomListActivity extends AppCompatActivity {
                                 }
                             });
                         } else {
-                            ref.child(testi[0]).child(path).setValue(ristorante).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            Ristoranti.COUNT = Ristoranti.COUNT + 1;
+                            ref.child(testi[0]).child(Ristoranti.COUNT.toString()).setValue(ristorante).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
@@ -322,7 +319,8 @@ public class CustomListActivity extends AppCompatActivity {
                                 }
                             });
                         } else {
-                            ref.child(testi[0]).child(path).setValue(gelateria).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            Gelaterie.COUNT = Gelaterie.COUNT + 1;
+                            ref.child(testi[0]).child(Gelaterie.COUNT.toString()).setValue(gelateria).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
@@ -343,7 +341,8 @@ public class CustomListActivity extends AppCompatActivity {
                                 }
                             });
                         } else {
-                            ref.child(testi[0]).child(path).setValue(pizzeria).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            Pizzerie.COUNT = Pizzerie.COUNT + 1;
+                            ref.child(testi[0]).child(Pizzerie.COUNT.toString()).setValue(pizzeria).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
@@ -358,7 +357,8 @@ public class CustomListActivity extends AppCompatActivity {
                         Diari.DummyItem diario = new Diari.DummyItem();
                         diario = Diari.addItemList(dummyInfo);
                         diario.setRicordo(download);
-                        ref.child("Diari").child(mAuth.getCurrentUser().getUid()).child("01").setValue(diario).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        Diari.COUNT = Diari.COUNT + 1;
+                        ref.child("Diari").child(mAuth.getCurrentUser().getUid()).child(Diari.COUNT.toString()).setValue(diario).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();

@@ -26,7 +26,7 @@ public class Monumenti {
      */
     public static final Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
 
-    private static final int COUNT = 25;
+    public static Long COUNT = new Long(0);
 
     public static void addItem(DummyItem item) {
         if(!ITEMS.contains(item)) {

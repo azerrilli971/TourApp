@@ -40,7 +40,7 @@ public class IntroActivity extends AppIntro2 {
 
 
         doneButton.setOnClickListener(DoneListner);
-        intent = new Intent(this,MainActivity.class);
+        intent = new Intent(this,LoginActivity.class);
 
     }
 
