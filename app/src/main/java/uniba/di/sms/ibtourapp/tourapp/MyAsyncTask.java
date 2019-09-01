@@ -93,6 +93,7 @@ public class MyAsyncTask extends AsyncTask {
                             Alberghi.DummyItem albergo = data.getValue(Alberghi.DummyItem.class);
                             albergo.setId(data.getKey());
                             Alberghi.addItem(new Alberghi.DummyItem(albergo.id, albergo.nomeHotel, albergo.viaHotel, albergo.costoHotel, albergo.descrizioneHotel, albergo.immagineHotel));
+                            Alberghi.COUNT++;
                             break;
                         case "Diari" :
                             ref.child(context).child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {

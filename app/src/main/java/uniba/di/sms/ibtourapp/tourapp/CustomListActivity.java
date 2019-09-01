@@ -259,7 +259,7 @@ public class CustomListActivity extends AppCompatActivity {
                                 }
                             });
                         } else {
-                            ref.child(testi[0]).child(path).setValue(albergo).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            ref.child(testi[0]).child(Alberghi.COUNT.toString()).setValue(albergo).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
