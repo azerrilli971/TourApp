@@ -35,10 +35,6 @@ public class Monumenti {
         }
     }
 
-    private static DummyItem createDummyItem(int id, String nomeMonumento, String viaMonumento, String descrizioneMonumento) {
-        return new DummyItem(String.valueOf(id), nomeMonumento, viaMonumento, makeDetails(descrizioneMonumento));
-    }
-
     private static String makeDetails(String descrizione) {
         StringBuilder builder = new StringBuilder();
         builder.append(descrizione);
@@ -112,11 +108,12 @@ public class Monumenti {
 
 
 
-        public DummyItem(String id, String nomeMonumento, String viaMonumento, String descrizioneMonumento) {
+        public DummyItem(String id, String nomeMonumento, String viaMonumento, String descrizioneMonumento, String immagineMonumento) {
             this.id = id;
             this.nomeMonumento = nomeMonumento;
             this.viaMonumento = viaMonumento;
             this.descrizioneMonumento = descrizioneMonumento;
+            this.immagineMonumento = immagineMonumento;
         }
 
         public DummyItem() {}

@@ -186,7 +186,6 @@ public class ChiesaListActivity extends AppCompatActivity {
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.mNomeChiesa.setText(mValues.get(position).nomeChiesa);
             holder.mViaChiesa.setText(mValues.get(position).viaChiesa);
-            Picasso.get().load(mValues.get(position).immagineChiesa).into(holder.mImmagineChiesa);
             holder.mInfoMenu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -228,7 +227,6 @@ public class ChiesaListActivity extends AppCompatActivity {
                                             }
                                         });
                                     break;
-
                                 default:
                                     break;
                             }
@@ -238,7 +236,7 @@ public class ChiesaListActivity extends AppCompatActivity {
                     });
                 }
             });
-            notifyDataSetChanged();
+            Picasso.get().load(mValues.get(position).immagineChiesa).into(holder.mImmagineChiesa);
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
         }
@@ -281,8 +279,6 @@ public class ChiesaListActivity extends AppCompatActivity {
     public  void openDialog(){
         DeleteAlertDialog newDialog =  new DeleteAlertDialog();
         newDialog.show(getSupportFragmentManager(), "Delete dialog");
-
-
 
     }
 

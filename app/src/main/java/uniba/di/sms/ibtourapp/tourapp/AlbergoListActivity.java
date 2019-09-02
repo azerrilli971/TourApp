@@ -50,6 +50,7 @@ public class AlbergoListActivity extends AppCompatActivity {
     private boolean mTwoPane;
     private FirebaseAuth mAuth;
     private static int utente = 0;
+    View recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,7 +131,7 @@ public class AlbergoListActivity extends AppCompatActivity {
             mTwoPane = true;
         }
 
-        View recyclerView = findViewById(R.id.albergo_list);
+        recyclerView = findViewById(R.id.albergo_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
     }
@@ -139,6 +140,13 @@ public class AlbergoListActivity extends AppCompatActivity {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, Alberghi.ITEMS, mTwoPane));
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        recyclerView = findViewById(R.id.restaurant_list);
+        assert recyclerView != null;
+        setupRecyclerView((RecyclerView) recyclerView);
+    }
     public  class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
@@ -272,6 +280,7 @@ public class AlbergoListActivity extends AppCompatActivity {
             }
         }
     }
+
     @Override
     public boolean onOptionsItemSelected( MenuItem item){
 

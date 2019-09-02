@@ -109,5 +109,6 @@
     <string name="tutorialEsplora">Esplora il mondo attorno a te</string>
     <string name="tutorialDescrizioneDiario">Metti in pausa il tempo con i tuoi diari! Scatta  foto e commentale per rivivere i momenti più belli del tuo viaggio.</string>
     <string name="tutorialDescrizioneCoupon">Viaggiare non è mai stato così conveniente! Registra i coupon presso l\'InfoPoint della città e spendili nei centri convenzionati!</string>
+    <string name="pref_previously_started" />
 
 </resources>

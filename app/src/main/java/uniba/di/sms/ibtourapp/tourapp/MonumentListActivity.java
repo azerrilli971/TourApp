@@ -49,6 +49,7 @@ public class MonumentListActivity extends AppCompatActivity {
     private boolean mTwoPane;
     private FirebaseAuth mAuth;
     private static int utente = 0;
+    View recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,6 +115,7 @@ public class MonumentListActivity extends AppCompatActivity {
                 String[] valori;
                 i.putExtra("Testi", testi);
                 startActivity(i);
+
             }
         });
 
@@ -125,7 +127,7 @@ public class MonumentListActivity extends AppCompatActivity {
             mTwoPane = true;
         }
 
-        View recyclerView = findViewById(R.id.monument_list);
+        recyclerView = findViewById(R.id.monument_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
 
@@ -214,6 +216,7 @@ public class MonumentListActivity extends AppCompatActivity {
                                     i.putExtra("Testi", testi);
                                     i.putExtra("Valori", valori);
                                     startActivity(i);
+                                    notifyDataSetChanged();
                                     break;
                                 case R.id.menuElimina:
                                     openDialog();
@@ -225,6 +228,7 @@ public class MonumentListActivity extends AppCompatActivity {
                                             MyAsyncTask task = new MyAsyncTask("Monumenti");
                                             task.execute();
                                             mValues.remove(position);
+                                            Monumenti.COUNT = Monumenti.COUNT - 1;
                                             if(position != 0) {
                                                 onBindViewHolder(holder, position - 1);
                                             }
@@ -243,6 +247,7 @@ public class MonumentListActivity extends AppCompatActivity {
                     });
                 }
             });
+            Picasso.get().load(mValues.get(position).immagineMonumento).into(holder.mImmagineView);
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
         }
@@ -274,9 +279,13 @@ public class MonumentListActivity extends AppCompatActivity {
     public  void openDialog(){
         DeleteAlertDialog newDialog =  new DeleteAlertDialog();
         newDialog.show(getSupportFragmentManager(), "Delete dialog");
-
-
-
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        recyclerView = findViewById(R.id.restaurant_list);
+        assert recyclerView != null;
+        setupRecyclerView((RecyclerView) recyclerView);
+    }
 }

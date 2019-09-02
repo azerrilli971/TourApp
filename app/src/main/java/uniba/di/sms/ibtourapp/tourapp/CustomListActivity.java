@@ -147,10 +147,14 @@ public class CustomListActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+
                                 }
                             });
+
                         }
+
                         finish();
+
                         break;
                     case "Chiese":
                         Chiese.DummyItem chiesa = new Chiese.DummyItem();

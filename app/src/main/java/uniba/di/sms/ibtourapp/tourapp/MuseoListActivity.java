@@ -233,7 +233,6 @@ public class MuseoListActivity extends AppCompatActivity {
                                         }
                                     });
                                     break;
-
                                 default:
                                     break;
                             }

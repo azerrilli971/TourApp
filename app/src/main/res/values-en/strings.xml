@@ -74,6 +74,8 @@
     <string name="tutorialDescrizioneEsplora">Not a clue about how you\'re going to spend the night? Or where you are going to eat or to visit? TourApp will show you the most popular attractions, the best restaurants and the most comfortable hotels.</string>
     <string name="tutorialDiario">Journey Diary</string>
     <string name="tutorialEsplora">Explore the world around you</string>
+    <string name="tutorialDescrizioneDiario">"Remember your best experiences! Take a photo and write something about the moment in your journey Diary! "</string>
     <string name="tutorialDescrizioneCoupon">"Travelling has never been this convenient! Collect coupons from the InfoPoint of the city you're visiting and use them in the partner shops. "</string>
+    <string name="pref_previously_started" />
 
 </resources>

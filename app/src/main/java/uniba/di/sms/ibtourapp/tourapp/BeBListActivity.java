@@ -49,6 +49,7 @@ public class BeBListActivity extends AppCompatActivity {
     private boolean mTwoPane;
     private FirebaseAuth mAuth;
     private static int utente = 0;
+    View recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,7 +128,7 @@ public class BeBListActivity extends AppCompatActivity {
             mTwoPane = true;
         }
 
-        View recyclerView = findViewById(R.id.beb_list);
+        recyclerView = findViewById(R.id.beb_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
     }
@@ -136,6 +137,13 @@ public class BeBListActivity extends AppCompatActivity {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, BeBs.ITEMS, mTwoPane));
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        recyclerView = findViewById(R.id.restaurant_list);
+        assert recyclerView != null;
+        setupRecyclerView((RecyclerView) recyclerView);
+    }
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 

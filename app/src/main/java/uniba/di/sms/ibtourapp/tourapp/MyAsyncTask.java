@@ -15,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import uniba.di.sms.ibtourapp.tourapp.dummy.Alberghi;
+import uniba.di.sms.ibtourapp.tourapp.dummy.BeBs;
 import uniba.di.sms.ibtourapp.tourapp.dummy.Chiese;
 import uniba.di.sms.ibtourapp.tourapp.dummy.Diari;
 import uniba.di.sms.ibtourapp.tourapp.dummy.Gelaterie;
@@ -52,8 +53,22 @@ public class MyAsyncTask extends AsyncTask {
                                     flag = 0;
                             }
                             if(flag == 1) {
-                                Monumenti.addItem(new Monumenti.DummyItem(item.id, item.nomeMonumento, item.viaMonumento, item.descrizioneMonumento));
+                                Monumenti.addItem(new Monumenti.DummyItem(item.id, item.nomeMonumento, item.viaMonumento, item.descrizioneMonumento, item.immagineMonumento));
                                 Monumenti.COUNT = dataSnapshot.getChildrenCount();
+                            }
+                            break;
+                        case "B&b" :
+                            BeBs.DummyItem beb = data.getValue(BeBs.DummyItem.class);
+                            beb.setId(data.getKey());
+                            flag = 1;
+                            for (Monumenti.DummyItem mus: Monumenti.ITEMS
+                            ) {
+                                if(mus.id == beb.id)
+                                    flag = 0;
+                            }
+                            if(flag == 1) {
+                                BeBs.addItem(new BeBs.DummyItem(beb.id, beb.nomeBB, beb.viaBB, beb.descrizioneBB, beb.costoBB, beb.immagineBB));
+                                BeBs.COUNT = dataSnapshot.getChildrenCount();
                             }
                             break;
                         case "Gelaterie":

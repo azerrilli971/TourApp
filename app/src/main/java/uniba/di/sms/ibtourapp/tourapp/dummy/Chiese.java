@@ -28,10 +28,6 @@ public class Chiese {
 
     public static Long COUNT = new Long(0);
 
-    static {
-        // Add some sample items.
-        addItem(new DummyItem("1","ao", "ce", "emoif", "wfk"));
-    }
 
     public static void addItem(DummyItem item) {
         ITEMS.add(item);

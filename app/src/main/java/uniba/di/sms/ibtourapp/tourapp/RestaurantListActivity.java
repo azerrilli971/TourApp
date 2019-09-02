@@ -49,6 +49,7 @@ public class RestaurantListActivity extends AppCompatActivity {
     private boolean mTwoPane;
     private FirebaseAuth mAuth;
     private static int utente = 0;
+    View recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,7 +129,7 @@ public class RestaurantListActivity extends AppCompatActivity {
             mTwoPane = true;
         }
 
-        View recyclerView = findViewById(R.id.restaurant_list);
+        recyclerView = findViewById(R.id.restaurant_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
     }
@@ -277,14 +278,20 @@ public class RestaurantListActivity extends AppCompatActivity {
         if(item.getItemId() == android.R.id.home){
             finish();
         }
-
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        recyclerView = findViewById(R.id.restaurant_list);
+        assert recyclerView != null;
+        setupRecyclerView((RecyclerView) recyclerView);
+    }
+
     public  void openDialog(){
         DeleteAlertDialog newDialog =  new DeleteAlertDialog();
         newDialog.show(getSupportFragmentManager(), "Delete dialog");
-
-
 
     }
 }

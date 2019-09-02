@@ -75,6 +75,7 @@
     <string name="tutorialEsplora">Explora el mondo a tu alrededor</string>
     <string name="tutorialDescrizioneCoupon">¡Viajar nunca ha estado tan conveniente! Registra los cupones en los Puntos de Información de la ciudad  y utilizalos en los centros habilitados.</string>
     <string name="tutorialDescrizioneDiario">¡Pausa el tiempo!¡ Toma fotos y comentales para revivir los momentos mejores de tu viaje!</string>
+    <string name="pref_previously_started" />
 
 
 </resources>
