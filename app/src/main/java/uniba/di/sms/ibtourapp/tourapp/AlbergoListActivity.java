@@ -143,7 +143,7 @@ public class AlbergoListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        recyclerView = findViewById(R.id.restaurant_list);
+        recyclerView = findViewById(R.id.albergo_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
     }

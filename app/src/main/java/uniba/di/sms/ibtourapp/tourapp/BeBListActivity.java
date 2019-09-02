@@ -140,7 +140,7 @@ public class BeBListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        recyclerView = findViewById(R.id.restaurant_list);
+        recyclerView = findViewById(R.id.beb_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
     }

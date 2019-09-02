@@ -48,6 +48,7 @@ public class DiarioListActivity extends AppCompatActivity {
 
     private boolean mTwoPane;
     private FirebaseAuth mAuth;
+    View recyclerView;
     private String image = "https://firebasestorage.googleapis.com/v0/b/tourapp-9d024.appspot.com/o/images%2F947bde07-5138-4029-a77d-34fa9febf8d6?alt=media&token=e2acdc3d-aa98-4414-85d4-7e930df44562";
 
     @Override
@@ -81,7 +82,7 @@ public class DiarioListActivity extends AppCompatActivity {
             mTwoPane = true;
         }
         mAuth = FirebaseAuth.getInstance();
-        View recyclerView = findViewById(R.id.diario_list);
+        recyclerView = findViewById(R.id.diario_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
     }
@@ -207,5 +208,13 @@ public class DiarioListActivity extends AppCompatActivity {
     public  void openDialog(){
         DeleteAlertDialog newDialog =  new DeleteAlertDialog();
         newDialog.show(getSupportFragmentManager(), "Delete dialog");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        recyclerView = findViewById(R.id.diario_list);
+        assert recyclerView != null;
+        setupRecyclerView((RecyclerView) recyclerView);
     }
 }
