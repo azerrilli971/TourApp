@@ -1,13 +1,16 @@
 package uniba.di.sms.ibtourapp.tourapp;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -56,7 +59,7 @@ import uniba.di.sms.ibtourapp.tourapp.dummy.SvagoGiovani;
 
 public class CustomListActivity extends AppCompatActivity {
 
-    private final int select_photo = 1;
+    private final int PICK_FROM_GALLERY = 1;
     ArrayList<EditText> dummyInfo = new ArrayList<>();
     ImageView gallery_image;
     private Uri imageuri;
@@ -95,11 +98,20 @@ public class CustomListActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View arg0) {
-                        Intent in = new Intent(Intent.ACTION_PICK);
-                        in.setType("image/*");
-                        startActivityForResult(in, select_photo);
+                        try {
+                            if (ActivityCompat.checkSelfPermission(CustomListActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                                ActivityCompat.requestPermissions(CustomListActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, PICK_FROM_GALLERY);
+                            } else {
+                                Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                                startActivityForResult(galleryIntent, PICK_FROM_GALLERY);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
                     }
                 });
+
         Button pushButton = new Button(this);
         pushButton.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         pushButton.setText("Salva");
@@ -393,7 +405,8 @@ public class CustomListActivity extends AppCompatActivity {
                                     Intent imagereturnintent) {
         super.onActivityResult(requestcode, resultcode, imagereturnintent);
         switch (requestcode) {
-            case select_photo:
+            case
+                    PICK_FROM_GALLERY:
                 if (resultcode == RESULT_OK) {
                     try {
                         imageuri = imagereturnintent.getData();
@@ -525,5 +538,23 @@ public class CustomListActivity extends AppCompatActivity {
                         }
                     });
         }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults)
+    {
+        switch (requestCode) {
+            case PICK_FROM_GALLERY:
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(galleryIntent, PICK_FROM_GALLERY);
+                } else {
+                    //do something like displaying a message that he didn`t allow the app to access gallery and you wont be able to let him select from gallery
+                }
+                break;
+        }
+      /*  Intent in = new Intent(Intent.ACTION_PICK);
+        in.setType("image/*");
+        startActivityForResult(in, select_photo);*/
     }
 }
