@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.Locale;
+import java.util.concurrent.ExecutionException;
+
 import uniba.di.sms.ibtourapp.tourapp.dummy.Monumenti;
 
 /**
@@ -53,7 +56,18 @@ public class MonumentDetailFragment extends Fragment {
             }
         }
     }
-
+    String Translate(String textToBeTranslated,String languagePair){
+        TranslatorBackgroundTask translatorBackgroundTask= new TranslatorBackgroundTask(getContext());
+        String translationResult = null;
+        try {
+            translationResult = translatorBackgroundTask.execute(textToBeTranslated,languagePair).get(); // Returns the translated text as a String
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return translationResult;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,6 +75,9 @@ public class MonumentDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
+            if( Locale.getDefault().getLanguage() != "it" ) {
+                mItem.setDescrizioneMonumento(Translate(mItem.descrizioneMonumento, "it-"+ Locale.getDefault().getLanguage()));
+            }
             ((TextView) rootView.findViewById(R.id.monument_detail)).setText(mItem.descrizioneMonumento);
         }
 

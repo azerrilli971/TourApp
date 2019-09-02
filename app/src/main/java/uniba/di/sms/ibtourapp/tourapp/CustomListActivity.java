@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -39,6 +39,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 
 import uniba.di.sms.ibtourapp.tourapp.dummy.Alberghi;
 import uniba.di.sms.ibtourapp.tourapp.dummy.BeBs;
@@ -66,6 +67,7 @@ public class CustomListActivity extends AppCompatActivity {
     String path = "01";
     private FirebaseAuth mAuth;
     Long counter = new Long(0);
+    String traduzione = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -315,6 +317,8 @@ public class CustomListActivity extends AppCompatActivity {
                         Gelaterie.DummyItem gelateria = new Gelaterie.DummyItem();
                         gelateria = Gelaterie.addItemList(dummyInfo);
                         gelateria.setImmagine(download);
+                        Translate(gelateria.descrizioneGelateria, "it-es");
+                        gelateria.setDescrizioneGelateria(traduzione);
                         if(val[0] != "0") {
                             ref.child(testi[0]).child(val[val.length - 1]).setValue(gelateria).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
@@ -354,7 +358,6 @@ public class CustomListActivity extends AppCompatActivity {
                                 }
                             });
                         }
-
                         finish();
                         break;
                     case "Diari" :
@@ -472,6 +475,21 @@ public class CustomListActivity extends AppCompatActivity {
         return editText;
     }
 
+    public String Translate(String textToBeTranslated,String languagePair){
+        TranslatorBackgroundTask translatorBackgroundTask = new TranslatorBackgroundTask(this);
+        try {
+            traduzione = translatorBackgroundTask.execute(textToBeTranslated,languagePair).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return traduzione;
+    }
+
+    public void setData(String data){
+        traduzione = data;
+    }
     private void uploadImage() {
         if (imageuri != null) {
             final ProgressDialog progressDialog = new ProgressDialog(this);

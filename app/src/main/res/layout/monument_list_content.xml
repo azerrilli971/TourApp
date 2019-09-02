@@ -17,10 +17,11 @@
 
 
     <LinearLayout
-        android:gravity="start"
-        android:layout_width="wrap_content"
+        android:layout_width="214dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:gravity="start"
+        android:orientation="vertical"
+        android:padding="5dp">
 
 
         <TextView
@@ -37,10 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/monumentoNome"
-            android:layout_marginStart="5dp"
-
-            android:paddingLeft="5dp"
-            android:paddingTop="20dp"
+            android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:text="Indirizzo"
             android:textSize="18sp" />

@@ -8,6 +8,7 @@ import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +40,8 @@ public class NewCouponActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_coupon);
         context = this;
         message = findViewById(R.id.codeCoupon);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (nfcAdapter == null) {
 
@@ -98,5 +101,13 @@ public class NewCouponActivity extends AppCompatActivity {
     private void readModeOn(){
         writeMode = true;
         nfcAdapter.enableForegroundDispatch(this, pendingIntent, readTagFilters, null);
+    }
+    @Override
+    public boolean onOptionsItemSelected( MenuItem item){
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
