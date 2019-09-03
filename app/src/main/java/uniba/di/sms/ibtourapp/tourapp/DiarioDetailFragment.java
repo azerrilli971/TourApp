@@ -56,9 +56,9 @@ public class DiarioDetailFragment extends Fragment {
             // to load content from a content provider.
             mItem = Diari.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
 
-            Activity activity = this.getActivity();
-            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
-            appBarLayout.setTitleEnabled(false);
+            //Activity activity = this.getActivity();
+            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) getActivity().findViewById(R.id.toolbar_layout);
+           // appBarLayout.setTitleEnabled(false);
         }
     }
 
