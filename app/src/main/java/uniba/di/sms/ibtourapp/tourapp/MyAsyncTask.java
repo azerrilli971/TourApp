@@ -19,6 +19,7 @@ import uniba.di.sms.ibtourapp.tourapp.dummy.Monumenti;
 import uniba.di.sms.ibtourapp.tourapp.dummy.Musei;
 import uniba.di.sms.ibtourapp.tourapp.dummy.Pizzerie;
 import uniba.di.sms.ibtourapp.tourapp.dummy.Ristoranti;
+import uniba.di.sms.ibtourapp.tourapp.dummy.Spiagge;
 import uniba.di.sms.ibtourapp.tourapp.dummy.SvagoFamiglie;
 import uniba.di.sms.ibtourapp.tourapp.dummy.SvagoGiovani;
 
@@ -123,6 +124,18 @@ public class MyAsyncTask extends AsyncTask {
                                 Pizzerie.COUNT = dataSnapshot.getChildrenCount();
                             }
                             break;
+                        case "Spiagge" :
+                            Spiagge.DummyItem spiaggia = data.getValue(Spiagge.DummyItem.class);
+                            spiaggia.setId(data.getKey());
+                            flag = 1;
+                            for (Spiagge.DummyItem temp : Spiagge.ITEMS) {
+                                if(temp.id == spiaggia.id)
+                                    flag = 0;
+                            }
+                            if (flag == 1) {
+                                Spiagge.addItem(new Spiagge.DummyItem(spiaggia.id, spiaggia.nomeSpiaggia, spiaggia.viaSpiaggia, spiaggia.descrizioneSpiaggia, spiaggia.immagineSpiaggia));
+                                Spiagge.COUNT = Spiagge.COUNT + 1;
+                            }
                         case "Ristoranti" :
                             Ristoranti.DummyItem ristorante = data.getValue(Ristoranti.DummyItem.class);
                             ristorante.setId(data.getKey());

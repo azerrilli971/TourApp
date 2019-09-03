@@ -238,7 +238,6 @@ public class CustomListActivity extends AppCompatActivity {
                         SvagoGiovani.DummyItem svagoG = new SvagoGiovani.DummyItem();
                         svagoG = SvagoGiovani.addItemList(dummyInfo);
                         svagoG.setImmagineSvagoG(download);
-                        ref.child(testi[0]).child("01").setValue(svagoG);
                         if(val[0] != "0") {
                             ref.child(testi[0]).child(val[val.length - 1]).setValue(svagoG).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override

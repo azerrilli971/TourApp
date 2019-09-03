@@ -28,12 +28,7 @@ public class Spiagge {
 
     public static Long COUNT = new Long(0);
 
-    static {
-        // Add some sample items.
-        addItem(new DummyItem("1", "we","aewrwer", "wdkedl", "efklms"));
-    }
-
-    private static void addItem(DummyItem item) {
+    public static void addItem(DummyItem item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.id, item);
     }
