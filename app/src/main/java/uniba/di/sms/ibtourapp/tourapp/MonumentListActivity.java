@@ -13,7 +13,6 @@ import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -225,8 +224,6 @@ public class MonumentListActivity extends AppCompatActivity {
                                     ref.child("Monumenti").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
                                         @Override
                                         public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                                            MyAsyncTask task = new MyAsyncTask("Monumenti");
-                                            task.execute();
                                             mValues.remove(position);
                                             Monumenti.COUNT = Monumenti.COUNT - 1;
                                             if(position != 0) {

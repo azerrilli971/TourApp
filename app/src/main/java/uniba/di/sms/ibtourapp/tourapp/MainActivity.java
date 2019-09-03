@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
         //setting toolbar as an actionbar
-        toolbar.setTitle(R.string.homeEsplora);
+        toolbar.setTitle(R.string.titoloHome);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_menu_hamburger);
 

@@ -2,10 +2,6 @@ package uniba.di.sms.ibtourapp.tourapp;
 
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
-import android.util.Log;
-import android.view.Gravity;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
