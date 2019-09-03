@@ -47,13 +47,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:weightSum="5">
 
                         <ImageView
                             android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_height="0dp"
                             android:background="@drawable/circlebackroundyellow"
-                            android:src="@drawable/ic_icecream" />
+                            android:src="@drawable/ic_icecream"
+                            android:layout_weight="3"/>
 
                         <View
                             android:layout_width="match_parent"
@@ -62,10 +64,11 @@
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
                             android:text="@string/mangiareGelaterie"
                             android:textSize="20sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:layout_weight="2"/>
 
 
                     </LinearLayout>
@@ -97,13 +100,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:weightSum="5">
 
                         <ImageView
                             android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_height="0dp"
                             android:background="@drawable/circlebackroundcrimson"
-                            android:src="@drawable/ic_pizza" />
+                            android:src="@drawable/ic_pizza"
+                            android:layout_weight="3"/>
 
                         <View
                             android:layout_width="match_parent"
@@ -114,10 +119,11 @@
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
                             android:text="@string/mangiarePizzerie"
                             android:textSize="20sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:layout_weight="2"/>
 
 
                     </LinearLayout>
@@ -148,13 +154,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:weightSum="5">
 
                         <ImageView
                             android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_height="0dp"
                             android:background="@drawable/circlebackroundeasternblue"
-                            android:src="@drawable/ic_restaurant" />
+                            android:src="@drawable/ic_restaurant"
+                            android:layout_weight="3"/>
 
                         <View
                             android:layout_width="match_parent"
@@ -163,10 +171,11 @@
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
                             android:text="@string/mangiareRistoranti"
                             android:textSize="20sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:layout_weight="2"/>
 
 
                     </LinearLayout>
