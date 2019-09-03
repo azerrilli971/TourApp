@@ -113,7 +113,7 @@ public class SvagoGiovaniListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(SvagoGiovaniListActivity.this, CustomListActivity.class);
-                String[] testi = {"Svago Giovani","Nome Svago Giovani", "Descrizione Svago Giovani", "Via Svago Giovani", "Orari Svago Giovani", "Costo Svago Giovani"};
+                String[] testi = {"SvagoGiovani","Nome Svago Giovani", "Descrizione Svago Giovani", "Via Svago Giovani", "Orari Svago Giovani", "Costo Svago Giovani"};
                 i.putExtra("Testi", testi);
                 startActivity(i);
             }

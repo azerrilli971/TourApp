@@ -183,18 +183,10 @@ public class MuseoListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
-            if(position == -1) {
-                LinearLayout linearLayout = new LinearLayout(getApplicationContext());
-                linearLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-                TextView view = new TextView(getApplicationContext());
-                view.setText("Non ci sono musei presenti");
-                view.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-                setContentView(linearLayout);
-            }
+
             holder.mNomeMuseo.setText(mValues.get(position).nomeMuseo);
             holder.mViaMuseo.setText(mValues.get(position).viaMuseo);
             holder.mOrariMuseo.setText(mValues.get(position).orariMuseo);
-            Toast.makeText(getApplicationContext(), mValues.get(position).id.toString(), Toast.LENGTH_SHORT).show();
             holder.mInfoMenu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

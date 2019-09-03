@@ -53,6 +53,12 @@ public class ChiesaDetailFragment extends Fragment {
             if (appBarLayout != null) {
                 appBarLayout.setTitle(mItem.nomeChiesa);
             }
+            appBarLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onDestroy();
+                }
+            });
         }
     }
 
@@ -71,4 +77,5 @@ public class ChiesaDetailFragment extends Fragment {
 
         return rootView;
     }
+
 }

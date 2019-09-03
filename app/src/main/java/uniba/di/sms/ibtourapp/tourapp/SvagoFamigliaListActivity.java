@@ -114,7 +114,7 @@ public class SvagoFamigliaListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(SvagoFamigliaListActivity.this, CustomListActivity.class);
-                String[] testi = {"Svago Famiglie","Nome Svago Famiglia", "Descrizione Svago Famiglia", "Via Svago Famiglia", "Orari Svago Famiglia", "Costo Svago Famiglia"};
+                String[] testi = {"SvagoFamiglie","Nome Svago Famiglia", "Descrizione Svago Famiglia", "Via Svago Famiglia", "Orari Svago Famiglia", "Costo Svago Famiglia"};
                 i.putExtra("Testi", testi);
                 startActivity(i);
             }
