@@ -28,11 +28,6 @@ public class Pizzerie {
 
     public static Long COUNT = new Long(0);
 
-    static {
-        // Add some sample items.
-        addItem(new DummyItem("1", "la Lira", "via Giulio pastore", "woe", "jskfd", "oefjs"));
-
-    }
 
     public static void addItem(DummyItem item) {
         ITEMS.add(item);

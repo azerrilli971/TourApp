@@ -215,7 +215,7 @@ public class SvagoFamigliaListActivity extends AppCompatActivity {
                                     //Or Some other code you want to put here.. This is just an example
                                     Toast.makeText(getApplicationContext(), " Install Clicked at position " + " : " , Toast.LENGTH_LONG).show();
                                     Intent i = new Intent(SvagoFamigliaListActivity.this, CustomListActivity.class);
-                                    String[] testi = {"Svago Famiglie","Nome Svago Famiglia", "Descrizione Svago Famiglia", "Via Svago Famiglia", "Orari Svago Famiglia", "Costo Svago Famiglia"};
+                                    String[] testi = {"SvagoFamiglie","Nome Svago Famiglia", "Descrizione Svago Famiglia", "Via Svago Famiglia", "Orari Svago Famiglia", "Costo Svago Famiglia"};
                                     String[] valori = {mValues.get(position).nomeSvagoF, mValues.get(position).descrizioneSvagoF, mValues.get(position).viaSvagoF, mValues.get(position).orariSvagoF, mValues.get(position).costoSvagoF, mValues.get(position).id};
                                     i.putExtra("Testi", testi);
                                     i.putExtra("Valori", valori);
@@ -225,11 +225,9 @@ public class SvagoFamigliaListActivity extends AppCompatActivity {
                                     openDialog();
                                     final FirebaseDatabase database = FirebaseDatabase.getInstance();
                                     DatabaseReference ref = database.getReference();
-                                    ref.child("Svago Famiglie").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
+                                    ref.child("SvagoFamiglie").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
                                         @Override
                                         public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                                            MyAsyncTask task = new MyAsyncTask("Svago Famiglie");
-                                            task.execute();
                                             mValues.remove(position);
                                             if(position != 0) {
                                                 onBindViewHolder(holder, position - 1);
@@ -294,8 +292,5 @@ public class SvagoFamigliaListActivity extends AppCompatActivity {
     public  void openDialog(){
         DeleteAlertDialog newDialog =  new DeleteAlertDialog();
         newDialog.show(getSupportFragmentManager(), "Delete dialog");
-
-
-
     }
 }

@@ -28,10 +28,6 @@ public class SvagoFamiglie {
 
     public static Long COUNT = new Long(0);
 
-    static {
-        // Add some sample items.
-        addItem(new DummyItem("1", "werds", "dklas", "oidskl", "fejdsklm", "dskjlm", "gfrdkjlc"));
-    }
 
     public static void addItem(DummyItem item) {
         ITEMS.add(item);

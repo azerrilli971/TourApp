@@ -28,10 +28,6 @@ public class Ristoranti {
 
     public static Long COUNT = new Long(0);
 
-    static {
-        // Add some sample items.
-        addItem(new DummyItem("1", "weeeeeeee", "bgweeeeeeee", "ssempre chiuso", "dioejfiojwifo bello se solo fosse aperto", "https://cdn.pixabay.com/photo/2017/03/27/16/50/beach-2179624__340.jpg"));
-    }
 
     public static void addItem(DummyItem item) {
         ITEMS.add(item);

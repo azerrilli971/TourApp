@@ -220,7 +220,7 @@ public class CustomListActivity extends AppCompatActivity {
                             ref.child(testi[0]).child(val[val.length - 1]).setValue(svagoF).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(getApplicationContext(), "Item salvato con successo!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "Item modficato con successo!", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         } else {

@@ -214,7 +214,7 @@ public class SvagoGiovaniListActivity extends AppCompatActivity {
                                     //Or Some other code you want to put here.. This is just an example
                                     Toast.makeText(getApplicationContext(), " Install Clicked at position " + " : " , Toast.LENGTH_LONG).show();
                                     Intent i = new Intent(SvagoGiovaniListActivity.this, CustomListActivity.class);
-                                    String[] testi = {"Svago Giovani","Nome Svago Giovani", "Descrizione Svago Giovani", "Via Svago Giovani", "Orari Svago Giovani", "Costo Svago Giovani"};
+                                    String[] testi = {"SvagoGiovani","Nome Svago Giovani", "Descrizione Svago Giovani", "Via Svago Giovani", "Orari Svago Giovani", "Costo Svago Giovani"};
                                     String[] valori = {mValues.get(position).nomeSvagoG, mValues.get(position).descrizioneSvagoG, mValues.get(position).viaSvagoG, mValues.get(position).orariSvagoG, mValues.get(position).costoSvagoG, mValues.get(position).id};
                                     i.putExtra("Testi", testi);
                                     i.putExtra("Valori", valori);
@@ -224,10 +224,10 @@ public class SvagoGiovaniListActivity extends AppCompatActivity {
                                     openDialog();
                                     final FirebaseDatabase database = FirebaseDatabase.getInstance();
                                     DatabaseReference ref = database.getReference();
-                                    ref.child("Svago Giovani").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
+                                    ref.child("SvagoGiovani").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
                                         @Override
                                         public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                                            MyAsyncTask task = new MyAsyncTask("Svago Giovani");
+                                            MyAsyncTask task = new MyAsyncTask("SvagoGiovani");
                                             task.execute();
                                             mValues.remove(position);
                                             if(position != 0) {
