@@ -178,7 +178,7 @@
                     android:foreground="?android:selectableItemBackground">
 
                     <LinearLayout
-
+                        android:weightSum="5"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -231,13 +231,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:weightSum="5">
 
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:background="@drawable/circlebackroundyellow"
-                            android:src="@drawable/ic_divertimento" />
+                            android:src="@drawable/ic_divertimento"
+                            android:layout_weight="3"/>
 
                         <View
                             android:layout_width="match_parent"
@@ -251,7 +253,8 @@
                             android:textSize="20sp"
                             android:textStyle="bold"
                             android:padding="5dp"
-                            android:gravity="center"/>
+                            android:gravity="center"
+                            android:layout_weight="1"/>
 
 
                     </LinearLayout>
@@ -272,24 +275,28 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:weightSum="7">
 
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="32dp"
                             android:background="@drawable/circlebackroundlightblue"
-                            android:src="@drawable/ic_familyone" />
+                            android:src="@drawable/ic_familyone"
+                            android:layout_weight="2"/>
 
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="32dp"
                             android:background="@drawable/circlebackroundlightblue"
-                            android:src="@drawable/ic_familytwo" />
+                            android:src="@drawable/ic_familytwo"
+                            android:layout_weight="2"/>
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="2dp"
-                            android:background="@color/Cornflower" />
+                            android:background="@color/Cornflower"
+                            />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -298,7 +305,8 @@
                             android:textSize="20sp"
                             android:textStyle="bold"
                             android:padding="5dp"
-                            android:gravity="center"/>
+                            android:gravity="center"
+                            android:layout_weight="2"/>
 
 
                     </LinearLayout>

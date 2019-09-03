@@ -4,24 +4,25 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:paddingTop="10dp"
-
+    android:weightSum="12"
     >
 
 
     <ImageView
-
+        android:layout_weight="4"
         android:id="@+id/monumentoImmagine"
-        android:layout_width="146dp"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:src="@drawable/hotelnazioni" />
 
 
     <LinearLayout
-        android:layout_width="214dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="start"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:layout_weight="7">
 
 
         <TextView
@@ -30,7 +31,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
             android:text="Nome Monumento"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <TextView
@@ -46,10 +47,11 @@
 
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:gravity="end">
+        android:gravity="end"
+        android:layout_weight="1">
 
         <ImageView
             android:paddingTop="20dp"
