@@ -36,15 +36,6 @@
             android:paddingTop="10dp"
             android:text="Indirizzo"
             android:textSize="18sp" />
-        <TextView
-            android:id="@+id/chiesaOrari"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="8dp"
-            android:text="Orari"
-
-
-            />
 
 
     </LinearLayout>
