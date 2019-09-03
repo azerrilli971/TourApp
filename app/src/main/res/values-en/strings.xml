@@ -49,7 +49,7 @@
     <string name="elimina">Delete</string>
     <string name="aggiungi">Add</string>
     <string name="modifica">Modify</string>
-    <string name="title_diario_detail">Memories details</string>
+    <string name="title_diario_detail">Memory details</string>
     <string name="title_diario_list">Diary</string>
     <string name="titoloDialogElimina">Item deleted</string>
     <string name="messaggioDialogElimina">Item deleted successfully</string>
