@@ -3,25 +3,28 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:paddingTop="10dp">
+    android:paddingTop="10dp"
+    android:weightSum="12">
 
     <ImageView
         android:id="@+id/svagoImmagine"
-        android:layout_width="127dp"
-        android:layout_height="121dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
         android:src="@drawable/hotelnazioni" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_weight="7"
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/svagoNome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
             android:text="Nome Svago Famiglie"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -30,7 +33,6 @@
             android:id="@+id/svagoVia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
             android:paddingTop="10dp"
             android:text="Indirizzo"
             android:textSize="18sp" />
@@ -39,7 +41,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
-            android:layout_marginStart="5dp"
             android:text="Orari"
 
 
@@ -59,10 +60,11 @@
 
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="end">
+        android:orientation="vertical"
+        android:gravity="end|center"
+        android:layout_weight="1">
 
         <ImageView
             android:paddingTop="20dp"
