@@ -23,7 +23,7 @@
         <TextView
             android:id="@+id/gelateriaNome"
             android:layout_width="wrap_content"
-            android:layout_height="25dp"
+            android:layout_height="wrap_content"
             android:text="Nome Gelateria"
             android:textSize="24sp"
             android:textStyle="bold" />
