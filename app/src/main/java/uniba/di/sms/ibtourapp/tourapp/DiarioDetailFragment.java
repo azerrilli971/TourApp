@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import uniba.di.sms.ibtourapp.tourapp.dummy.Diari;
 
@@ -68,6 +69,9 @@ public class DiarioDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
+            if( Locale.getDefault().getLanguage() != "it" ) {
+                mItem.setDescrizioneRicordo(Translate.Translate(mItem.descrizioneRicordo, "it-"+ Locale.getDefault().getLanguage(), getContext()));
+            }
             ((TextView) rootView.findViewById(R.id.diario_detail)).setText(mItem.descrizioneRicordo);
             ((TextView) rootView.findViewById(R.id.data)).setText(mItem.dataRicordo);
         }

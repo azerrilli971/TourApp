@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 import uniba.di.sms.ibtourapp.tourapp.dummy.Gelaterie;
 
 /**
@@ -61,6 +63,9 @@ public class GelateriaDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
+            if( Locale.getDefault().getLanguage() != "it" ) {
+                mItem.setDescrizioneGelateria(Translate.Translate(mItem.descrizioneGelateria, "it-"+ Locale.getDefault().getLanguage(), getContext()));
+            }
             ((TextView) rootView.findViewById(R.id.gelateria_detail)).setText(mItem.descrizioneGelateria);
         }
 

@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 import uniba.di.sms.ibtourapp.tourapp.dummy.Pizzerie;
 
 /**
@@ -61,6 +63,9 @@ public class PizzeriaDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
+            if( Locale.getDefault().getLanguage() != "it" ) {
+                mItem.setDettagliPizzeria(Translate.Translate(mItem.dettagliPizzeria, "it-"+ Locale.getDefault().getLanguage(), getContext()));
+            }
             ((TextView) rootView.findViewById(R.id.pizzeria_detail)).setText(mItem.dettagliPizzeria);
         }
 

@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 import uniba.di.sms.ibtourapp.tourapp.dummy.Spiagge;
 
 /**
@@ -61,6 +63,9 @@ public class SpiaggiaDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
+            if( Locale.getDefault().getLanguage() != "it" ) {
+                mItem.setDescrizioneSpiaggia(Translate.Translate(mItem.descrizioneSpiaggia, "it-"+ Locale.getDefault().getLanguage(), getContext()));
+            }
             ((TextView) rootView.findViewById(R.id.spiaggia_detail)).setText(mItem.descrizioneSpiaggia);
         }
 
