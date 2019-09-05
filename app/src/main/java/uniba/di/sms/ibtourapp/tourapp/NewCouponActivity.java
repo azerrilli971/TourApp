@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -15,8 +16,11 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.UUID;
 
@@ -33,6 +37,7 @@ public class NewCouponActivity extends AppCompatActivity {
 
     TextView message;
     Button btnWrite;
+    static Long counter = new Long("0");
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,7 +74,18 @@ public class NewCouponActivity extends AppCompatActivity {
             auth = FirebaseAuth.getInstance();
             FirebaseDatabase db = FirebaseDatabase.getInstance();
             DatabaseReference reference = db.getReference();
-            reference.child("Coupon").child(auth.getCurrentUser().getUid()).child("lello").setValue(coupon).addOnSuccessListener(new OnSuccessListener<Void>() {
+            reference.child("Coupon").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    counter = dataSnapshot.getChildrenCount();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+            reference.child("Coupon").child(auth.getCurrentUser().getUid()).child(counter.toString()).setValue(coupon).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
                    Toast.makeText(getApplicationContext(), uuid + "Aggiunto correttamente", Toast.LENGTH_SHORT).show();
