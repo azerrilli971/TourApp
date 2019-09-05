@@ -328,8 +328,6 @@ public class CustomListActivity extends AppCompatActivity {
                         Gelaterie.DummyItem gelateria = new Gelaterie.DummyItem();
                         gelateria = Gelaterie.addItemList(dummyInfo);
                         gelateria.setImmagine(download);
-                        Translate(gelateria.descrizioneGelateria, "it-es");
-                        gelateria.setDescrizioneGelateria(traduzione);
                         if(val[0] != "0") {
                             ref.child(testi[0]).child(val[val.length - 1]).setValue(gelateria).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
