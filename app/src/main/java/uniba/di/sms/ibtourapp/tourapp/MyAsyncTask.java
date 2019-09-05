@@ -208,7 +208,7 @@ public class MyAsyncTask extends AsyncTask {
                                                 flag = 0;
                                         }
                                         if (flag == 1) {
-                                            Diari.addItem(new Diari.DummyItem(diario.id, diario.ricordo, diario.descrizioneRicordo));
+                                            Diari.addItem(new Diari.DummyItem(diario.id, diario.ricordo, diario.descrizioneRicordo, diario.dataRicordo));
                                             Diari.COUNT = dataSnapshot.getChildrenCount();
                                         }
                                     }

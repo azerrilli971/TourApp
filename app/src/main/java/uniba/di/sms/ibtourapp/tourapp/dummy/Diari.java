@@ -32,17 +32,9 @@ public class Diari {
 
     public static Long COUNT = new Long(0);
 
-    static {
-        // Add some sample items.
-    }
-
     public static void addItem(DummyItem item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.id, item);
-    }
-
-    private static DummyItem createDummyItem(int position, String ricordo, String descrizioneRicordo) {
-        return new DummyItem(String.valueOf(position), "Item " + position, descrizioneRicordo);
     }
 
     public static DummyItem addItemList(ArrayList<EditText> lista) {
@@ -95,14 +87,11 @@ public class Diari {
             this.dataRicordo = dataRicordo;
         }
 
-        public DummyItem(String id, String ricordo, String descrizioneRicordo) {
+        public DummyItem(String id, String ricordo, String descrizioneRicordo, String dataRicordo) {
             this.id = id;
             this.ricordo = ricordo;
             this.descrizioneRicordo = descrizioneRicordo;
-            Calendar c = Calendar.getInstance();
-            SimpleDateFormat dateformat = new SimpleDateFormat("dd MMM yyyy ");
-            String datetime = dateformat.format(c.getTime());
-            this.dataRicordo = datetime; //java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+            this.dataRicordo = dataRicordo; //java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
         }
 
         public DummyItem(){}
