@@ -20,8 +20,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="40">
             <TextView
+                android:layout_weight="5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/descrizioneCoupon"
@@ -30,6 +32,7 @@
                 android:textSize="18sp"/>
 
             <TextView
+                android:layout_weight="35"
                 android:paddingBottom="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -40,6 +43,7 @@
                 android:textStyle="bold"/>
 
             <Button
+                android:layout_weight="1"
                 android:id="@+id/buttonUsaCoupon"
                 android:layout_width="276dp"
                 android:layout_height="wrap_content"
@@ -50,6 +54,7 @@
                 android:textColor="@color/Black" />
 
             <android.support.design.widget.FloatingActionButton
+                android:layout_weight="1"
                 android:id="@+id/fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
