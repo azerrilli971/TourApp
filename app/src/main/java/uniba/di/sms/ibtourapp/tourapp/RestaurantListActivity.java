@@ -95,10 +95,8 @@ public class RestaurantListActivity extends AppCompatActivity {
                     cursor.getColumnIndexOrThrow(UsersList.FeedEntry.COLUMN_NAME_SUBTITLE));
             if(itemId == 0) {
                 utente = 1;
-                Toast.makeText(getApplicationContext(), "Questo utente non è un infopoint", Toast.LENGTH_LONG).show();
             } else {
                 utente = 2;
-                Toast.makeText(getApplicationContext(), "Questo utente è un infopoint", Toast.LENGTH_LONG).show();
             }
         }
         cursor.close();

@@ -94,10 +94,8 @@ public class ChiesaListActivity extends AppCompatActivity {
                     cursor.getColumnIndexOrThrow(UsersList.FeedEntry.COLUMN_NAME_SUBTITLE));
             if(itemId == 0) {
                 utente = 1;
-                Toast.makeText(getApplicationContext(), "Questo utente non è un infopoint", Toast.LENGTH_LONG).show();
             } else {
                 utente = 2;
-                Toast.makeText(getApplicationContext(), "Questo utente è un infopoint", Toast.LENGTH_LONG).show();
             }
         }
         cursor.close();
@@ -148,7 +146,6 @@ public class ChiesaListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Chiese.DummyItem item = (Chiese.DummyItem) view.getTag();
                 if(view.getId()== R.id.iconaMenuInfo){
-                    //Toast.makeText(getApplicationContext(), "Funziona", Toast.LENGTH_LONG).show();
                 }
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();

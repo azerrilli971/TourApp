@@ -203,7 +203,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if(itemId == 0) {
 
                 utente = true;
-                Toast.makeText(getApplicationContext(), "Questo utente non è un infopoint", Toast.LENGTH_LONG).show();
             } else {
 
                 utente = false;

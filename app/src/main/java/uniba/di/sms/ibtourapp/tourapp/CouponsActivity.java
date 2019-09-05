@@ -15,8 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -77,7 +75,6 @@ public class  CouponsActivity extends AppCompatActivity implements NavigationVie
                         @Override
                         public void onSuccess(Void aVoid) {
                             lista.remove(0);
-                            //Toast.makeText(getApplicationContext(), "skdo", Toast.LENGTH_SHORT).show();
                         }
                     });
                     counter --;
