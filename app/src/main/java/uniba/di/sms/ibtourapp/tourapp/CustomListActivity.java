@@ -36,7 +36,9 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.FileNotFoundException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
@@ -373,6 +375,10 @@ public class CustomListActivity extends AppCompatActivity {
                         Diari.DummyItem diario = new Diari.DummyItem();
                         diario = Diari.addItemList(dummyInfo);
                         diario.setRicordo(download);
+                        Calendar c = Calendar.getInstance();
+                        SimpleDateFormat dateformat = new SimpleDateFormat("dd MMM yyyy ");
+                        String datetime = dateformat.format(c.getTime());
+                        diario.setDataRicordo(datetime);
                         Diari.COUNT = Diari.COUNT + 1;
                         ref.child("Diari").child(mAuth.getCurrentUser().getUid()).child(Diari.COUNT.toString()).setValue(diario).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
