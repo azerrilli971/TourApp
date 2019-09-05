@@ -74,7 +74,7 @@ public class NewCouponActivity extends AppCompatActivity {
             auth = FirebaseAuth.getInstance();
             FirebaseDatabase db = FirebaseDatabase.getInstance();
             DatabaseReference reference = db.getReference();
-            reference.child("Coupon").child(auth.getCurrentUser().getUid()).child(counter.toString()).addValueEventListener(new ValueEventListener() {
+            reference.child("Coupon").child(auth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     counter = dataSnapshot.getChildrenCount();
