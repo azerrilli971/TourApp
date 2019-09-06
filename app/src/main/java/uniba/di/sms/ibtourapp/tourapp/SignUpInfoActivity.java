@@ -63,25 +63,25 @@ public class SignUpInfoActivity extends AppCompatActivity implements View.OnClic
         String password = editTextPassword.getText().toString().trim();
 
         if (email.isEmpty()) {
-            editTextEmail.setError("Email is required");
+            editTextEmail.setError(getString(R.string.erroreMail));
             editTextEmail.requestFocus();
             return;
         }
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            editTextEmail.setError("Please enter a valid email");
+            editTextEmail.setError(getString(R.string.mailDiversa));
             editTextEmail.requestFocus();
             return;
         }
 
         if (password.isEmpty()) {
-            editTextPassword.setError("Password is required");
+            editTextPassword.setError(getString(R.string.inserirePsw));
             editTextPassword.requestFocus();
             return;
         }
 
         if (password.length() < 6) {
-            editTextPassword.setError("Minimum lenght of password should be 6");
+            editTextPassword.setError(getString(R.string.lunghezzaMinima));
             editTextPassword.requestFocus();
             return;
         }
@@ -105,7 +105,7 @@ public class SignUpInfoActivity extends AppCompatActivity implements View.OnClic
 
                     long newRowId = db.insert(UsersList.FeedEntry.TABLE_NAME, null, values);
                     if(newRowId != 0) {
-                        Toast.makeText(getApplicationContext(), "Utente registrato correttamente", Toast.LENGTH_LONG).show();
+                       // Toast.makeText(getApplicationContext(), "Utente registrato correttamente", Toast.LENGTH_LONG).show();
                     }
                     startActivity(new Intent(SignUpInfoActivity.this, MainActivity.class));
                 } else {
@@ -114,7 +114,7 @@ public class SignUpInfoActivity extends AppCompatActivity implements View.OnClic
                         Toast.makeText(getApplicationContext(), "You are already registered", Toast.LENGTH_SHORT).show();
 
                     } else {
-                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                      //  Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
 
                 }
