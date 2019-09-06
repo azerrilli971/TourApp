@@ -64,19 +64,15 @@ public class RestaurantListActivity extends AppCompatActivity {
         UsersDbHelper dbHelper = new UsersDbHelper(getApplicationContext());
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-// Define a projection that specifies which columns from the database
-// you will actually use after this query.
         String[] projection = {
                 BaseColumns._ID,
                 UsersList.FeedEntry.COLUMN_NAME_TITLE,
                 UsersList.FeedEntry.COLUMN_NAME_SUBTITLE
         };
 
-// Filter results WHERE "title" = 'My Title'
         String selection = UsersList.FeedEntry.COLUMN_NAME_TITLE + " = ?";
         String[] selectionArgs = { mAuth.getCurrentUser().getUid() };
 
-// How you want the results sorted in the resulting Cursor
         String sortOrder =
                 UsersList.FeedEntry.COLUMN_NAME_SUBTITLE + " DESC";
 
@@ -146,9 +142,6 @@ public class RestaurantListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Ristoranti.DummyItem item = (Ristoranti.DummyItem) view.getTag();
-                if(view.getId()== R.id.iconaMenuInfo){
-                    //Toast.makeText(getApplicationContext(), "Funziona", Toast.LENGTH_LONG).show();
-                }
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
                     arguments.putString(RestaurantDetailFragment.ARG_ITEM_ID, item.id);
@@ -188,7 +181,6 @@ public class RestaurantListActivity extends AppCompatActivity {
             holder.mNomeRistorante.setText(mValues.get(position).nomeRistorante);
             holder.mViaRistorante.setText(mValues.get(position).viaRistorante);
             holder.mOrariRistorante.setText(mValues.get(position).orariRistorante);
-            Picasso.get().load(mValues.get(position).immagineRistorante).into(holder.mImmagineRistorante);
             holder.mInfoMenu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -203,11 +195,9 @@ public class RestaurantListActivity extends AppCompatActivity {
                             switch (item.getItemId()) {
                                 case R.id.menuModifica:
 
-                                    //Or Some other code you want to put here.. This is just an example
-                                    Toast.makeText(getApplicationContext(), " Install Clicked at position " + " : " , Toast.LENGTH_LONG).show();
                                     Intent i = new Intent(RestaurantListActivity.this, CustomListActivity.class);
                                     String[] testi = {"Ristoranti","Nome Ristorante", "Descrizione Ristorante", "Via Ristorante", "Orari Ristorante"};
-                    String[] valori = {mValues.get(position).nomeRistorante, mValues.get(position).dettagliRistorante, mValues.get(position).viaRistorante, mValues.get(position).orariRistorante, mValues.get(position).id};
+                                    String[] valori = {mValues.get(position).nomeRistorante, mValues.get(position).dettagliRistorante, mValues.get(position).viaRistorante, mValues.get(position).orariRistorante, mValues.get(position).id};
                                     i.putExtra("Testi", testi);
                                     i.putExtra("Valori", valori);
                                     startActivity(i);
@@ -219,8 +209,6 @@ public class RestaurantListActivity extends AppCompatActivity {
                                     ref.child("Ristoranti").child(mValues.get(position).id).removeValue(new DatabaseReference.CompletionListener() {
                                         @Override
                                         public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                                            MyAsyncTask task = new MyAsyncTask("Ristoranti");
-                                            task.execute();
                                             mValues.remove(position);
                                             if(position != 0) {
                                                 onBindViewHolder(holder, position - 1);
@@ -240,6 +228,7 @@ public class RestaurantListActivity extends AppCompatActivity {
                     });
                 }
             });
+            Picasso.get().load(mValues.get(position).immagineRistorante).into(holder.mImmagineRistorante);
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
         }
@@ -250,11 +239,11 @@ public class RestaurantListActivity extends AppCompatActivity {
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
-            final TextView mNomeRistorante;
-            final TextView mViaRistorante;
-            final TextView mOrariRistorante;
-            final ImageView mImmagineRistorante;
-            ImageView mInfoMenu;
+             TextView mNomeRistorante;
+             TextView mViaRistorante;
+             TextView mOrariRistorante;
+             ImageView mImmagineRistorante;
+             ImageView mInfoMenu;
 
             ViewHolder(View view) {
                 super(view);
@@ -290,6 +279,5 @@ public class RestaurantListActivity extends AppCompatActivity {
     public  void openDialog(){
         DeleteAlertDialog newDialog =  new DeleteAlertDialog();
         newDialog.show(getSupportFragmentManager(), "Delete dialog");
-
     }
 }

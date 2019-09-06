@@ -153,7 +153,6 @@ public class BeBListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 BeBs.DummyItem item = (BeBs.DummyItem) view.getTag();
                 if(view.getId()== R.id.iconaMenuInfo){
-                    //Toast.makeText(getApplicationContext(), "Funziona", Toast.LENGTH_LONG).show();
                 }
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
@@ -208,8 +207,6 @@ public class BeBListActivity extends AppCompatActivity {
                             switch (item.getItemId()) {
                                 case R.id.menuModifica:
 
-                                    //Or Some other code you want to put here.. This is just an example
-                                    Toast.makeText(getApplicationContext(), " Install Clicked at position " + " : " , Toast.LENGTH_LONG).show();
                                     Intent i = new Intent(BeBListActivity.this, CustomListActivity.class);
                                     String[] testi = {"BeB","Nome B&b", "Descrizione B&B", "Via B&B", "Costo B&B"};
                                     String[] valori = {mValues.get(position).nomeBB, mValues.get(position).descrizioneBB, mValues.get(position).viaBB, mValues.get(position).costoBB, mValues.get(position).id};

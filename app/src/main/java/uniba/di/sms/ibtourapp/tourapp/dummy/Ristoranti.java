@@ -19,7 +19,7 @@ public class Ristoranti {
     /**
      * An array of sample (dummy) items.
      */
-    public static final List<DummyItem> ITEMS = new ArrayList<DummyItem>();
+    public static List<DummyItem> ITEMS = new ArrayList<DummyItem>();
 
     /**
      * A map of sample (dummy) items, by ID.
@@ -34,19 +34,6 @@ public class Ristoranti {
         ITEM_MAP.put(item.id, item);
     }
 
-    private static DummyItem createDummyItem(int position, String nomeRistorante, String viaRistorante, String orariRistorante, String dettagliRistorante, String immagineRistorante) {
-        return new DummyItem(String.valueOf(position), nomeRistorante, viaRistorante, orariRistorante, dettagliRistorante, immagineRistorante);
-    }
-
-    private static String makeDetails(int position) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(position);
-        for (int i = 0; i < position; i++) {
-            builder.append("\nMore details information here.");
-        }
-        return builder.toString();
-    }
-
     /**
      * A dummy item representing a piece of content.
      */
@@ -59,7 +46,7 @@ public class Ristoranti {
             this.id = id;
         }
 
-        public  String id;
+        public String id;
         public String nomeRistorante;
         public String dettagliRistorante;
         public String viaRistorante;
