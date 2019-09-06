@@ -131,8 +131,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 myAsyncTask.execute();
                 myAsyncTask = new MyAsyncTask("SvagoGiovani");
                 myAsyncTask.execute();
-                myAsyncTask = new MyAsyncTask("Beb");
-                myAsyncTask.execute();
                 intent = new Intent(this, ExploreActivity.class);
                 startActivity(intent);
                 break;

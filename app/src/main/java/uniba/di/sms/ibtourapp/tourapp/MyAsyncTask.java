@@ -54,17 +54,17 @@ public class MyAsyncTask extends AsyncTask {
                                 Monumenti.COUNT = dataSnapshot.getChildrenCount();
                             }
                             break;
-                        case "B&b" :
+                        case "BeB" :
                             BeBs.DummyItem beb = data.getValue(BeBs.DummyItem.class);
                             beb.setId(data.getKey());
                             flag = 1;
-                            for (Monumenti.DummyItem mus: Monumenti.ITEMS
+                            for (BeBs.DummyItem mus: BeBs.ITEMS
                             ) {
                                 if(mus.id == beb.id)
                                     flag = 0;
                             }
                             if(flag == 1) {
-                                BeBs.addItem(new BeBs.DummyItem(beb.id, beb.nomeBB, beb.viaBB, beb.descrizioneBB, beb.costoBB, beb.immagineBB));
+                                BeBs.addItem(new BeBs.DummyItem(beb.id, beb.nomeBB, beb.viaBB, beb.costoBB, beb.descrizioneBB, beb.immagineBB));
                                 BeBs.COUNT = dataSnapshot.getChildrenCount();
                             }
                             break;
@@ -121,7 +121,7 @@ public class MyAsyncTask extends AsyncTask {
                             }
                             if(flag == 1) {
                                 Pizzerie.addItem(new Pizzerie.DummyItem(pizzeria.id, pizzeria.nomePizzeria, pizzeria.viaPizzeria, pizzeria.orariPizzeria, pizzeria.dettagliPizzeria, pizzeria.immaginePizzeria));
-                                Pizzerie.COUNT = dataSnapshot.getChildrenCount();
+                                Pizzerie.COUNT = Pizzerie.COUNT + 1;
                             }
                             break;
                         case "Spiagge" :
@@ -136,6 +136,7 @@ public class MyAsyncTask extends AsyncTask {
                                 Spiagge.addItem(new Spiagge.DummyItem(spiaggia.id, spiaggia.nomeSpiaggia, spiaggia.viaSpiaggia, spiaggia.descrizioneSpiaggia, spiaggia.immagineSpiaggia));
                                 Spiagge.COUNT = Spiagge.COUNT + 1;
                             }
+                            break;
                         case "Ristoranti" :
                             Ristoranti.DummyItem ristorante = data.getValue(Ristoranti.DummyItem.class);
                             ristorante.setId(data.getKey());
@@ -147,7 +148,7 @@ public class MyAsyncTask extends AsyncTask {
                             }
                             if(flag == 1) {
                                 Ristoranti.addItem(new Ristoranti.DummyItem(ristorante.id, ristorante.nomeRistorante, ristorante.viaRistorante, ristorante.orariRistorante, ristorante.dettagliRistorante, ristorante.immagineRistorante));
-                                Ristoranti.COUNT = dataSnapshot.getChildrenCount();
+                                Ristoranti.COUNT = Ristoranti.COUNT+1;
                             }
                             break;
                         case "SvagoGiovani" :
@@ -161,7 +162,7 @@ public class MyAsyncTask extends AsyncTask {
                             }
                             if(flag == 1) {
                                 SvagoGiovani.addItem(new SvagoGiovani.DummyItem(svagoGiovani.id, svagoGiovani.nomeSvagoG, svagoGiovani.viaSvagoG, svagoGiovani.orariSvagoG, svagoGiovani.costoSvagoG, svagoGiovani.descrizioneSvagoG, svagoGiovani.immagineSvagoG));
-                                SvagoGiovani.COUNT = dataSnapshot.getChildrenCount();
+                                SvagoGiovani.COUNT = SvagoGiovani.COUNT+1;
                             }
                             break;
                         case "SvagoFamiglie" :
@@ -175,7 +176,7 @@ public class MyAsyncTask extends AsyncTask {
                             }
                             if(flag == 1) {
                                 SvagoFamiglie.addItem(new SvagoFamiglie.DummyItem(svagoFamiglie.id, svagoFamiglie.nomeSvagoF, svagoFamiglie.viaSvagoF, svagoFamiglie.orariSvagoF, svagoFamiglie.costoSvagoF, svagoFamiglie.descrizioneSvagoF, svagoFamiglie.immagineSvagoF));
-                                SvagoGiovani.COUNT = dataSnapshot.getChildrenCount();
+                                SvagoGiovani.COUNT = SvagoFamiglie.COUNT + 1;
                             }
                             break;
                         case "Alberghi" :
@@ -189,7 +190,7 @@ public class MyAsyncTask extends AsyncTask {
                             }
                             if(flag == 1) {
                                 Alberghi.addItem(new Alberghi.DummyItem(albergo.id, albergo.nomeHotel, albergo.viaHotel, albergo.costoHotel, albergo.descrizioneHotel, albergo.immagineHotel));
-                                Alberghi.COUNT = dataSnapshot.getChildrenCount();
+                                Alberghi.COUNT = Alberghi.COUNT + 1;
                             }
                             break;
                         case "Diari" :
@@ -209,7 +210,7 @@ public class MyAsyncTask extends AsyncTask {
                                         }
                                         if (flag == 1) {
                                             Diari.addItem(new Diari.DummyItem(diario.id, diario.ricordo, diario.descrizioneRicordo, diario.dataRicordo));
-                                            Diari.COUNT = dataSnapshot.getChildrenCount();
+                                            Diari.COUNT = Diari.COUNT + 1;
                                         }
                                     }
                                 }

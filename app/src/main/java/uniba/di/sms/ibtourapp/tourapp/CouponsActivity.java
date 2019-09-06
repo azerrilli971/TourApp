@@ -41,6 +41,7 @@ public class  CouponsActivity extends AppCompatActivity implements NavigationVie
     private String codice;
     private String key = "00";
     static ArrayList<Coupon>  lista = new ArrayList<Coupon>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
